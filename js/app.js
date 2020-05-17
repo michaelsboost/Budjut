@@ -244,6 +244,20 @@ $('#graphs .chart').easyPieChart({
 });
 var chart = window.chart = $('.chart').data('easyPieChart');
 
+// alert the user before redirecting site
+window.addEventListener('beforeunload', function(e) {
+  alert("Are you sure you want to leave? The changes you've made maynot be saved!");
+  e.preventDefault();
+  // Chrome requires returnValue to be set.
+  event.returnValue = '';
+});
+window.addEventListener('unload', function(e) {
+  alert("Are you sure you want to leave? The changes you've made maynot be saved!");
+  e.preventDefault();
+  // Chrome requires returnValue to be set.
+  event.returnValue = '';
+});
+
 function testFill() {
   username.textContent = 'Adam Smith';
   $('#username').hide();
