@@ -6,7 +6,7 @@ Budjut is an app that visually shows you your income and expenses. It also gives
 Version
 -------------
 
-0.0.1
+0.0.2
 
 License
 -------------
@@ -38,7 +38,7 @@ Want to contribute? Great!
 
 You can submit a pull request or simply share the project :)
 
-*As of May 17th, 2020 Budjut is no longer an active project.
+*As of May 30th, 2020 Budjut is no longer an active project.
 All updates as of that date and on are solely contributor based implementations.*
 
 Of course, Budjut is free and open source, so you can always fork the project and have fun :)

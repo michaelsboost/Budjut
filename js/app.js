@@ -228,7 +228,7 @@ $('#expenses .answer').on('keyup', function() {
 $('#showgraphs').click(function() {
   window.scrollTo({ top: document.body.scrollHeight });
   $(this).slideUp(250);
-  $('#graphscrollpage, #lifestylechanges, #investingdifference, #buyordiy').slideDown(250);
+  $('#graphscrollpage, #lifestylechanges, #investingdifference, #buyordiy, #earnbydailyhabits').slideDown(250);
   setTimeout(function() {
     window.scrollTo({ top: headerHeight });
     $('.mask').css('height', 0);
@@ -243,20 +243,6 @@ $('#graphs .chart').easyPieChart({
   }
 });
 var chart = window.chart = $('.chart').data('easyPieChart');
-
-// alert the user before redirecting site
-window.addEventListener('beforeunload', function(e) {
-  alert("Are you sure you want to leave? The changes you've made maynot be saved!");
-  e.preventDefault();
-  // Chrome requires returnValue to be set.
-  event.returnValue = '';
-});
-window.addEventListener('unload', function(e) {
-  alert("Are you sure you want to leave? The changes you've made maynot be saved!");
-  e.preventDefault();
-  // Chrome requires returnValue to be set.
-  event.returnValue = '';
-});
 
 function testFill() {
   username.textContent = 'Adam Smith';
@@ -429,6 +415,23 @@ function exportPDF() {
       doc.text(15, 25, page6Title);
       
       doc.fromHTML($('#buyordiyTxt')[0].innerHTML, 15, 35, {
+        'width': 170,
+        'elementHandlers': specialElementHandlers
+      });
+
+      doc.setFont('times');
+      doc.setFontType('italic');
+      doc.setTextColor('#aaaaaa');
+      doc.text(195, 280, 'https://michaelsboost.com/budjut', null, 90);
+      doc.addPage();
+
+      doc.setFontSize(20);
+      doc.setTextColor('#0000ff');
+      doc.setFont('helvetica');
+      doc.setFontType('normal');
+      doc.text(15, 25, page7Title);
+      
+      doc.fromHTML($('#earnbydailyhabitsTxt')[0].innerHTML, 15, 35, {
         'width': 170,
         'elementHandlers': specialElementHandlers
       });
