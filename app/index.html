@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Budjut - See where your money is taking you!</title>
+    <meta charset="UTF-8">
+    <meta http-quiv="X-UA-Compatible" content="IE=9" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Budjut is an app that visually shows you your income and expenses. It also gives you tips on how you can save and what tools you can use to invest and save upon the difference. Did I mention it’s free and open source? So what are you waiting for? Check out Budjut today and see where your money is taking you.">
+    <meta property="og:url"         content="https://michaelsboost.com/Budjut" />
+    <meta property="og:type"        content="website" />
+    <meta property="og:title"       content="Budjut: See where your money is taking you!" />
+    <meta property="og:description" content="Budjut is an app that visually shows you your income and expenses. It also gives you tips on how you can save and what tools you can use to invest and save upon the difference. Did I mention it’s free and open source? So what are you waiting for? Check out Budjut today and see where your money is taking you." />
+    <meta property="og:image"       content="https://michaelsboost.github.io/Budjut/app/imgs/social.png" />
+    <link rel="shortcut icon" href="imgs/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="libraries/polyui/polyui.css">
+    <link rel="stylesheet" href="libraries/font-awesome/font-awesome.css">
+    <link rel="stylesheet" href="libraries/alertifyjs/css/alertify.min.css">
+    <link rel="stylesheet" href="libraries/alertifyjs/css/themes/default.min.css">
+    <link rel="stylesheet" href="libraries/sweetalert2/sweetalert2.min.css">
+    <link rel="stylesheet" href="css/polyrise.mod.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div id="top" class="header bg-image h100p bg-overlay3 marb1px">
+      <div class="grid h100p">
+        <div class="grid__col--12 nomar h100p">
+          <div class="table">
+            <div class="cell">
+              <div class="panel--centered centered grid__col--12 nopadb tc">
+                <div id="income" class="whitetxt tl">
+                  <div class="question">
+                    <p class="h2 whitetxt">
+                      <span>How much money do you make a month? (gross)</span>
+                    </p>
+                    <span class="h1 ib fr" style="width: 100%;">
+                      $ <input type="number" min="0" id="grossincome" value="0" class="answer ib nopad whitetxt nobg tl btmborder"  style="width: calc(100% - 36px);">
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="expenses" class="header bg-image h100p bg-overlay3">
+      <div class="grid h100p">
+        <div class="grid__col--12 nomar h100p">
+          <div class="table">
+            <div class="cell">
+              <div class="panel--centered centered grid__col--12 nopadb tc">
+                <div class="whitetxt tl">
+                  <div class="question">
+                    <p class="h2 whitetxt">
+                      <span>Below please list all of your monthly expenses (excluding currency symbol)</span>
+                    </p>
+                    <hr>
+                    <p>&nbsp;</p>
+
+                    <strong class="block tl h2">
+                      <span>HOUSING</span>: 
+                      <span class="fr">
+                        $ <input type="number" id="housing" disabled value="0" class="rtxt ib wauto nopad whitetxt nobg tr btmborder">
+                      </span>
+                    </strong>
+                    <span>Mortgage/Rent</span>
+                    <input type="number" min="0" value="0" id="answer-1" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Maintenance and repairs</span>
+                    <input type="number" min="0" value="0" id="answer-2" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Taxes, water/sewer</span>
+                    <input type="number" min="0" value="0" id="answer-3" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Heat and electricity</span>
+                    <input type="number" min="0" value="0" id="answer-4" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Tel./Internet/Cable</span>
+                    <input type="number" min="0" value="0" id="answer-5" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Insurance</span>
+                    <input type="number" min="0" value="0" id="answer-6" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Other</span>
+                    <input type="number" min="0" value="0" id="answer-7" class="h2 answer whitetxt nobg tl btmborder">
+                    <p>&nbsp;</p>
+
+                    <strong class="block tl h2">
+                      <span>LIVING EXPENSES</span>: 
+                      <span class="fr">
+                        $ <input type="number" id="living" disabled value="0" class="rtxt ib wauto nopad whitetxt nobg tr btmborder">
+                      </span>
+                    </strong>
+                    <span>Groceries</span>
+                    <input type="number" min="0" value="0" id="answer-8" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Clothing</span>
+                    <input type="number" min="0" value="0" id="answer-9" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Healthcare</span>
+                    <input type="number" min="0" value="0" id="answer-10" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Personal care</span>
+                    <input type="number" min="0" value="0" id="answer-11" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Bank fees</span>
+                    <input type="number" min="0" value="0" id="answer-12" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Daycare</span>
+                    <input type="number" min="0" value="0" id="answer-13" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Other</span>
+                    <input type="number" min="0" value="0" id="answer-14" class="h2 answer whitetxt nobg tl btmborder">
+                    <p>&nbsp;</p>
+
+                    <strong class="block tl h2">
+                      <span>TRANSPORTATION</span>: 
+                      <span class="fr">
+                        $ <input type="number" id="transportation" disabled value="0" class="rtxt ib wauto nopad whitetxt nobg tr btmborder">
+                      </span>
+                    </strong>
+                    <span>Fuel</span>
+                    <input type="number" min="0" value="0" id="answer-15" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Maintenance and repairs</span>
+                    <input type="number" min="0" value="0" id="answer-16" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Lease/Loan/Savings</span>
+                    <input type="number" min="0" value="0" id="answer-17" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Licence and registration</span>
+                    <input type="number" min="0" value="0" id="answer-18" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Insurance</span>
+                    <input type="number" min="0" value="0" id="answer-19" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Other</span>
+                    <input type="number" min="0" value="0" id="answer-20" class="h2 answer whitetxt nobg tl btmborder">
+                    <p>&nbsp;</p>
+
+                    <strong class="block tl h2">
+                      <span>MISCELLANEOUS</span>: 
+                      <span class="fr">
+                        $ <input type="number" id="misc" disabled value="0" class="rtxt ib wauto nopad whitetxt nobg tr btmborder">
+                      </span>
+                    </strong>
+                    <span>Donations</span>
+                    <input type="number" min="0" value="0" id="answer-21" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Recreational activities</span>
+                    <input type="number" min="0" value="0" id="answer-22" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Gifts</span>
+                    <input type="number" min="0" value="0" id="answer-23" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Vacation</span>
+                    <input type="number" min="0" value="0" id="answer-24" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Debt repayment</span>
+                    <input type="number" min="0" value="0" id="answer-25" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Restaurants</span>
+                    <input type="number" min="0" value="0" id="answer-26" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Subscriptions</span>
+                    <input type="number" min="0" value="0" id="answer-27" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Other</span>
+                    <input type="number" min="0" value="0" id="answer-28" class="h2 answer whitetxt nobg tl btmborder">
+                    <p>&nbsp;</p>
+
+                    <strong class="block tl h2">
+                      <span>SAVINGS & INSURANCE</span>: 
+                      <span class="fr">
+                        $ <input type="number" id="savings" disabled value="0" class="rtxt ib wauto nopad whitetxt nobg tr btmborder">
+                      </span>
+                    </strong>
+                    <span>Short-term goals</span>
+                    <input type="number" min="0" value="0" id="answer-29" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Retirement savings</span>
+                    <input type="number" min="0" value="0" id="answer-30" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Education savings</span>
+                    <input type="number" min="0" value="0" id="answer-31" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Other savings</span>
+                    <input type="number" min="0" value="0" id="answer-32" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Life insurance</span>
+                    <input type="number" min="0" value="0" id="answer-33" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Disability insurance</span>
+                    <input type="number" min="0" value="0" id="answer-34" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Critical illness insurance</span>
+                    <input type="number" min="0" value="0" id="answer-35" class="h2 answer whitetxt nobg tl btmborder">
+                    <span>Other</span>
+                    <input type="number" min="0" value="0" id="answer-36" class="h2 answer last whitetxt nobg tl btmborder">
+                    <p>&nbsp;</p>
+
+                    <strong class="block tl h2">
+                      <span>TOTAL EXPENSES</span>: 
+                      <span class="fr">
+                        $ <input type="number" id="totalexpenses" disabled value="0" class="rtxt ib wauto nopad whitetxt nobg tr btmborder">
+                      </span>
+                    </strong>
+
+                    <strong class="block tl h2">
+                      <span>TOTAL LEFT OVER</span>: 
+                      <span class="fr">
+                        $ <input type="number" id="moneyleft" disabled value="0" class="rtxt ib wauto nopad whitetxt nobg tr btmborder">
+                      </span>
+                    </strong>
+                  </div>
+
+                  <div class="tc hide">
+                    <svg id="exportBudget" class="pointer" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="height: 100px; isolation:isolate" viewBox="0 0 100 100" width="100pt" height="100pt" preserveAspectRatio="xMidYMin">
+                      <path d=" M 0 50 C 0 22.404 22.404 0 50 0 C 77.596 0 100 22.404 100 50 C 100 77.596 77.596 100 50 100 C 22.404 100 0 77.596 0 50 Z  M 4.167 50 C 4.167 24.704 24.704 4.167 50 4.167 C 75.296 4.167 95.833 24.704 95.833 50 C 95.833 75.296 75.296 95.833 50 95.833 C 24.704 95.833 4.167 75.296 4.167 50 Z " fill-rule="evenodd" fill="rgb(255,255,255)"></path>
+                      <path class="bounce" d=" M 67.763 35.875 L 70.833 38.704 L 50 64.125 L 29.167 38.658 L 32.304 35.883 L 50 57.958 L 67.763 35.875 Z " fill="rgb(255,255,255)"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="graphscrollpage" class="minh100p whitebg">
+      <div class="grid h100p">
+        <div class="grid__col--12 nomar h100p">
+          <div class="table">
+            <div class="cell">
+              <div class="panel--centered centered grid__col--12 nopadb tl">
+                <p class="h2">
+                  <span id="vispercent">See where your money is going!</span>
+                </p>
+                <hr>
+                <div id="graphs" class="whitebg">
+                  <div class="whitebg chart-container" style="position: relative; left: 50%; width: 90vw; margin-left: -45vw;" id="pieHolder">
+                    <canvas id="pie"></canvas>
+                  </div>
+
+                  <div class="grid">
+                    <div class="ib grid3">
+                      <span class="chart housingperc" data-percent="0">
+                        <span class="percent"></span>
+                        <div class="label"><span>HOUSING</span></div>
+                      </span>
+                    </div>
+                    <div class="ib grid3">
+                      <span class="chart livingperc" data-percent="0">
+                        <span class="percent"></span>
+                        <div class="label"><span>LIVING EXPENSES</span></div>
+                      </span>
+                    </div>
+                    <div class="ib grid3">
+                      <span class="chart transportationperc" data-percent="0">
+                        <span class="percent"></span>
+                        <div class="label"><span>TRANSPORTATION</span></div>
+                      </span>
+                    </div>
+                    <div class="ib grid3">
+                      <span class="chart miscperc" data-percent="0">
+                        <span class="percent"></span>
+                        <div class="label"><span>MISCELLANEOUS</span></div>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="grid">
+                    <div class="ib grid4">
+                      <span class="chart savingsperc" data-percent="0">
+                        <span class="percent"></span>
+                        <div class="label"><span>SAVINGS AND INSURANCE</span></div>
+                      </span>
+                    </div>
+                    <div class="ib grid4">
+                      <span class="chart leftoverperc" data-percent="0">
+                        <span class="percent"></span>
+                        <div class="label"><span>TOTAL LEFT OVER</span></div>
+                      </span>
+                    </div>
+                    <div class="ib grid4">
+                      <span class="chart totalperc" data-percent="0">
+                        <span class="percent"></span>
+                        <div class="label"><span>TOTAL EXPENSES</span></div>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+                <div id="footerurl" class="w100p tc">
+                  <br>
+                  <p>
+                    <a href="https://michaelsboost.com/budjut" target="_blank">https://michaelsboost.com/budjut</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="libraries/filesaver/Blob.js"></script>
+    <script src="libraries/filesaver/FileSaver.js"></script>
+    <script src="libraries/alertifyjs/alertify.min.js"></script>
+    <script src="libraries/sweetalert2/sweetalert2.min.js"></script>
+    <script src="libraries/jquery/jquery.js"></script>
+    <script src="libraries/jquery/jquery.easing.min.js"></script>
+    <script src="libraries/html2canvas/html2canvas.js"></script>
+    <script src="libraries/chartjs/Chart.min.js"></script>
+    <script src="libraries/easypiechart/jquery.easypiechart.min.js"></script>
+    <script src="js/polyrise.mod.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
