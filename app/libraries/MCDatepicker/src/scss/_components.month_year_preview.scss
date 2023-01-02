@@ -1,0 +1,61 @@
+.mc-month-year {
+	&__preview {
+		position: absolute;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+		align-items: center;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 90%;
+		margin: 0 5%;
+		overflow: hidden;
+		visibility: hidden;
+		opacity: 0;
+		background-color: $picker-bg-color;
+
+		&--opened {
+			visibility: visible;
+			opacity: 1;
+		}
+	}
+	&__cell {
+		$root: &;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 30%;
+		height: 20%;
+		text-align: center;
+		border-radius: 10px;
+		cursor: pointer;
+		color: $prev-cell-active-text-color;
+
+		&::after {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			opacity: 0;
+			border-radius: 10px;
+		}
+
+		&--picked {
+			color: $prev-cell-active-pick-text-color;
+			background-color: $prev-cell-active-pick-bg-color;
+		}
+		&--inactive {
+			color: $prev-cell-inactive-text-color;
+			cursor: default;
+			&#{$root}--picked {
+				color: $prev-cell-inactive-pick-text-color;
+				box-shadow: 0 0 0 1px $prev-cell-inactive-pick-bg-color;
+				background-color: transparent;
+			}
+		}
+	}
+}

@@ -1,0 +1,23 @@
+/*============================================*/
+/*               Table Components             */
+/*============================================*/
+
+.mc-table {
+	height: 100%;
+	border-collapse: unset;
+	#{$modal} & {
+		@include for-desktop {
+			border-top: none;
+		}
+	}
+
+	#{$inline} & {
+		border-top: none;
+	}
+	&__weekday {
+		text-align: center;
+		padding: 0.5em 0;
+		color: $weekday-text-color;
+		width: calc(100% / 7);
+	}
+}

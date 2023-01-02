@@ -1,0 +1,141 @@
+/*============================================*/
+/*              Display Components            */
+/*============================================*/
+
+.mc-display {
+	$root: &;
+	display: none;
+	color: $display-text-color;
+	background-color: $display-bg-color;
+
+	#{$modal} & {
+		display: flex;
+		flex-direction: column;
+		max-height: 0;
+		transition: max-height 0.2s linear;
+		padding: 0 0 2em;
+		margin: 0 0 -2em;
+		@include for-desktop {
+			width: 200px;
+			height: 100%;
+			max-height: unset;
+			background-color: $display-bg-color;
+			padding: 0 1em 0 0;
+			margin: 0 -1em 0 0;
+		}
+	}
+
+	#{$modal}#{$opened} & {
+		max-height: 210px;
+		animation: stretch 0.4s;
+
+		@include for-desktop {
+			transition: unset;
+			max-height: unset;
+			animation: unset;
+		}
+	}
+
+	&__body {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0.5em 0;
+
+		@include for-desktop {
+			flex-direction: column;
+			height: 100%;
+			padding: 0;
+		}
+	}
+
+	&__header {
+		background-color: $display-bg-color-darker;
+		#{$root}[data-target='month'] &,
+		#{$root}[data-target='year'] & {
+			@include for-desktop {
+				display: none;
+			}
+		}
+	}
+
+	&__day {
+		text-align: center;
+		@include font-size-clamp-polyfill(1rem, 8, 1.25rem);
+		line-height: 1;
+		padding: 0.5em 0;
+		#{$root}[data-target='month'] &,
+		#{$root}[data-target='year'] & {
+			visibility: hidden;
+		}
+		@include for-desktop {
+			padding: 1em 0;
+		}
+	}
+
+	&__data {
+		display: flex;
+		width: 50%;
+
+		@include for-desktop {
+			width: 100%;
+			height: 50%;
+			text-align: center;
+		}
+
+		&--primary {
+			justify-content: flex-end;
+			#{$root}[data-target='month'] &,
+			#{$root}[data-target='year'] & {
+				display: none;
+			}
+
+			@include for-desktop {
+				justify-content: center;
+				align-items: flex-end;
+			}
+		}
+		&--secondary {
+			flex-direction: column;
+			#{$root}[data-target='month'] &,
+			#{$root}[data-target='year'] & {
+				width: 100%;
+				text-align: center;
+				@include for-desktop {
+					justify-content: center;
+					height: 100%;
+				}
+			}
+			@include for-desktop {
+				justify-content: space-between;
+			}
+		}
+	}
+
+	&__date {
+		@include font-size-clamp-polyfill(5rem, 40, 7rem);
+		line-height: 1;
+	}
+
+	&__month {
+		@include font-size-clamp-polyfill(1.2rem, 9, 1.5rem);
+		#{$root}[data-target='year'] & {
+			display: none;
+		}
+		@include for-desktop {
+			height: auto;
+		}
+	}
+
+	&__year {
+		@include font-size-clamp-polyfill(2.4rem, 18, 3rem);
+		line-height: 0.8;
+		#{$root}[data-target='year'] & {
+			padding: 0.3em 0;
+		}
+		@include for-desktop {
+			height: auto;
+			padding: 0.5em 0;
+		}
+	}
+}

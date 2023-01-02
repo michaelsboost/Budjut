@@ -1,0 +1,29 @@
+/*============================================*/
+/*               Button Components            */
+/*============================================*/
+
+.mc-btn {
+	display: inline-block;
+	font-weight: 500;
+	padding: 0 0.5em;
+
+	&--success {
+		color: $btn-success-color;
+		margin-left: 0.5em;
+	}
+
+	&--danger {
+		color: $btn-danger-color;
+		margin-right: 0.5em;
+	}
+
+	&:active {
+		transform: scale3d(0.95, 0.95, 0.95);
+	}
+
+	&:focus {
+		-webkit-tap-highlight-color: transparent;
+		-ms-touch-action: manipulation;
+		touch-action: manipulation;
+	}
+}

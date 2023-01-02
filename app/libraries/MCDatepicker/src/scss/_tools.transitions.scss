@@ -1,0 +1,105 @@
+/*============================================*/
+/*                 Transitions                */
+/*============================================*/
+
+@keyframes slide-left {
+	0% {
+		transform: translateX(0);
+	}
+
+	100% {
+		transform: translateX(-0.5em);
+	}
+}
+@keyframes slide-right {
+	0% {
+		transform: translateX(0);
+	}
+
+	100% {
+		transform: translateX(0.5em);
+	}
+}
+@keyframes slide-down {
+	0% {
+		transform: translate(-50%, -400px);
+	}
+
+	100% {
+		transform: translate(-50%, 0);
+	}
+}
+
+@keyframes zoom-in {
+	0% {
+		transform: translate(-50%, -50%) scale(0.9);
+	}
+	100% {
+		transform: translate(-50%, -50%) scale(1);
+	}
+}
+
+@keyframes stretch {
+	0% {
+		max-height: 0;
+	}
+	50% {
+		max-height: 0;
+	}
+
+	100% {
+		max-height: 175px;
+	}
+}
+
+@mixin slide($left: true) {
+	@if $left {
+		animation: slide-left 0.2s linear;
+	} @else {
+		animation: slide-right 0.2s linear;
+	}
+}
+
+@mixin popup($in: true) {
+	@if $in {
+		animation: zoom-in 0.1s linear;
+	} @else {
+		animation: zoom-in 0.1s linear reverse;
+	}
+}
+
+@keyframes slide-left-in {
+	from {
+		transform: translateX(100px);
+	}
+	to {
+		transform: translateX(0px);
+	}
+}
+
+@keyframes slide-left-out {
+	from {
+		transform: translateX(0px);
+	}
+	to {
+		transform: translateX(-100px);
+	}
+}
+
+@keyframes slide-right-in {
+	from {
+		transform: translateX(-100px);
+	}
+	to {
+		transform: translateX(0px);
+	}
+}
+
+@keyframes slide-right-out {
+	from {
+		transform: translateX(0px);
+	}
+	to {
+		transform: translateX(100px);
+	}
+}
