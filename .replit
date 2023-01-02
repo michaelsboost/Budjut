@@ -1,2 +1,5 @@
 language = "html"
 run = " "
+
+[nix]
+channel = "stable-21_11"
