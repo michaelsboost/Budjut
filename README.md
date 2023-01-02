@@ -6,7 +6,7 @@ Budjut is an app that visually shows you your income and expenses. It also gives
 Version
 -------------
 
-0.0.3
+1.000-dev
 
 License
 -------------
@@ -18,15 +18,13 @@ Tech
 
 Budjut uses a number of open source projects to work properly:
 
-* [Polyrise](https://github.com/michaelsboost/Polyrise) - Web layout generated with Polyrise
-* [jQuery](http://jquery.com/) - included with [Polyrise](https://github.com/michaelsboost/Polyrise) export
+* [jQuery](http://jquery.com/) - duh
 * [Normalize](https://github.com/necolas/normalize.css) - CSS reset library
-* [Poly UI Kit](https://github.com/Guilh/Poly) - Beautiful and customizable responsive interface library
-* [html2canvas](https://html2canvas.hertzen.com) - Turn viewable canvas into a downloadable image
 * [FileSaver.js](https://github.com/eligrey/FileSaver.js/) - Client-side solution for saving files
 * [Chart.js](https://www.chartjs.org/) - Simple yet flexible JavaScript charting for designers & developers
 * [easyPieChart](https://rendro.github.io/easy-pie-chart/) - Lightweight plugin to render simple, animated and retina optimized pie charts
-* [AlertifyJS](https://alertifyjs.com/) - JS framework for developing pretty browser dialogs and notifications
+* [AlertifyJS]([https://alertifyjs.com/](https://github.com/fabien-d/alertify.js)) - JS framework for developing pretty browser dialogs and notifications
+* [SweetAlert](https://sweetalert.js.org/guides/) - For the awesome and stylish alert dialogs
 
 Development
 -------------
@@ -34,9 +32,6 @@ Development
 Want to contribute? Great!  
 
 You can submit a pull request or simply share the project :)
-
-*As of June 6th, 2022 Budjut is no longer an active project.
-All updates as of that date and on are solely contributor based implementations.*
 
 Of course, Budjut is free and open source, so you can always fork the project and have fun :)
 
