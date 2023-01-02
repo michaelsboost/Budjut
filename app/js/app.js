@@ -6,17 +6,6 @@
   This is Budjut (https://michaelsboost.github.io/Budjut/), Budjut is an app that visually shows you your income and expenses. It also gives you tips on how you can save and what tools you can use to invest and save upon the difference. Did I mention it’s free and open source? So what are you waiting for? Check out Budjut today and see where your money is taking you.
 */
 
-// var budjutOBJ = {
-//   "version": version,
-//   "plannedGroups": [],
-//   "groups": ['housing'],
-//   "income": [],
-//   "incomeGroup": [],
-//   "incomeData": [],
-//   "spent": [],
-//   "transactions": []
-// };
-
 // update transactions object
 $('[data-add=category]').click(function() {
   swal(

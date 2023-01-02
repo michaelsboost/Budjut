@@ -30,7 +30,10 @@ function loadJSON() {
   updateBudget()
   updateCharts()
 
-  alertify.success('File loaded successfully!');
+  // immediately go to budget page
+  $('[data-openpage=budget]').trigger('click')
+
+  alertify.success('File loaded successfully!')
 }
 
 // load file via input[type=file]
