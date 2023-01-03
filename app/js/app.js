@@ -261,6 +261,13 @@ function updateBudget() {
   }
 
   updatePlannedAmount()
+
+  // remember budget in localStorage
+  if (!localStorage.getItem('budgetStorage')) {
+    localStorage.setItem('budgetStorage', JSON.stringify(budjutOBJ))
+  } else {
+    // localStorage.setItem('budgetStorage', JSON.stringify(budjutOBJ))
+  }
 }
 
 // transaction function
@@ -350,4 +357,9 @@ $('[data-add=transaction]').click(function() {
 // var income = new Income('1-1-2023', '250', 'ups', '');
 // var income = new Income('1-1-2023', '250', 'ups', '');
 // var income = new Income('1-1-2023', '10', 'udemy', '');
+
+// initialize budget
+if (localStorage.getItem('budgetStorage')) {
+  budjutOBJ = JSON.parse(localStorage.getItem('budgetStorage'))
+}
 updateBudget()

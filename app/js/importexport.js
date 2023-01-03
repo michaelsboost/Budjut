@@ -27,6 +27,9 @@ function loadJSON() {
 
   // apply loaded js object project to current js object project
   budjutOBJ = loadedJSON
+  localStorage.setItem('budgetStorage', JSON.stringify(budjutOBJ))
+
+  // update budget
   updateBudget()
   updateCharts()
 
@@ -34,6 +37,12 @@ function loadJSON() {
   $('[data-openpage=budget]').trigger('click')
 
   alertify.success('File loaded successfully!')
+}
+
+// clear budget
+function clearBudget() {
+  localStorage.clear()
+  location.reload(true)
 }
 
 // load file via input[type=file]
