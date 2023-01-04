@@ -20,6 +20,7 @@ Budjut uses a number of open source projects to work properly:
 
 * [jQuery](http://jquery.com/) - duh
 * [Normalize](https://github.com/necolas/normalize.css) - CSS reset library
+* [Poly UI Kit](https://github.com/Guilh/Poly) - Beautiful and customizable responsive interface library
 * [FileSaver.js](https://github.com/eligrey/FileSaver.js/) - Client-side solution for saving files
 * [Chart.js](https://www.chartjs.org/) - Simple yet flexible JavaScript charting for designers & developers
 * [easyPieChart](https://rendro.github.io/easy-pie-chart/) - Lightweight plugin to render simple, animated and retina optimized pie charts
