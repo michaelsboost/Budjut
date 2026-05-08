@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <title>Budjut - Free Budget Planner, Expense Tracker & Monthly Finance App</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Free personal finance and budgeting app for tracking monthly expenses, weekly income, bills, and CSV budgeting data. Smart, fast, private, and easy to use.">
+    <meta name="author" content="Michael Schwartz">
+    <meta name="theme-color" content="#13171f">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
+    
+    <style>
+/* subtle custom touches – smooth transitions, custom scroll */
+* { transition: all 0.2s ease; }
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: radial-gradient(circle at 10% 20%, rgba(15, 25, 45, 1) 0%, rgba(10, 15, 28, 1) 100%);
+}
+.glass-card {
+    background: rgba(18, 25, 40, 0.7);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(71, 85, 105, 0.4);
+}
+.hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.5);
+}
+input:focus, button:focus {
+    outline: none;
+    ring: 2px solid #6366f1;
+}
+.progress-bar-animated {
+    transition: width 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #1e293b;
+    border-radius: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: #4f46e5;
+    border-radius: 8px;
+}
+.budget-chip {
+    background: linear-gradient(135deg, rgba(79,70,229,0.15) 0%, rgba(129,140,248,0.05) 100%);
+}
+.table-row-hover:hover td {
+    background-color: rgba(51, 65, 85, 0.4);
+}</style>
+  </head>
+  <body>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10 text-gray-100 antialiased" x-data="budjutApp()" x-init="init()">
+    
+    <!-- modern header with glassmorphism style -->
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-10 gap-5">
+        <div class="flex items-center gap-3">
+            <svg 
+               class="w-10 h-10"
+               viewBox="0 0 212.96373 264.01696"
+               xmlns="http://www.w3.org/2000/svg"><defs
+                 id="defs1"><linearGradient
+                   id="linearGradient15"><stop
+                     style="stop-color:#3b46e5;stop-opacity:1;"
+                     offset="0"
+                     id="stop14" /><stop
+                     style="stop-color:#a453f6;stop-opacity:1;"
+                     offset="1"
+                     id="stop15" /></linearGradient><linearGradient
+                   id="linearGradient10"><stop
+                     style="stop-color:#2443e1;stop-opacity:1;"
+                     offset="0"
+                     id="stop10" /><stop
+                     style="stop-color:#9a51f9;stop-opacity:1;"
+                     offset="1"
+                     id="stop11" /></linearGradient><linearGradient
+                   id="linearGradient8"><stop
+                     style="stop-color:#f7f7f8;stop-opacity:1;"
+                     offset="0"
+                     id="stop8" /><stop
+                     style="stop-color:#efebfe;stop-opacity:1;"
+                     offset="1"
+                     id="stop9" /></linearGradient><linearGradient
+                   xlink:href="#linearGradient8"
+                   id="linearGradient9"
+                   x1="121.32593"
+                   y1="212.27826"
+                   x2="318.97382"
+                   y2="212.27826"
+                   gradientUnits="userSpaceOnUse" /><linearGradient
+                   xlink:href="#linearGradient10"
+                   id="linearGradient11"
+                   x1="122.26644"
+                   y1="291.64163"
+                   x2="334.28967"
+                   y2="291.64163"
+                   gradientUnits="userSpaceOnUse" /><linearGradient
+                   xlink:href="#linearGradient15"
+                   id="linearGradient14"
+                   gradientUnits="userSpaceOnUse"
+                   x1="135.91861"
+                   y1="334.59927"
+                   x2="245.15201"
+                   y2="198.11478" /></defs><g
+                 id="layer1"
+                 transform="translate(-121.32593,-88.506226)"><g
+                   id="g18"><path
+                     id="path15"
+                     style="display:inline;opacity:1;fill:#ffffff;stroke-width:3.08129;stroke-linecap:square"
+                     d="m 135.18348,88.506226 c -7.67691,0 -13.85755,6.180646 -13.85755,13.857554 v 178.32038 57.98147 c 0,7.67691 6.18064,13.85756 13.85755,13.85756 h 57.98147 68.19222 1.09399 c 39.79868,0 71.83851,-32.04034 71.83851,-71.83903 0,-35.44061 -25.40723,-64.72885 -59.07546,-70.71816 v -3.36776 c 25.30805,-7.10923 43.7596,-30.28194 43.7596,-57.92256 0,-31.68953 -24.25306,-57.505672 -55.28603,-59.975668 -0.75739,-0.127247 -1.53595,-0.193786 -2.33061,-0.193786 z" /><path
+                     style="display:inline;opacity:1;fill:url(#linearGradient11);fill-opacity:1;stroke-width:3.08129;stroke-linecap:square"
+                     d="m 314.19839,230.76007 c -19.33267,4.0373 -39.57064,18.07595 -74.16343,61.19317 -32.80112,40.88405 -78.08577,51.29448 -117.76852,51.7586 2.00964,5.16739 7.02235,8.81135 12.91704,8.81135 h 57.98147 68.19222 1.09399 c 39.79868,0 71.83851,-32.04034 71.83851,-71.83903 0,-19.43361 -7.63938,-37.01732 -20.09128,-49.92409 z"
+                     id="path16" /><path
+                     style="display:inline;opacity:1;fill:url(#linearGradient9);stroke-width:3.081;stroke-linecap:square;stroke-dasharray:none"
+                     d="m 135.18348,88.506226 c -7.67691,0 -13.85755,6.180644 -13.85755,13.857554 v 178.32038 55.36613 c 38.30485,-0.27073 81.50804,-10.03302 112.7032,-48.91536 32.19461,-40.1281 53.22992,-56.66034 73.34539,-62.59411 -9.14177,-7.31413 -20.123,-12.43348 -32.16031,-14.57482 v -1.68388 -1.68388 c 25.30805,-7.10923 43.7596,-30.28194 43.7596,-57.92256 0,-31.68953 -24.25306,-57.505672 -55.28603,-59.975668 -0.75739,-0.127247 -1.53595,-0.193786 -2.33061,-0.193786 z"
+                     id="path17" /><path
+                     id="path18"
+                     style="display:inline;opacity:1;fill:url(#linearGradient14);stroke-width:3.081;stroke-linecap:square;stroke-dasharray:none"
+                     d="m 225.09892,193.56751 c -5.46882,0 -9.87175,4.40293 -9.87175,9.87175 v 102.70639 c 6.61833,-5.39036 12.92335,-11.6835 18.80196,-19.01072 5.16498,-6.43776 10.04275,-12.26837 14.67559,-17.54518 v -66.15049 c 0,-5.46882 -4.40292,-9.87175 -9.87175,-9.87175 z m -40.01513,28.45666 c -5.46882,0 -9.87175,4.40241 -9.87175,9.87124 v 95.99155 c 11.54618,-3.8292 22.84876,-9.25408 33.47755,-16.77468 v -79.21687 c 0,-5.46883 -4.40293,-9.87124 -9.87175,-9.87124 z m -40.01513,29.87312 c -5.46883,0 -9.87174,4.40241 -9.87174,9.87123 v 73.74743 c 11.05625,-0.79218 22.34157,-2.52365 33.47754,-5.63428 v -68.11315 c 0,-5.46882 -4.40293,-9.87123 -9.87175,-9.87123 z" /></g></g></svg>
+            <div>
+                <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-300 via-white to-purple-300 bg-clip-text text-transparent">Budjut</h1>
+                <p class="text-gray-400 text-sm mt-0.5">Track monthly spending · smart weekly income · CSV ready</p>
+            </div>
+        </div>
+        <div class="flex flex-wrap gap-2.5">
+            <a href="https://michaelsboost.com/donate" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 hover:bg-rose-500/20 hover:border-rose-400 text-sm font-medium transition-all">
+                ❤️ Donate
+            </a>
+            <button @click="shareApp" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 hover:bg-indigo-500/20 hover:border-indigo-400 text-sm font-medium transition-all">
+                📤 Share
+            </button>
+            <button @click="resetToDefaults" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gray-700/50 border border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white text-sm font-medium transition-all">
+                🔄 Reset
+            </button>
+            <button @click="clearAllExpenses" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gray-700/50 border border-gray-600 text-rose-400 hover:bg-rose-500/10 hover:border-rose-500/40 text-sm font-medium transition-all">
+                🗑️ Clear
+            </button>
+        </div>
+    </div>
+
+    <!-- main grid : refined spacing -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-7">
+        <!-- LEFT COLUMN (expense management) -->
+        <div class="lg:col-span-2 space-y-7">
+            <!-- Add / Edit expense card - sleek design -->
+            <div class="rounded-2xl bg-gray-800/70 backdrop-blur-sm border border-gray-700/60 shadow-xl overflow-hidden">
+                <div class="px-6 pt-5 pb-2 border-b border-gray-700/60">
+                    <h2 class="text-lg font-semibold flex items-center gap-2">
+                        <span class="text-indigo-400 text-xl">✏️</span>
+                        <span x-show="!editingId" class="bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent">Create new expense</span>
+                        <span x-show="editingId" class="bg-gradient-to-r from-emerald-200 to-teal-200 bg-clip-text text-transparent">Edit expense</span>
+                    </h2>
+                </div>
+                <div class="p-6">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <div class="flex-1">
+                            <label class="text-xs text-gray-400 uppercase tracking-wider block mb-1.5">Expense name</label>
+                            <input type="text" x-model="formName" placeholder="e.g., Internet, Netflix, Rent" class="w-full bg-gray-900/70 border border-gray-600 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-white placeholder:text-gray-500 transition">
+                        </div>
+                        <div class="w-full sm:w-48">
+                            <label class="text-xs text-gray-400 uppercase tracking-wider block mb-1.5">Monthly amount ($)</label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-3.5 text-gray-400">$</span>
+                                <input type="number" x-model="formAmount" step="0.01" placeholder="0.00" class="w-full pl-8 pr-4 py-3 bg-gray-900/70 border border-gray-600 rounded-xl focus:ring-2 focus:ring-indigo-500 text-white">
+                            </div>
+                        </div>
+                        <div class="flex items-end">
+                            <button x-show="!editingId" @click="addExpense" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-indigo-600/20 transition-all hover:shadow-indigo-500/30 flex items-center justify-center gap-2">
+                                ✨ Add Expense
+                            </button>
+                            <div x-show="editingId" class="flex gap-3 w-full">
+                                <button @click="updateExpense" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-3 rounded-xl font-semibold shadow-lg transition">💾 Save</button>
+                                <button @click="cancelEdit" class="flex-1 bg-gray-700 hover:bg-gray-600 text-gray-200 px-4 py-3 rounded-xl font-medium transition">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-[11px] text-gray-400 mt-3 flex items-center gap-1">📌 Add any recurring monthly expense. Editable anytime.</p>
+                </div>
+            </div>
+
+            <!-- Expenses table - modern list style -->
+            <div class="rounded-2xl bg-gray-800/70 backdrop-blur-sm border border-gray-700/60 shadow-xl overflow-hidden">
+                <div class="px-6 pt-5 pb-3 border-b border-gray-700/60 flex justify-between items-center">
+                    <div class="flex items-center gap-2">
+                        <span class="text-indigo-400 text-lg">📋</span>
+                        <h2 class="font-semibold text-gray-100 text-lg">Monthly expenses</h2>
+                    </div>
+                    <span class="text-xs font-mono bg-gray-900/70 px-3 py-1 rounded-full text-indigo-300 border border-indigo-500/30" x-text="expenses.length + ' items'"></span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full">
+                        <thead>
+                            <tr class="border-b border-gray-700/70 bg-gray-900/40">
+                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">Expense</th>
+                                <th class="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">Monthly amount</th>
+                                <th class="px-6 py-4 text-right text-xs font-semibold text-gray-400 uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-700/40">
+                            <template x-for="expense in expenses" :key="expense.id">
+                                <tr class="table-row-hover transition-colors duration-150">
+                                    <td class="px-6 py-4 font-medium text-gray-200">
+                                        <div class="flex items-center gap-2">
+                                            <span class="w-2 h-2 rounded-full bg-indigo-400 inline-block"></span>
+                                            <span x-text="expense.name"></span>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 text-gray-300 font-semibold">$<span x-text="expense.amount.toFixed(2)"></span></td>
+                                    <td class="px-6 py-4 text-right space-x-3 whitespace-nowrap">
+                                        <button @click="startEdit(expense)" class="text-indigo-400 hover:text-indigo-200 text-sm font-medium transition px-2 py-1 rounded-lg hover:bg-indigo-500/10">✏️ Edit</button>
+                                        <button @click="deleteExpense(expense.id)" class="text-rose-400 hover:text-rose-300 text-sm font-medium transition px-2 py-1 rounded-lg hover:bg-rose-500/10">🗑️ Delete</button>
+                                    </td>
+                                </tr>
+                            </template>
+                            <tr x-show="expenses.length === 0">
+                                <td colspan="3" class="px-6 py-12 text-center text-gray-400 italic">✨ No expenses yet — add an expense or import a CSV to start budgeting.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN (Income + CSV Tools) modern glow -->
+        <div class="space-y-7">
+            <!-- Income card with premium stats -->
+            <div class="rounded-2xl bg-gradient-to-br from-gray-800/90 to-gray-900/90 border border-indigo-500/20 shadow-xl overflow-hidden backdrop-blur-sm">
+                <div class="px-6 pt-5 pb-1">
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-lg font-semibold flex items-center gap-2"><span>💰</span> Income overview</h2>
+                        <div class="budget-chip rounded-full px-2.5 py-0.5 text-[11px] text-indigo-300">monthly view</div>
+                    </div>
+                </div>
+                <div class="p-6 pt-2 space-y-5">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-1.5">📆 Weekly take‑home pay</label>
+                        <div class="relative">
+                            <span class="absolute left-4 top-3.5 text-gray-400">$</span>
+                            <input type="number" x-model.number="weeklyPay" @input="updateFromWeeklyPay" step="10" class="w-full pl-8 pr-4 py-3 bg-gray-900/60 border border-gray-600 rounded-xl focus:ring-2 focus:ring-indigo-500 text-white font-medium">
+                        </div>
+                        <p class="text-[11px] text-gray-400 mt-1">✨ Based on 52 weeks → estimated monthly</p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-1.5">📆 Monthly income (estimate)</label>
+                        <div class="relative">
+                            <span class="absolute left-4 top-3.5 text-gray-400">$</span>
+                            <input type="number" x-model.number="monthlyIncome" @input="updateFromMonthlyIncome" step="50" class="w-full pl-8 pr-4 py-3 bg-gray-900/60 border border-indigo-500/40 rounded-xl focus:ring-2 focus:ring-indigo-500 text-white font-semibold">
+                        </div>
+                    </div>
+                    
+                    <!-- stats chip group -->
+                    <div class="grid grid-cols-2 gap-3 pt-2">
+                        <div class="bg-gray-900/60 rounded-xl p-3 border border-gray-700">
+                            <div class="text-gray-400 text-xs uppercase">Total expenses</div>
+                            <div class="text-2xl font-bold text-white" x-text="'$' + totalExpenses.toFixed(2)"></div>
+                        </div>
+                        <div class="bg-gray-900/60 rounded-xl p-3 border border-gray-700">
+                            <div class="text-gray-400 text-xs uppercase">Remaining</div>
+                            <div class="text-2xl font-bold" :class="remaining >= 0 ? 'text-emerald-400' : 'text-rose-400'" x-text="(remaining >= 0 ? '$' + remaining.toFixed(2) : '-$' + Math.abs(remaining).toFixed(2))"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- progress bar + health message -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-xs text-gray-300">
+                            <span>Spent / Income</span>
+                            <span x-text="Math.min(100, (totalExpenses/monthlyIncome)*100).toFixed(1) + '%'" x-show="monthlyIncome > 0"></span>
+                        </div>
+                        <div class="h-2.5 w-full bg-gray-700 rounded-full overflow-hidden shadow-inner">
+                            <div class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full progress-bar-animated" :style="'width: ' + Math.min(100, (totalExpenses/monthlyIncome)*100) + '%'" x-show="monthlyIncome > 0"></div>
+                        </div>
+                        <p class="text-xs text-center font-medium mt-2" x-show="monthlyIncome > 0 && totalExpenses > monthlyIncome">
+                            <span class="bg-rose-500/20 text-rose-300 px-2 py-0.5 rounded-full">⚠️ Overspending alert — expenses exceed income</span>
+                        </p>
+                        <p class="text-xs text-center text-indigo-300/80 mt-1" x-show="weeklyPay > 0 && monthCalculationNote" x-text="monthCalculationNote"></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Import/Export card - refined with clear actions -->
+            <div class="rounded-2xl bg-gray-800/70 backdrop-blur-sm border border-gray-700/60 shadow-xl overflow-hidden">
+                <div class="px-6 pt-5 pb-2 border-b border-gray-700/60">
+                    <h2 class="text-lg font-semibold flex items-center gap-2"><span>📁</span> Data import / export</h2>
+                </div>
+                <div class="p-6 space-y-5">
+                    <button @click="exportToCSV" class="w-full bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 rounded-xl py-3 font-semibold transition flex items-center justify-center gap-2 shadow-sm">
+                        📎 Export expenses as CSV
+                    </button>
+                    <div class="pt-1">
+                        <label class="block text-sm font-medium text-gray-300 mb-2">📂 Import CSV file (overwrites current)</label>
+                        <input type="file" accept=".csv" @change="handleFileSelect" class="block w-full text-sm text-gray-300 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:bg-indigo-600/40 file:text-indigo-200 hover:file:bg-indigo-600/60 file:font-medium file:cursor-pointer cursor-pointer">
+                        <div class="flex items-center gap-2 mt-3">
+                            <input type="checkbox" id="csvHeader" x-model="csvHasHeader" class="rounded border-gray-600 bg-gray-700 text-indigo-500 focus:ring-indigo-500 w-4 h-4">
+                            <label for="csvHeader" class="text-xs text-gray-400">CSV includes header row (Name, Amount)</label>
+                        </div>
+                        <div class="mt-3 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
+                            <p class="text-[11px] text-gray-400 flex gap-2"><span class="font-mono text-indigo-300">📌 Format:</span> <span class="font-mono">Name, Amount</span><br>Example: <span class="font-mono text-gray-300">Rent, 850</span></p>
+                        </div>
+                        <div x-show="importMessage" x-text="importMessage" class="text-xs mt-3 p-2 rounded-lg text-center font-medium" :class="importMessageType === 'success' ? 'bg-green-900/40 text-green-300' : 'bg-red-900/40 text-red-300'"></div>
+                    </div>
+                    <button @click="downloadExampleCSV" class="w-full text-indigo-300 text-sm border border-dashed border-indigo-500/50 rounded-xl py-2.5 hover:bg-indigo-500/10 transition flex items-center justify-center gap-1.5">
+                        📄 Download example CSV template
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Motivational tip card -->
+            <div class="rounded-xl bg-indigo-500/5 border border-indigo-500/20 p-4 flex items-start gap-3 backdrop-blur-sm">
+                <span class="text-indigo-400 text-xl">💡</span>
+                <div class="text-sm text-gray-300 leading-relaxed">
+                    <span class="font-semibold text-indigo-300">Smart saving insight</span><br>
+                    Your data auto-saves locally. Weekly income mapping gives accurate monthly forecast.
+                    <span class="text-[11px] block mt-1 text-gray-400">✓ Download backup · stay in control</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="https://michaelsboost.com/TailwindCSSMod/tailwind-mod.min.js"></script>
+    <script>
+function budjutApp() {
+    return {
+        expenses: [],
+        weeklyPay: 350,
+        monthlyIncome: 1516.67,
+        formName: '',
+        formAmount: '',
+        editingId: null,
+        csvHasHeader: true,
+        importMessage: '',
+        importMessageType: 'success',
+        monthCalculationNote: '',
+
+        get totalExpenses() {
+            return this.expenses.reduce((sum, e) => sum + (typeof e.amount === 'number' ? e.amount : parseFloat(e.amount) || 0), 0);
+        },
+        get remaining() {
+            return this.monthlyIncome - this.totalExpenses;
+        },
+
+        saveToLocalStorage() {
+            const state = {
+                expenses: this.expenses,
+                weeklyPay: this.weeklyPay,
+                monthlyIncome: this.monthlyIncome
+            };
+            localStorage.setItem('budjut_app_data', JSON.stringify(state));
+        },
+
+        loadFromLocalStorage() {
+            const raw = localStorage.getItem('budjut_app_data');
+            if (!raw) return false;
+            try {
+                const data = JSON.parse(raw);
+                this.expenses = data.expenses || [];
+                this.expenses = this.expenses.map(e => ({ ...e, amount: parseFloat(e.amount) || 0 }));
+                this.weeklyPay = data.weeklyPay ?? 350;
+                this.monthlyIncome = data.monthlyIncome ?? 1516.67;
+                return true;
+            } catch(e) { return false; }
+        },
+
+        shareApp() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Budjut Budget Planner',
+                    text: 'Take control of my weekly income & expenses!',
+                    url: window.location.href,
+                }).catch(e => { if (e.name !== 'AbortError') console.warn(e); });
+            } else {
+                alert('✨ Copy this link to share Budjut with friends!');
+            }
+        },
+
+        updateFromWeeklyPay() {
+            if (this.weeklyPay > 0) {
+                this.monthlyIncome = parseFloat((this.weeklyPay * (52 / 12)).toFixed(2));
+                this.monthCalculationNote = `💰 Weekly $${this.weeklyPay} → approx. $${this.monthlyIncome.toFixed(2)} / month`;
+                this.saveToLocalStorage();
+            } else {
+                this.monthCalculationNote = '';
+            }
+        },
+
+        updateFromMonthlyIncome() {
+            if (this.monthlyIncome > 0) {
+                if (this.weeklyPay > 0) {
+                    const impliedWeekly = this.monthlyIncome / (52 / 12);
+                    this.monthCalculationNote = `📊 monthly set: equivalent weekly ≈ $${impliedWeekly.toFixed(2)}`;
+                }
+                this.saveToLocalStorage();
+            }
+        },
+
+        init() {
+            const loaded = this.loadFromLocalStorage();
+            if (!loaded || !this.expenses.length) {
+                this.loadDefaultExpenses();
+            }
+            if (this.weeklyPay && (!this.monthlyIncome || this.monthlyIncome === 0)) {
+                this.updateFromWeeklyPay();
+            }
+            if (!this.monthlyIncome) this.monthlyIncome = 1516.67;
+            this.saveToLocalStorage();
+        },
+
+        loadDefaultExpenses() {
+            this.expenses = [
+                { id: this.generateId(), name: 'Rent', amount: 850 },
+                { id: this.generateId(), name: 'Gas', amount: 60 },
+                { id: this.generateId(), name: 'Electric', amount: 100 },
+                { id: this.generateId(), name: 'Cell Phone', amount: 45 },
+                { id: this.generateId(), name: 'Groceries', amount: 200 }
+            ];
+        },
+
+        generateId() {
+            return Date.now() + '-' + Math.random().toString(36).substr(2, 8);
+        },
+
+        addExpense() {
+            const name = this.formName.trim();
+            let amount = parseFloat(this.formAmount);
+            if (!name) { alert('Please enter an expense name.'); return; }
+            if (isNaN(amount) || amount <= 0) { alert('Amount must be a positive number.'); return; }
+            this.expenses.push({ id: this.generateId(), name, amount });
+            this.resetFormFields();
+            this.saveToLocalStorage();
+        },
+
+        deleteExpense(id) {
+            if (confirm('Delete this expense permanently?')) {
+                this.expenses = this.expenses.filter(e => e.id !== id);
+                if (this.editingId === id) this.cancelEdit();
+                this.saveToLocalStorage();
+            }
+        },
+
+        startEdit(expense) {
+            this.editingId = expense.id;
+            this.formName = expense.name;
+            this.formAmount = expense.amount;
+        },
+
+        updateExpense() {
+            if (!this.editingId) return;
+            const updatedName = this.formName.trim();
+            const updatedAmount = parseFloat(this.formAmount);
+            if (!updatedName) { alert('Expense name cannot be empty.'); return; }
+            if (isNaN(updatedAmount) || updatedAmount <= 0) { alert('Amount must be a positive number.'); return; }
+            const index = this.expenses.findIndex(e => e.id === this.editingId);
+            if (index !== -1) {
+                this.expenses[index] = { ...this.expenses[index], name: updatedName, amount: updatedAmount };
+                this.saveToLocalStorage();
+            }
+            this.cancelEdit();
+        },
+
+        cancelEdit() {
+            this.editingId = null;
+            this.resetFormFields();
+        },
+
+        resetFormFields() {
+            this.formName = '';
+            this.formAmount = '';
+        },
+
+        clearAllExpenses() {
+            if (this.expenses.length === 0) return;
+            if (confirm('⚠️ Delete ALL expenses? This action cannot be undone.')) {
+                this.expenses = [];
+                this.cancelEdit();
+                this.saveToLocalStorage();
+            }
+        },
+
+        resetToDefaults() {
+            if (confirm('Reset to default budget: Rent $850, Gas $60, Electric $100, Cell $45, Groceries $200 and weekly pay $350?')) {
+                this.loadDefaultExpenses();
+                this.weeklyPay = 350;
+                this.updateFromWeeklyPay();
+                this.cancelEdit();
+                this.saveToLocalStorage();
+                this.importMessage = '';
+            }
+        },
+
+        exportToCSV() {
+            if (!this.expenses.length) { alert('No expenses to export.'); return; }
+            const headers = ['Name', 'Amount'];
+            const rows = this.expenses.map(exp => {
+                let name = exp.name.includes(',') ? `"${exp.name}"` : exp.name;
+                return `${name},${exp.amount.toFixed(2)}`;
+            });
+            const csvContent = [headers.join(','), ...rows].join('\n');
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.href = url;
+            link.download = 'budjut_expenses.csv';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        },
+
+        handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (e) => this.parseCSVAndImport(e.target.result);
+            reader.onerror = () => this.showImportMessage('Error reading file', 'error');
+            reader.readAsText(file);
+            event.target.value = '';
+        },
+
+        parseCSVAndImport(csvText) {
+            if (!csvText.trim()) { this.showImportMessage('CSV file is empty.', 'error'); return; }
+            if (!confirm('⚠️ Import will REPLACE all current expenses with CSV data. Continue?')) return;
+            const lines = csvText.split(/\r?\n/).filter(l => l.trim().length > 0);
+            if (lines.length === 0) { this.showImportMessage('No data rows found.', 'error'); return; }
+            let startIndex = this.csvHasHeader ? 1 : 0;
+            if (this.csvHasHeader && lines.length < 2) { this.showImportMessage('CSV has only header, no data rows.', 'error'); return; }
+            const newExpenses = [];
+            let errorCount = 0;
+            for (let i = startIndex; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (line === '') continue;
+                let splitIndex = line.indexOf(',');
+                if (splitIndex === -1) { errorCount++; continue; }
+                let namePart = line.substring(0, splitIndex).trim();
+                let amountPart = line.substring(splitIndex + 1).trim();
+                if (namePart.startsWith('"') && namePart.endsWith('"')) namePart = namePart.slice(1, -1);
+                let amount = parseFloat(amountPart);
+                if (isNaN(amount) || amount <= 0 || namePart === '') { errorCount++; continue; }
+                newExpenses.push({ id: this.generateId(), name: namePart, amount });
+            }
+            if (newExpenses.length === 0) { this.showImportMessage('No valid expenses found. Use format: Name,Amount', 'error'); return; }
+            this.expenses = newExpenses;
+            this.cancelEdit();
+            this.saveToLocalStorage();
+            let msg = `✅ Imported ${newExpenses.length} expenses.`;
+            if (errorCount > 0) msg += ` Skipped ${errorCount} invalid row(s).`;
+            this.showImportMessage(msg, 'success');
+        },
+
+        downloadExampleCSV() {
+            const exampleRows = [['Name', 'Amount'], ['Internet', '65.00'], ['Gym Membership', '45.50'], ['Coffee Shop', '30.00']];
+            const csvExample = exampleRows.map(row => row.join(',')).join('\n');
+            const blob = new Blob([csvExample], { type: 'text/csv' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            link.href = url;
+            link.download = 'example_expenses.csv';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        },
+
+        showImportMessage(msg, type) {
+            this.importMessage = msg;
+            this.importMessageType = type;
+            setTimeout(() => { if (this.importMessage === msg) this.importMessage = ''; }, 4300);
+        }
+    };
+}
+</script>
+  </body>
+</html>

@@ -1,268 +1,323 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en" data-theme="dark">
   <head>
-    <!-- Site made with Mobirise Website Builder v5.6.8, https://mobirise.com -->
-    <meta name="generator" content="Mobirise v5.6.8, mobirise.com">
-    <title>Budjut - See where your money is taking you!</title>
-    <meta charset="UTF-8">
-    <meta http-quiv="X-UA-Compatible" content="IE=9" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Budjut is an app that visually shows you your income and expenses. It also gives you tips on how you can save and what tools you can use to invest and save upon the difference. Did I mention it’s free and open source? So what are you waiting for? Check out Budjut today and see where your money is taking you.">
+    <title>Budjut - Free Budget Planner, Expense Tracker & Monthly Finance App</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, interactive-widget=resizes-content">
+    <meta name="description" content="Free personal finance and budgeting app for tracking monthly expenses, weekly income, bills, and CSV budgeting data. Smart, fast, private, and easy to use.">
+    <meta name="author" content="Michael Schwartz">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Budjut - Free Budget Planner, Expense Tracker & Monthly Finance App">
+    <meta name="theme-color" content="#13171f">
+    <meta name="apple-mobile-web-app-title" content="Budjut - Free Budget Planner, Expense Tracker & Monthly Finance App">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-starturl" content="./index.html">
+    <meta name="msapplication-navbutton-color" content="#13171f">
     <meta property="og:url" content="https://michaelsboost.com/Budjut" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Budjut: See where your money is taking you!" />
-    <meta property="og:description" content="Budjut is an app that visually shows you your income and expenses. It also gives you tips on how you can save and what tools you can use to invest and save upon the difference. Did I mention it’s free and open source? So what are you waiting for? Check out Budjut today and see where your money is taking you." />
-    <meta property="og:image" content="https://michaelsboost.github.io/Budjut/app/imgs/social.png" />
-    
-    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon">
-    <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="assets/dropdown/css/style.css">
-    <link rel="stylesheet" href="assets/socicon/css/styles.css">
-    <link rel="stylesheet" href="assets/theme/css/style.css">
-    <link rel="preload" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jost:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap">
-    </noscript>
-    <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css">
-    <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+    <meta property="og:title" content="Budjut - Free Budget Planner, Expense Tracker & Monthly Finance App" />
+    <meta property="og:description" content="Free personal finance and budgeting app for tracking monthly expenses, weekly income, bills, and CSV budgeting data. Smart, fast, private, and easy to use." />
+    <link rel="manifest" href="manifest.json">
+    <link rel="shortcut icon" type="image/x-icon" href="imgs/logo.svg">
+    <link rel="icon" type="image/svg+xml" href="imgs/logo.svg" />
+    <link rel="apple-touch-icon" href="imgs/logo.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dist/bundle.css">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
+  
   </head>
   <body>
-    <section data-bs-version="5.1" class="menu cid-s48OLK6784" once="menu" id="menu">
-      <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-          <div class="container">
-              <div class="navbar-brand">
-                  <span class="navbar-logo">
-                      <a href="#header">
-                          <img src="assets/images/favicon.svg" alt="Budjut" style="height: 3.8rem;">
-                      </a>
-                  </span>
-                  <span class="navbar-caption-wrap">
-                    <a class="navbar-caption text-black display-7" href="#header">Budjut</a>
-                  </span>
-              </div>
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                  <div class="hamburger">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                  </div>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
-                    <li class="nav-item">
-                      <a class="nav-link link text-black display-4" href="#lifestyle">Lifestyle</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link link text-black display-4" href="#investing">Investing</a>
-                    </li>
-                      <li class="nav-item">
-                        <a class="nav-link link text-black display-4" href="#buyordiy">Buy or DIY</a>
-                      </li>
-                    <li class="nav-item">
-                      <a class="nav-link link text-black display-4" href="#earn">Earn</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link link text-black text-primary display-4" href="https://michaelsboost.com/donate" target="_blank">
-                        <span class="mbrib-hearth mbr-iconfont mbr-iconfont-btn"></span>
-                      </a>
-                    </li>
-                  </ul>
-                  
-                  <div class="navbar-buttons mbr-section-btn">
-                    <a class="btn btn-primary display-4" href="./app" target="_blank">Launch App<br></a>
-                  </div>
-              </div>
-          </div>
-      </nav>
-  </section>
-
-  <section data-bs-version="5.1" class="header5 cid-t7YEBxV3SJ mbr-fullscreen" id="header">
-      <div class="mbr-overlay" style="opacity: 0.4; background-color: rgb(190, 211, 249);"></div>
-  
-      <div class="container">
-          <div class="row justify-content-end">
-              <div class="col-12 col-lg-7">
-                  <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-3 display-1"><strong>New Possibilities</strong></h1>
-                  
-                  <p class="mbr-text mbr-fonts-style mbr-white display-7">
-                      Budjut, The Free and Open Source Budgeting Application!</p>
-                  <div class="mbr-section-btn mt-3">
-                    <a class="btn btn-primary display-7" href="./app" target="_blank">Launch</a>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
-
-  <section data-bs-version="5.1" class="content5 cid-t7YzVYWfkX" id="lifestyle">
-      <div class="container">
-          <div class="row justify-content-center">
-              <div class="col-md-12 col-lg-10">
-                  
-                  <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-2">Lifestyle Changes</h4>
-                  <p class="mbr-text mbr-fonts-style display-7">I'm not a financial professional and this app is not financial advise. It's just merely my sole opinions and perspectives upon budgeting. That being said we'll proceed...<br><br> For the most part if you get good sleep, eat healthy and do moderate exercise this can save you so much money on transportation, medication, doctor bills, etc: while it may not erase those monthly checkups. Generally by living a healthy lifestyle you save more money. For example, Devices like Bas Rutten's O2 Trainer or the Wim Hof breathing method which have proven to help manage your asthma; thus can save you money long term. Another example of something I do which is I don't pay for a gym membership. I workout at home or just out at a local park. You can get fit without any equipment just a flat floor but if you need the extra weight you can easily fill a backpack with books and exercise with that. Another idea is to get a duffle bag and put 1 or more sand bags in it and duck tape which you can do bicep curls, tricep extensions, bench press, etc:<br><br>Whenever I'm unmotivated I look in what I call the accountability mirror and have a good long talk to myself summing it up in 1 simple sentence, "Excuses sound best to the person making them up!"<br><br>As far as transportation you can make it a regular habit of reducing the amount of weight in your vehicle thus saving you money in gas long term, and/or instead of driving to work you could ride the bus, car pool, ride a skateboard, scooter, walk or even ride a bike. Instead of paying for fast food you make your own at home. Instead of spending $1.75 for a bottle of water a day you could fill it at home, work, the office or McDonald's for free and save you $1.75/d - $13.30/w - $53.22/m - $638.75/y. Or even Starbucks coffee $7/d - $49/w - $196/m - $2,352/y. Another example would be to not pay for WiFi just use your phone's mobile data. I'm sure you can come up with other ways to save money as well, like price checking, coupons, etc:<br><br>Sometimes it's best to pay more to save more. Over the years I've had my share of cheap tools break in my hand like screwdrivers. So believe me when I say this it's best to pay the little extra money up front for a good tool then having to replace a cheaper one again and again. Always do your research first! Do they have a lifetime warranty, what's the company's history, is the company insured, majority of the review statistics, is the product new vs used, if used while it maybe cheaper why selling? These are just a few questions to ask before buying a good quality tool or product. Either it be a craftsman wrench, airless tires, an electric windproof plasma lighter, rechargeable batteries, etc:<br><br><blockquote>"Depreciation is eating away at your car's value. Paying interest on an object that is dropping in value sounds like the essence of a horrow show" ~Clay Trader</blockquote><blockquote>"Price movement is always a result of an imbalance of the market cause when there's balance there's no movement. It's that simple!<br><br>Prices do not move when there's balance. There has to be an imbalance for people to bid them up or offer them lower.<br><br>The imbalance can be caused by biding it up or down purposefully by somebody like a hedge fund manager or an overabundance of buy orders in relation to the amount of sell orders.<br><br>The patterns basically measure the collective mind of the market, indicating when there is a higher probability of one thing happening over another, represented as an edge because patterns (edges) show up in every time frame, technical analysis turns the markets into an unending stream of opportunities to enrich oneself. Not on a trade-by-trade basis, but rather as a percentage over a series of trades.<br><br>Technical analysis does not, nor can it, get into the minds of any particular individual trader who has both the financial and psychological resources to either move prices or defend certain price levels." ~Mark Douglas</blockquote></p>
-              </div>
-          </div>
-      </div>
-  </section>
-
-  <section data-bs-version="5.1" class="content5 cid-t7YLRfefm6" id="plan">
-      <div class="container">
-          <div class="row justify-content-center">
-              <div class="col-md-12 col-lg-10">
-                  
-                  <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">Plan For The Unexpected:</h4>
-                  <p class="mbr-text mbr-fonts-style display-7">
-                      For a lot of people this can be a lifestyle change. In 2020 our whole planet experienced the COVID pandemic. Many people lost their job, business's fell to the ground, store shelves were empty, government mandates forcing citizens to stay in their homes, divorce rates skyrocketed, etc: Most of us that experienced the COVID pandemic never expected anything like that to happen, nor planned for it. So it's imperative to put money aside in your budget for emergencies, for retirement and death because we all will pass at some point. If you're a parent you're job is to make sure your child is well educated on being self sufficient and self sustaining while also living their life to the fullest. Part of that is also helping make their life easier after you pass. Prepay for your burial or cremation. It'll make an already difficult situation for them significantly easier.</p>
-              </div>
-          </div>
-      </div>
-  </section>
-
-  <section data-bs-version="5.1" class="content6 cid-t7YzWVIPEA" id="quote">
-      <div class="container">
-          <div class="row justify-content-center">
-              <div class="col-md-12 col-lg-10">
-                  <hr class="line">
-                  <p class="mbr-text align-center mbr-fonts-style my-4 display-5">It's easy to come up with reasons not to save money for an emergency, job loss, retirement or other need or goal, but not saving can cause considerable financial pain down the road. That's why it's smart to regularly put money in a savings account where it's available for whatever happens in the future.<br><br>"Saving is about mindset," says Bob Morrison, principal at Downing Street Wealth Management LLC, a financial planning firm in Littleton, Colo. "It doesn't matter whether you make minimal dollars or a significant amount, you should save a certain percentage and learn to live within that income because you have a responsibility to provide for yourself and your goals for the future."</p>
-                  <hr class="line">
-              </div>
-          </div>
-      </div>
-  </section>
-
-  <section data-bs-version="5.1" class="content5 cid-t7YAyd2HIK" id="excerpt">
-      <div class="container">
-          <div class="row justify-content-center">
-              <div class="col-md-12 col-lg-10">
-                  
-                  
-                  <p class="mbr-text mbr-fonts-style display-7">
-                      Excerpt from <a href="https://www.bankrate.com/finance/savings/11-dumb-excuses-save-money.aspx" class="text-primary" target="_blank">https://www.bankrate.com/finance/savings/11-dumb-excuses-save-money.aspx</a></p>
-              </div>
-          </div>
-      </div>
-  </section>
-
-  <section data-bs-version="5.1" class="content5 cid-t7YyprZBJo" id="investing">
-      <div class="container">
-          <div class="row justify-content-center">
-              <div class="col-md-12 col-lg-10">
-                  
-                  <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-2">Investing The Difference</h4>
-                  <p class="mbr-text mbr-fonts-style display-7">There's lots of ways to make and lose money. Either it be in the stock market, crypto market, forex market, etc: Either it be day trading, swing trading, options, fractions, etc: some people just invest in dividends (a sum of money paid regularly (typically quarterly) by a company to its shareholders out of its profits (or reserves)) There's a lot of apps out there you can use to invest in like Robinhood, Webull, among others. With these two apps I mentioned if you register with my links you and I get a free stock.<br><br>In a nutshell, Robinhood is designed for complete beginners who are looking to trade stocks, ETFs, cryptos or options, all commission-free.<br><br><a href="https://referral.robinhood.com/michaes2685/?_branch_match_id=774097653577852610" class="text-primary" target="_blank">https://referral.robinhood.com/michaes2685/?_branch_match_id=774097653577852610</a><br><br>Webull is meant for intermediate to advanced traders who are looking to trade stocks, ETFs, and options, all commission-free.<br><br><a href="https://act.webull.com/promotion/invitation/share.html?inviteCode=qERu1os6BXX7" class="text-primary" target="_blank">https://act.webull.com/promotion/invitation/share.html?inviteCode=qERu1os6BXX7</a><br><br>There can be instances based upon your priorities where you tell yourself you just don't have room in your budget to be cutting expenses. In this case the only option is to make more money. Either it be leave your place of employment after acquiring another job that pays more or have a side hustle that can eventually replace your day job's income. Either it be drop shipping, resaling, wholesaling (aka flipping real estate contracts), affiliate marketing, blogging/vlogging, teaching, translating, etc: etc:&nbsp;<br></p>
-              </div>
-          </div>
-      </div>
-  </section>
-
-  <section data-bs-version="5.1" class="content5 cid-t7YyAfRTHU" id="buyordiy">
-      <div class="container">
-          <div class="row justify-content-center">
-              <div class="col-md-12 col-lg-10">
-                  
-                  <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-2">When To Buy or DIY</h4>
-                  <p class="mbr-text mbr-fonts-style display-7">I remember my dad taught me how to change and replace a faucet. He also taught me how to change and replace various household doors. These little things can save you a lot of money in the long run if you know what you're doing. If not it's best to educate yourself through reading, courses, maybe have a professional coach you to make sure you're doing it correctly or sometimes it's best to just hire a professional to do it themselves it all depends on you. There are of course other times where you know exactly how to do it you just don't want to spend the time on it you'd much rather focus your energy elsewhere especially if you have a business in this case hiring someone may also be best for your business. Again it all depends on you, your budget and your focus.<br><br>Sometimes it's also just nice to save by recycling and use things like plastic as rope, a bird feeder, a funnel, make into an ottoman, etc: or saving wood to use for a bon fire instead of having to pay for new wood, the sky's the limit here. You could even make more money recycling and refurbishing than you did when you got it.<br><br>Another example is this app I could've paid someone to make this app but because it's free and open source I would essentially receive no ROI (Return On My Investment) other than those ever so rare donations that come in once every 1 or two years. All the free and open source apps I've made I've done so not for the sake of money but to help evolve technology, educate others and simply to help make the world a better place. It's obviously not required but if I do get a donation I'm very thankful and grateful that my app helped you enough to give back and help me.</p>
-              </div>
-          </div>
-      </div>
-  </section>
-
-  <section data-bs-version="5.1" class="content5 cid-t7YyAF888Z" id="earn">
-      <div class="container">
-          <div class="row justify-content-center">
-              <div class="col-md-12 col-lg-10">
-                  
-                  <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-2">Earn Cash By Doing What You Already Do</h4>
-                  <p class="mbr-text mbr-fonts-style display-7">here's tons of search engines out there but Swagbucks is different from the others because when you search with Swagbucks you can earn points (aka Swagbucks) and redeem those points for gift cards like a PayPal or Amazon gift card. Swagbucks also allows you to earn Swagbucks by answering daily polls, surveys and shopping. You can watch my old YouTube video on it from my old channel that was uploaded March 8th, 2012. Did I mention Swagbucks has been around since Feburary 2008?<br><br><a href="https://www.youtube.com/watch?v=CiIbeqlKoMU" class="text-primary" target="_blank">https://www.youtube.com/watch?v=CiIbeqlKoMU</a><br><a href="https://www.swagbucks.com/refer/justicerises" class="text-primary" target="_blank">https://www.swagbucks.com/refer/justicerises</a><br><br>Another service you maybe interested in is ReceiptHog. Which is a fun and easy way to turn your everyday receipts into real cash and rewards!<br><br><strong>HOW IT WORKS:</strong><br>1) Take pictures of your receipts from any store, restaurant or cafe...<br>2) Earn Receipt Hog rewards like coins, spins at the virtual slot machine, and sweepstakes prizes...<br>3) Cash out with PayPal or Amazon gift cards. Cha-ching!<br><br><a href="https://www.receipthog.com/" class="text-primary" target="_blank">https://www.receipthog.com/</a><br><br>Sweatcoin is a new breed of step counter and activity tracker app that pays you digital currency - sweat coin. Thus in a nutshell you can make money by walking or running and cash in your sweatcoins for cash or gear!<br><br><a href="https://sweatco.in/t/michaelsboost" class="text-primary" target="_blank">https://sweatco.in/t/michaelsboost</a><br><br>Lastly there's tons of services out there where you can cash in on old CD's, electronics, books, recycling metal, plastic, cardboard, etc:<br><br><a href="https://wahadventures.com/cash-recycling-cardboard-boxes/" class="text-primary" target="_blank">https://wahadventures.com/cash-recycling-cardboard-boxes/</a><br><a href="https://www.boxcycle.com/sell_used_boxes" class="text-primary" target="_blank">https://www.boxcycle.com/sell_used_boxes</a><br><a href="https://search.earth911.com/" class="text-primary" target="_blank">https://search.earth911.com/</a><br><a href="https://www.decluttr.com/" class="text-primary" target="_blank">https://www.decluttr.com/</a><br><a href="https://iscrapapp.com/" class="text-primary" target="_blank">https://iscrapapp.com/</a><br><a href="https://www.eco-cell.com/" class="text-primary" target="_blank">https://www.eco-cell.com/</a><br><a href="https://www.junkcarmedics.com/" class="text-primary" target="_blank">https://www.junkcarmedics.com/</a><br><a href="https://craigslist.org/" class="text-primary" target="_blank">https://craigslist.org/</a><br><a href="https://www.letgo.com/" class="text-primary" target="_blank">https://www.letgo.com/</a><br><a href="https://offerup.com/" class="text-primary" target="_blank">https://offerup.com/</a><br><a href="https://www.recyclebank.com/" class="text-primary" target="_blank">https://www.recyclebank.com/</a><br><a href="https://millennialmoney.com/make-money-recycling/" class="text-primary" target="_blank">https://millennialmoney.com/make-money-recycling/</a><br><a href="https://www.thepennyhoarder.com/make-money/quick-money/everyday-items-you-can-recycle-for-money/" class="text-primary" target="_blank">https://www.thepennyhoarder.com/make-money/quick-money/everyday-items-you-can-recycle-for-money/</a><br><a href="https://wallethacks.com/make-money-recycling/" class="text-primary" target="_blank">https://wallethacks.com/make-money-recycling/</a></p>
-              </div>
-          </div>
-      </div>
-  </section>
-
-  <section data-bs-version="5.1" class="social2 cid-t7YMANl2Z3" id="share">
-      <div class="container">
-          <div class="media-container-row">
-              <div class="col-12">
-                  <h3 class="mbr-section-title align-center mb-3 mbr-fonts-style display-2">
-                      <strong>Share this Page!</strong>
-                  </h3>
-                  <div>
-                      <div class="mbr-social-likes align-center" data-counters="false">
-                          <span class="btn btn-social facebook m-2">
-                              <i class="socicon socicon-facebook"></i>
-                          </span>
-                          <span class="btn btn-social twitter m-2">
-                              <i class="socicon socicon-twitter"></i>
-                          </span>
-                          <span class="btn btn-social vkontakte m-2">
-                              <i class="socicon socicon-vkontakte"></i>
-                          </span>
-                          <span class="btn btn-social odnoklassniki m-2">
-                              <i class="socicon socicon-odnoklassniki"></i>
-                          </span>
-                          <span class="btn btn-social pinterest m-2">
-                              <i class="socicon socicon-pinterest"></i>
-                          </span>
-                          <span class="btn btn-social mailru m-2">
-                              <i class="socicon socicon-mail"></i>
-                          </span>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
-
-  <section data-bs-version="5.1" class="footer3 cid-t7YMPcY5U6" once="footers" id="footer">
-    <div class="container">
-      <div class="media-container-row align-center mbr-white">
-        <div class="row row-links">
-          <ul class="foot-menu">
-            <li class="foot-menu-item mbr-fonts-style display-7">
-              <a class="text-white" href="#lifestyle" target="_blank">Lifestyle</a>
-            </li>
-            <li class="foot-menu-item mbr-fonts-style display-7">
-              <a class="text-white" href="#investing" target="_blank">Investing</a>
-            </li>
-            <li class="foot-menu-item mbr-fonts-style display-7">
-              <a class="text-white" href="#buyordiy" target="_blank">Buy or DIY</a>
-            </li>
-            <li class="foot-menu-item mbr-fonts-style display-7">
-              <a class="text-white" href="#earn" target="_blank">Earn</a>
-            </li>
-            <li class="foot-menu-item mbr-fonts-style display-7">
-              <a class="text-white" href="https://michaelsboost.com/donate/" target="_blank">
-                <span class="mbrib-hearth mbr-iconfont mbr-iconfont-btn"></span>
-              </a>
-            </li>
-          </ul>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10 text-gray-100 antialiased" x-data="budjutApp()" x-init="init()">
+        
+        <!-- modern header with glassmorphism style -->
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-10 gap-5">
+            <div class="flex items-center gap-3">
+                <svg 
+                class="w-10 h-10"
+                viewBox="0 0 212.96373 264.01696"
+                xmlns="http://www.w3.org/2000/svg"><defs
+                    id="defs1"><linearGradient
+                    id="linearGradient15"><stop
+                        style="stop-color:#3b46e5;stop-opacity:1;"
+                        offset="0"
+                        id="stop14" /><stop
+                        style="stop-color:#a453f6;stop-opacity:1;"
+                        offset="1"
+                        id="stop15" /></linearGradient><linearGradient
+                    id="linearGradient10"><stop
+                        style="stop-color:#2443e1;stop-opacity:1;"
+                        offset="0"
+                        id="stop10" /><stop
+                        style="stop-color:#9a51f9;stop-opacity:1;"
+                        offset="1"
+                        id="stop11" /></linearGradient><linearGradient
+                    id="linearGradient8"><stop
+                        style="stop-color:#f7f7f8;stop-opacity:1;"
+                        offset="0"
+                        id="stop8" /><stop
+                        style="stop-color:#efebfe;stop-opacity:1;"
+                        offset="1"
+                        id="stop9" /></linearGradient><linearGradient
+                    xlink:href="#linearGradient8"
+                    id="linearGradient9"
+                    x1="121.32593"
+                    y1="212.27826"
+                    x2="318.97382"
+                    y2="212.27826"
+                    gradientUnits="userSpaceOnUse" /><linearGradient
+                    xlink:href="#linearGradient10"
+                    id="linearGradient11"
+                    x1="122.26644"
+                    y1="291.64163"
+                    x2="334.28967"
+                    y2="291.64163"
+                    gradientUnits="userSpaceOnUse" /><linearGradient
+                    xlink:href="#linearGradient15"
+                    id="linearGradient14"
+                    gradientUnits="userSpaceOnUse"
+                    x1="135.91861"
+                    y1="334.59927"
+                    x2="245.15201"
+                    y2="198.11478" /></defs><g
+                    id="layer1"
+                    transform="translate(-121.32593,-88.506226)"><g
+                    id="g18"><path
+                        id="path15"
+                        style="display:inline;opacity:1;fill:#ffffff;stroke-width:3.08129;stroke-linecap:square"
+                        d="m 135.18348,88.506226 c -7.67691,0 -13.85755,6.180646 -13.85755,13.857554 v 178.32038 57.98147 c 0,7.67691 6.18064,13.85756 13.85755,13.85756 h 57.98147 68.19222 1.09399 c 39.79868,0 71.83851,-32.04034 71.83851,-71.83903 0,-35.44061 -25.40723,-64.72885 -59.07546,-70.71816 v -3.36776 c 25.30805,-7.10923 43.7596,-30.28194 43.7596,-57.92256 0,-31.68953 -24.25306,-57.505672 -55.28603,-59.975668 -0.75739,-0.127247 -1.53595,-0.193786 -2.33061,-0.193786 z" /><path
+                        style="display:inline;opacity:1;fill:url(#linearGradient11);fill-opacity:1;stroke-width:3.08129;stroke-linecap:square"
+                        d="m 314.19839,230.76007 c -19.33267,4.0373 -39.57064,18.07595 -74.16343,61.19317 -32.80112,40.88405 -78.08577,51.29448 -117.76852,51.7586 2.00964,5.16739 7.02235,8.81135 12.91704,8.81135 h 57.98147 68.19222 1.09399 c 39.79868,0 71.83851,-32.04034 71.83851,-71.83903 0,-19.43361 -7.63938,-37.01732 -20.09128,-49.92409 z"
+                        id="path16" /><path
+                        style="display:inline;opacity:1;fill:url(#linearGradient9);stroke-width:3.081;stroke-linecap:square;stroke-dasharray:none"
+                        d="m 135.18348,88.506226 c -7.67691,0 -13.85755,6.180644 -13.85755,13.857554 v 178.32038 55.36613 c 38.30485,-0.27073 81.50804,-10.03302 112.7032,-48.91536 32.19461,-40.1281 53.22992,-56.66034 73.34539,-62.59411 -9.14177,-7.31413 -20.123,-12.43348 -32.16031,-14.57482 v -1.68388 -1.68388 c 25.30805,-7.10923 43.7596,-30.28194 43.7596,-57.92256 0,-31.68953 -24.25306,-57.505672 -55.28603,-59.975668 -0.75739,-0.127247 -1.53595,-0.193786 -2.33061,-0.193786 z"
+                        id="path17" /><path
+                        id="path18"
+                        style="display:inline;opacity:1;fill:url(#linearGradient14);stroke-width:3.081;stroke-linecap:square;stroke-dasharray:none"
+                        d="m 225.09892,193.56751 c -5.46882,0 -9.87175,4.40293 -9.87175,9.87175 v 102.70639 c 6.61833,-5.39036 12.92335,-11.6835 18.80196,-19.01072 5.16498,-6.43776 10.04275,-12.26837 14.67559,-17.54518 v -66.15049 c 0,-5.46882 -4.40292,-9.87175 -9.87175,-9.87175 z m -40.01513,28.45666 c -5.46882,0 -9.87175,4.40241 -9.87175,9.87124 v 95.99155 c 11.54618,-3.8292 22.84876,-9.25408 33.47755,-16.77468 v -79.21687 c 0,-5.46883 -4.40293,-9.87124 -9.87175,-9.87124 z m -40.01513,29.87312 c -5.46883,0 -9.87174,4.40241 -9.87174,9.87123 v 73.74743 c 11.05625,-0.79218 22.34157,-2.52365 33.47754,-5.63428 v -68.11315 c 0,-5.46882 -4.40293,-9.87123 -9.87175,-9.87123 z" /></g></g></svg>
+                <div>
+                    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-300 via-white to-purple-300 bg-clip-text text-transparent">Budjut</h1>
+                    <p class="text-gray-400 text-sm mt-0.5">Track monthly spending · smart weekly income · CSV ready</p>
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-2.5">
+                <a href="https://michaelsboost.com/donate" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 hover:bg-rose-500/20 hover:border-rose-400 text-sm font-medium transition-all">
+                    ❤️ Donate
+                </a>
+                <button @click="shareApp" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 hover:bg-indigo-500/20 hover:border-indigo-400 text-sm font-medium transition-all">
+                    📤 Share
+                </button>
+                <button @click="resetToDefaults" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gray-700/50 border border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white text-sm font-medium transition-all">
+                    🔄 Reset
+                </button>
+                <button @click="clearAllExpenses" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gray-700/50 border border-gray-600 text-rose-400 hover:bg-rose-500/10 hover:border-rose-500/40 text-sm font-medium transition-all">
+                    🗑️ Clear
+                </button>
+            </div>
         </div>
-        <div class="row row-copirayt">
-          <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">
-            © Copyright 2020-2022 <a href="https://michaelsboost.com/" target="_blank">Michael Schwartz</a>. All Rights Reserved.
-          </p>
+
+        <!-- main grid : refined spacing -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-7">
+            <!-- LEFT COLUMN (expense management) -->
+            <div class="lg:col-span-2 space-y-7">
+                <!-- Add / Edit expense card - sleek design -->
+                <div class="rounded-2xl bg-gray-800/70 backdrop-blur-sm border border-gray-700/60 shadow-xl overflow-hidden">
+                    <div class="px-6 pt-5 pb-2 border-b border-gray-700/60">
+                        <h2 class="text-lg font-semibold flex items-center gap-2">
+                            <span class="text-indigo-400 text-xl">✏️</span>
+                            <span x-show="!editingId" class="bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent">Create new expense</span>
+                            <span x-show="editingId" class="bg-gradient-to-r from-emerald-200 to-teal-200 bg-clip-text text-transparent">Edit expense</span>
+                        </h2>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <div class="flex-1">
+                                <label class="text-xs text-gray-400 uppercase tracking-wider block mb-1.5">Expense name</label>
+                                <input type="text" x-model="formName" placeholder="e.g., Internet, Netflix, Rent" class="w-full bg-gray-900/70 border border-gray-600 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-white placeholder:text-gray-500 transition">
+                            </div>
+                            <div class="w-full sm:w-48">
+                                <label class="text-xs text-gray-400 uppercase tracking-wider block mb-1.5">Monthly amount ($)</label>
+                                <div class="relative">
+                                    <span class="absolute left-4 top-3.5 text-gray-400">$</span>
+                                    <input type="number" x-model="formAmount" step="0.01" placeholder="0.00" class="w-full pl-8 pr-4 py-3 bg-gray-900/70 border border-gray-600 rounded-xl focus:ring-2 focus:ring-indigo-500 text-white">
+                                </div>
+                            </div>
+                            <div class="flex items-end">
+                                <button x-show="!editingId" @click="addExpense" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-indigo-600/20 transition-all hover:shadow-indigo-500/30 flex items-center justify-center gap-2">
+                                    ✨ Add Expense
+                                </button>
+                                <div x-show="editingId" class="flex gap-3 w-full">
+                                    <button @click="updateExpense" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-3 rounded-xl font-semibold shadow-lg transition">💾 Save</button>
+                                    <button @click="cancelEdit" class="flex-1 bg-gray-700 hover:bg-gray-600 text-gray-200 px-4 py-3 rounded-xl font-medium transition">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-[11px] text-gray-400 mt-3 flex items-center gap-1">📌 Add any recurring monthly expense. Editable anytime.</p>
+                    </div>
+                </div>
+
+                <!-- Expenses table - modern list style -->
+                <div class="rounded-2xl bg-gray-800/70 backdrop-blur-sm border border-gray-700/60 shadow-xl overflow-hidden">
+                    <div class="px-6 pt-5 pb-3 border-b border-gray-700/60 flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <span class="text-indigo-400 text-lg">📋</span>
+                            <h2 class="font-semibold text-gray-100 text-lg">Monthly expenses</h2>
+                        </div>
+                        <span class="text-xs font-mono bg-gray-900/70 px-3 py-1 rounded-full text-indigo-300 border border-indigo-500/30" x-text="expenses.length + ' items'"></span>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full">
+                            <thead>
+                                <tr class="border-b border-gray-700/70 bg-gray-900/40">
+                                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">Expense</th>
+                                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">Monthly amount</th>
+                                    <th class="px-6 py-4 text-right text-xs font-semibold text-gray-400 uppercase tracking-wider">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-700/40">
+                                <template x-for="expense in expenses" :key="expense.id">
+                                    <tr class="table-row-hover transition-colors duration-150">
+                                        <td class="px-6 py-4 font-medium text-gray-200">
+                                            <div class="flex items-center gap-2">
+                                                <span class="w-2 h-2 rounded-full bg-indigo-400 inline-block"></span>
+                                                <span x-text="expense.name"></span>
+                                            </div>
+                                        </td>
+                                        <td class="px-6 py-4 text-gray-300 font-semibold">$<span x-text="expense.amount.toFixed(2)"></span></td>
+                                        <td class="px-6 py-4 text-right space-x-3 whitespace-nowrap">
+                                            <button @click="startEdit(expense)" class="text-indigo-400 hover:text-indigo-200 text-sm font-medium transition px-2 py-1 rounded-lg hover:bg-indigo-500/10">✏️ Edit</button>
+                                            <button @click="deleteExpense(expense.id)" class="text-rose-400 hover:text-rose-300 text-sm font-medium transition px-2 py-1 rounded-lg hover:bg-rose-500/10">🗑️ Delete</button>
+                                        </td>
+                                    </tr>
+                                </template>
+                                <tr x-show="expenses.length === 0">
+                                    <td colspan="3" class="px-6 py-12 text-center text-gray-400 italic">✨ No expenses yet — add an expense or import a CSV to start budgeting.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN (Income + CSV Tools) modern glow -->
+            <div class="space-y-7">
+                <!-- Income card with premium stats -->
+                <div class="rounded-2xl bg-gradient-to-br from-gray-800/90 to-gray-900/90 border border-indigo-500/20 shadow-xl overflow-hidden backdrop-blur-sm">
+                    <div class="px-6 pt-5 pb-1">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-lg font-semibold flex items-center gap-2"><span>💰</span> Income overview</h2>
+                            <div class="budget-chip rounded-full px-2.5 py-0.5 text-[11px] text-indigo-300">monthly view</div>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-2 space-y-5">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-1.5">📆 Weekly take‑home pay</label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-3.5 text-gray-400">$</span>
+                                <input type="number" x-model.number="weeklyPay" @input="updateFromWeeklyPay" step="10" class="w-full pl-8 pr-4 py-3 bg-gray-900/60 border border-gray-600 rounded-xl focus:ring-2 focus:ring-indigo-500 text-white font-medium">
+                            </div>
+                            <p class="text-[11px] text-gray-400 mt-1">✨ Based on 52 weeks → estimated monthly</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-1.5">📆 Monthly income (estimate)</label>
+                            <div class="relative">
+                                <span class="absolute left-4 top-3.5 text-gray-400">$</span>
+                                <input type="number" x-model.number="monthlyIncome" @input="updateFromMonthlyIncome" step="50" class="w-full pl-8 pr-4 py-3 bg-gray-900/60 border border-indigo-500/40 rounded-xl focus:ring-2 focus:ring-indigo-500 text-white font-semibold">
+                            </div>
+                        </div>
+                        
+                        <!-- stats chip group -->
+                        <div class="grid grid-cols-2 gap-3 pt-2">
+                            <div class="bg-gray-900/60 rounded-xl p-3 border border-gray-700">
+                                <div class="text-gray-400 text-xs uppercase">Total expenses</div>
+                                <div class="text-2xl font-bold text-white" x-text="'$' + totalExpenses.toFixed(2)"></div>
+                            </div>
+                            <div class="bg-gray-900/60 rounded-xl p-3 border border-gray-700">
+                                <div class="text-gray-400 text-xs uppercase">Remaining</div>
+                                <div class="text-2xl font-bold" :class="remaining >= 0 ? 'text-emerald-400' : 'text-rose-400'" x-text="(remaining >= 0 ? '$' + remaining.toFixed(2) : '-$' + Math.abs(remaining).toFixed(2))"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- progress bar + health message -->
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs text-gray-300">
+                                <span>Spent / Income</span>
+                                <span x-text="Math.min(100, (totalExpenses/monthlyIncome)*100).toFixed(1) + '%'" x-show="monthlyIncome > 0"></span>
+                            </div>
+                            <div class="h-2.5 w-full bg-gray-700 rounded-full overflow-hidden shadow-inner">
+                                <div class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full progress-bar-animated" :style="'width: ' + Math.min(100, (totalExpenses/monthlyIncome)*100) + '%'" x-show="monthlyIncome > 0"></div>
+                            </div>
+                            <p class="text-xs text-center font-medium mt-2" x-show="monthlyIncome > 0 && totalExpenses > monthlyIncome">
+                                <span class="bg-rose-500/20 text-rose-300 px-2 py-0.5 rounded-full">⚠️ Overspending alert — expenses exceed income</span>
+                            </p>
+                            <p class="text-xs text-center text-indigo-300/80 mt-1" x-show="weeklyPay > 0 && monthCalculationNote" x-text="monthCalculationNote"></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Import/Export card - refined with clear actions -->
+                <div class="rounded-2xl bg-gray-800/70 backdrop-blur-sm border border-gray-700/60 shadow-xl overflow-hidden">
+                    <div class="px-6 pt-5 pb-2 border-b border-gray-700/60">
+                        <h2 class="text-lg font-semibold flex items-center gap-2"><span>📁</span> Data import / export</h2>
+                    </div>
+                    <div class="p-6 space-y-5">
+                        <button @click="exportToCSV" class="w-full bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 rounded-xl py-3 font-semibold transition flex items-center justify-center gap-2 shadow-sm">
+                            📎 Export expenses as CSV
+                        </button>
+                        <div class="pt-1">
+                            <label class="block text-sm font-medium text-gray-300 mb-2">📂 Import CSV file (overwrites current)</label>
+                            <input type="file" accept=".csv" @change="handleFileSelect" class="block w-full text-sm text-gray-300 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:bg-indigo-600/40 file:text-indigo-200 hover:file:bg-indigo-600/60 file:font-medium file:cursor-pointer cursor-pointer">
+                            <div class="flex items-center gap-2 mt-3">
+                                <input type="checkbox" id="csvHeader" x-model="csvHasHeader" class="rounded border-gray-600 bg-gray-700 text-indigo-500 focus:ring-indigo-500 w-4 h-4">
+                                <label for="csvHeader" class="text-xs text-gray-400">CSV includes header row (Name, Amount)</label>
+                            </div>
+                            <div class="mt-3 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
+                                <p class="text-[11px] text-gray-400 flex gap-2"><span class="font-mono text-indigo-300">📌 Format:</span> <span class="font-mono">Name, Amount</span><br>Example: <span class="font-mono text-gray-300">Rent, 850</span></p>
+                            </div>
+                            <div x-show="importMessage" x-text="importMessage" class="text-xs mt-3 p-2 rounded-lg text-center font-medium" :class="importMessageType === 'success' ? 'bg-green-900/40 text-green-300' : 'bg-red-900/40 text-red-300'"></div>
+                        </div>
+                        <button @click="downloadExampleCSV" class="w-full text-indigo-300 text-sm border border-dashed border-indigo-500/50 rounded-xl py-2.5 hover:bg-indigo-500/10 transition flex items-center justify-center gap-1.5">
+                            📄 Download example CSV template
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Motivational tip card -->
+                <div class="rounded-xl bg-indigo-500/5 border border-indigo-500/20 p-4 flex items-start gap-3 backdrop-blur-sm">
+                    <span class="text-indigo-400 text-xl">💡</span>
+                    <div class="text-sm text-gray-300 leading-relaxed">
+                        <span class="font-semibold text-indigo-300">Smart saving insight</span><br>
+                        Your data auto-saves locally. Weekly income mapping gives accurate monthly forecast.
+                        <span class="text-[11px] block mt-1 text-gray-400">✓ Download backup · stay in control</span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </section>
 
-    <section class="display-7" style="position: absolute;top:-10000px;left:-100000px;height:0;width:0;overflow:hidden;">
-      <a href="https://mobiri.se/37294" style="flex: 1 1;height: 4rem;position: absolute;width: 100%;z-index: 1;"><img alt="" style="height: 4rem;" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="></a>
-      <p style="margin: 0;text-align: center;" class="display-7">Built with Mobirise &#8204;</p>
-      <a style="z-index:1" href="https://mobirise.com/website-design-software.html">Free Web Design Software</a></section>
-  
-  <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/smoothscroll/smooth-scroll.js"></script>
-  <script src="assets/ytplayer/index.js"></script>
-  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
-  <script src="assets/sociallikes/social-likes.js"></script>
-  <script src="assets/theme/js/script.js"></script>  
-</body>
+    <script src="dist/script.js"></script>
+    <script src="https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-sw.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js').then(reg => {
+          reg.addEventListener('updatefound', () => {
+            const newSW = reg.installing;
+            newSW.addEventListener('statechange', () => {
+              if (newSW.state === 'installed' && navigator.serviceWorker.controller) {
+                // Notify the user and reload if they confirm
+                if (confirm('A new version is available. Reload now?')) {
+                  window.location.reload();
+                }
+              }
+            });
+          });
+        });
+
+        // Ensure immediate activation of a new service worker
+        navigator.serviceWorker.ready.then(registration => {
+          registration.active.postMessage({ type: 'SKIP_WAITING' });
+        });
+      }
+    </script>
+  </body>
 </html>

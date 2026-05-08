@@ -1,0 +1,40 @@
+/* subtle custom touches – smooth transitions, custom scroll */
+* { transition: all 0.2s ease; }
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: radial-gradient(circle at 10% 20%, rgba(15, 25, 45, 1) 0%, rgba(10, 15, 28, 1) 100%);
+}
+.glass-card {
+    background: rgba(18, 25, 40, 0.7);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(71, 85, 105, 0.4);
+}
+.hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.5);
+}
+input:focus, button:focus {
+    outline: none;
+    ring: 2px solid #6366f1;
+}
+.progress-bar-animated {
+    transition: width 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #1e293b;
+    border-radius: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background: #4f46e5;
+    border-radius: 8px;
+}
+.budget-chip {
+    background: linear-gradient(135deg, rgba(79,70,229,0.15) 0%, rgba(129,140,248,0.05) 100%);
+}
+.table-row-hover:hover td {
+    background-color: rgba(51, 65, 85, 0.4);
+}
