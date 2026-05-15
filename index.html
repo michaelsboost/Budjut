@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
   <head>
     <title>Budjut - Free Budget Planner, Expense Tracker & Monthly Finance App</title>
     <meta charset="utf-8">
@@ -25,271 +25,319 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="dist/bundle.css">
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
-  
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
   </head>
   <body>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-10 text-gray-100 antialiased" x-data="budjutApp()" x-init="init()">
-        
-        <!-- modern header with glassmorphism style -->
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-10 gap-5">
+    <div class="max-w-6xl mx-auto px-4 pb-28 pt-6 relative antialiased" x-data="budjutUnified()" x-cloak>
+
+        <!-- ================= HEADER ================= -->
+        <div class="flex justify-between items-center mb-6 flex-wrap gap-3 fade-slide">
             <div class="flex items-center gap-3">
-                <svg 
-                class="w-10 h-10"
-                viewBox="0 0 212.96373 264.01696"
-                xmlns="http://www.w3.org/2000/svg"><defs
-                    id="defs1"><linearGradient
-                    id="linearGradient15"><stop
-                        style="stop-color:#3b46e5;stop-opacity:1;"
-                        offset="0"
-                        id="stop14" /><stop
-                        style="stop-color:#a453f6;stop-opacity:1;"
-                        offset="1"
-                        id="stop15" /></linearGradient><linearGradient
-                    id="linearGradient10"><stop
-                        style="stop-color:#2443e1;stop-opacity:1;"
-                        offset="0"
-                        id="stop10" /><stop
-                        style="stop-color:#9a51f9;stop-opacity:1;"
-                        offset="1"
-                        id="stop11" /></linearGradient><linearGradient
-                    id="linearGradient8"><stop
-                        style="stop-color:#f7f7f8;stop-opacity:1;"
-                        offset="0"
-                        id="stop8" /><stop
-                        style="stop-color:#efebfe;stop-opacity:1;"
-                        offset="1"
-                        id="stop9" /></linearGradient><linearGradient
-                    xlink:href="#linearGradient8"
-                    id="linearGradient9"
-                    x1="121.32593"
-                    y1="212.27826"
-                    x2="318.97382"
-                    y2="212.27826"
-                    gradientUnits="userSpaceOnUse" /><linearGradient
-                    xlink:href="#linearGradient10"
-                    id="linearGradient11"
-                    x1="122.26644"
-                    y1="291.64163"
-                    x2="334.28967"
-                    y2="291.64163"
-                    gradientUnits="userSpaceOnUse" /><linearGradient
-                    xlink:href="#linearGradient15"
-                    id="linearGradient14"
-                    gradientUnits="userSpaceOnUse"
-                    x1="135.91861"
-                    y1="334.59927"
-                    x2="245.15201"
-                    y2="198.11478" /></defs><g
-                    id="layer1"
-                    transform="translate(-121.32593,-88.506226)"><g
-                    id="g18"><path
-                        id="path15"
-                        style="display:inline;opacity:1;fill:#ffffff;stroke-width:3.08129;stroke-linecap:square"
-                        d="m 135.18348,88.506226 c -7.67691,0 -13.85755,6.180646 -13.85755,13.857554 v 178.32038 57.98147 c 0,7.67691 6.18064,13.85756 13.85755,13.85756 h 57.98147 68.19222 1.09399 c 39.79868,0 71.83851,-32.04034 71.83851,-71.83903 0,-35.44061 -25.40723,-64.72885 -59.07546,-70.71816 v -3.36776 c 25.30805,-7.10923 43.7596,-30.28194 43.7596,-57.92256 0,-31.68953 -24.25306,-57.505672 -55.28603,-59.975668 -0.75739,-0.127247 -1.53595,-0.193786 -2.33061,-0.193786 z" /><path
-                        style="display:inline;opacity:1;fill:url(#linearGradient11);fill-opacity:1;stroke-width:3.08129;stroke-linecap:square"
-                        d="m 314.19839,230.76007 c -19.33267,4.0373 -39.57064,18.07595 -74.16343,61.19317 -32.80112,40.88405 -78.08577,51.29448 -117.76852,51.7586 2.00964,5.16739 7.02235,8.81135 12.91704,8.81135 h 57.98147 68.19222 1.09399 c 39.79868,0 71.83851,-32.04034 71.83851,-71.83903 0,-19.43361 -7.63938,-37.01732 -20.09128,-49.92409 z"
-                        id="path16" /><path
-                        style="display:inline;opacity:1;fill:url(#linearGradient9);stroke-width:3.081;stroke-linecap:square;stroke-dasharray:none"
-                        d="m 135.18348,88.506226 c -7.67691,0 -13.85755,6.180644 -13.85755,13.857554 v 178.32038 55.36613 c 38.30485,-0.27073 81.50804,-10.03302 112.7032,-48.91536 32.19461,-40.1281 53.22992,-56.66034 73.34539,-62.59411 -9.14177,-7.31413 -20.123,-12.43348 -32.16031,-14.57482 v -1.68388 -1.68388 c 25.30805,-7.10923 43.7596,-30.28194 43.7596,-57.92256 0,-31.68953 -24.25306,-57.505672 -55.28603,-59.975668 -0.75739,-0.127247 -1.53595,-0.193786 -2.33061,-0.193786 z"
-                        id="path17" /><path
-                        id="path18"
-                        style="display:inline;opacity:1;fill:url(#linearGradient14);stroke-width:3.081;stroke-linecap:square;stroke-dasharray:none"
-                        d="m 225.09892,193.56751 c -5.46882,0 -9.87175,4.40293 -9.87175,9.87175 v 102.70639 c 6.61833,-5.39036 12.92335,-11.6835 18.80196,-19.01072 5.16498,-6.43776 10.04275,-12.26837 14.67559,-17.54518 v -66.15049 c 0,-5.46882 -4.40292,-9.87175 -9.87175,-9.87175 z m -40.01513,28.45666 c -5.46882,0 -9.87175,4.40241 -9.87175,9.87124 v 95.99155 c 11.54618,-3.8292 22.84876,-9.25408 33.47755,-16.77468 v -79.21687 c 0,-5.46883 -4.40293,-9.87124 -9.87175,-9.87124 z m -40.01513,29.87312 c -5.46883,0 -9.87174,4.40241 -9.87174,9.87123 v 73.74743 c 11.05625,-0.79218 22.34157,-2.52365 33.47754,-5.63428 v -68.11315 c 0,-5.46882 -4.40293,-9.87123 -9.87175,-9.87123 z" /></g></g></svg>
+                <div class="w-10 h-10 flex items-center justify-center">
+                    <svg class="w-10 h-10" viewBox="0 0 212.96373 264.01696" xmlns="http://www.w3.org/2000/svg">
+                        <defs><linearGradient id="linearGradient15"><stop offset="0" stop-color="#3b46e5"></stop><stop offset="1" stop-color="#a453f6"></stop></linearGradient>
+                        <linearGradient id="linearGradient10"><stop offset="0" stop-color="#2443e1"></stop><stop offset="1" stop-color="#9a51f9"></stop></linearGradient>
+                        <linearGradient id="linearGradient8"><stop offset="0" stop-color="#f7f7f8"></stop><stop offset="1" stop-color="#efebfe"></stop></linearGradient>
+                        <linearGradient xlink:href="#linearGradient8" id="linearGradient9" x1="121.32593" y1="212.27826" x2="318.97382" y2="212.27826" gradientUnits="userSpaceOnUse"></linearGradient>
+                        <linearGradient xlink:href="#linearGradient10" id="linearGradient11" x1="122.26644" y1="291.64163" x2="334.28967" y2="291.64163" gradientUnits="userSpaceOnUse"></linearGradient>
+                        <linearGradient xlink:href="#linearGradient15" id="linearGradient14" gradientUnits="userSpaceOnUse" x1="135.91861" y1="334.59927" x2="245.15201" y2="198.11478"></linearGradient></defs>
+                        <g transform="translate(-121.32593,-88.506226)">
+                            <path d="m 135.18348,88.506226 c -7.67691,0 -13.85755,6.180646 -13.85755,13.857554 v 178.32038 57.98147 c 0,7.67691 6.18064,13.85756 13.85755,13.85756 h 57.98147 68.19222 1.09399 c 39.79868,0 71.83851,-32.04034 71.83851,-71.83903 0,-35.44061 -25.40723,-64.72885 -59.07546,-70.71816 v -3.36776 c 25.30805,-7.10923 43.7596,-30.28194 43.7596,-57.92256 0,-31.68953 -24.25306,-57.505672 -55.28603,-59.975668 -0.75739,-0.127247 -1.53595,-0.193786 -2.33061,-0.193786 z" fill="#ffffff"></path>
+                            <path d="m 314.19839,230.76007 c -19.33267,4.0373 -39.57064,18.07595 -74.16343,61.19317 -32.80112,40.88405 -78.08577,51.29448 -117.76852,51.7586 2.00964,5.16739 7.02235,8.81135 12.91704,8.81135 h 57.98147 68.19222 1.09399 c 39.79868,0 71.83851,-32.04034 71.83851,-71.83903 0,-19.43361 -7.63938,-37.01732 -20.09128,-49.92409 z" fill="url(#linearGradient11)"></path>
+                            <path d="m 135.18348,88.506226 c -7.67691,0 -13.85755,6.180644 -13.85755,13.857554 v 178.32038 55.36613 c 38.30485,-0.27073 81.50804,-10.03302 112.7032,-48.91536 32.19461,-40.1281 53.22992,-56.66034 73.34539,-62.59411 -9.14177,-7.31413 -20.123,-12.43348 -32.16031,-14.57482 v -1.68388 -1.68388 c 25.30805,-7.10923 43.7596,-30.28194 43.7596,-57.92256 0,-31.68953 -24.25306,-57.505672 -55.28603,-59.975668 -0.75739,-0.127247 -1.53595,-0.193786 -2.33061,-0.193786 z" fill="url(#linearGradient9)"></path>
+                            <path d="m 225.09892,193.56751 c -5.46882,0 -9.87175,4.40293 -9.87175,9.87175 v 102.70639 c 6.61833,-5.39036 12.92335,-11.6835 18.80196,-19.01072 5.16498,-6.43776 10.04275,-12.26837 14.67559,-17.54518 v -66.15049 c 0,-5.46882 -4.40292,-9.87175 -9.87175,-9.87175 z m -40.01513,28.45666 c -5.46882,0 -9.87175,4.40241 -9.87175,9.87124 v 95.99155 c 11.54618,-3.8292 22.84876,-9.25408 33.47755,-16.77468 v -79.21687 c 0,-5.46883 -4.40293,-9.87124 -9.87175,-9.87124 z m -40.01513,29.87312 c -5.46883,0 -9.87174,4.40241 -9.87174,9.87123 v 73.74743 c 11.05625,-0.79218 22.34157,-2.52365 33.47754,-5.63428 v -68.11315 c 0,-5.46882 -4.40293,-9.87123 -9.87175,-9.87123 z" fill="url(#linearGradient14)"></path>
+                        </g>
+                    </svg>
+                </div>
                 <div>
-                    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-indigo-300 via-white to-purple-300 bg-clip-text text-transparent">Budjut</h1>
-                    <p class="text-gray-400 text-sm mt-0.5">Track monthly spending · smart weekly income · CSV ready</p>
+                    <h1 class="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">Budjut</h1>
+                    <p class="text-slate-400 text-xs mt-0.5">smart habits · better decisions</p>
                 </div>
             </div>
-            <div class="flex flex-wrap gap-2.5">
-                <a href="https://michaelsboost.com/donate" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 hover:bg-rose-500/20 hover:border-rose-400 text-sm font-medium transition-all">
-                    ❤️ Donate
-                </a>
-                <button @click="shareApp" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 hover:bg-indigo-500/20 hover:border-indigo-400 text-sm font-medium transition-all">
-                    📤 Share
-                </button>
-                <button @click="resetToDefaults" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gray-700/50 border border-gray-600 text-gray-300 hover:bg-gray-700 hover:text-white text-sm font-medium transition-all">
-                    🔄 Reset
-                </button>
-                <button @click="clearAllExpenses" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-gray-700/50 border border-gray-600 text-rose-400 hover:bg-rose-500/10 hover:border-rose-500/40 text-sm font-medium transition-all">
-                    🗑️ Clear
-                </button>
+            
+        <!-- Action buttons (right side) -->
+        <div class="flex items-center gap-2 flex-wrap">
+            <!-- Donate button -->
+            <a href="https://michaelsboost.com/donate" target="_blank" rel="noopener noreferrer" class="bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-xl px-3 py-2 text-sm font-medium transition flex items-center gap-1">
+                <span>❤️</span>
+                <span class="hidden sm:inline">Donate</span>
+            </a>
+
+            <!-- Source code button -->
+            <a href="https://github.com/michaelsboost/Budjut" target="_blank" rel="noopener noreferrer" class="bg-slate-800/70 hover:bg-slate-700/80 rounded-xl px-3 py-2 text-sm font-medium transition flex items-center gap-1">
+                <span>📄</span>
+                <span class="hidden sm:inline">Source</span>
+            </a>
+
+            <!-- Share button (only if Web Share API supported) -->
+            <button @click="shareBudget()" x-show="typeof navigator.share !== 'undefined'" class="bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 rounded-xl px-3 py-2 text-sm font-medium transition flex items-center gap-1">
+                <span>📤</span>
+                <span class="hidden sm:inline">Share</span>
+            </button>
+
+            <!-- New entry button (primary action) -->
+            <button @click="openQuickAdd()" class="btn-gradient text-white font-medium px-4 py-2 rounded-xl shadow-md flex items-center gap-2 transition-all hover:shadow-xl text-sm">
+                <span class="hidden sm:inline">New entry</span>
+                <span class="sm:hidden">
+                <svg class="w-3 py-1" viewBox="0 0 24 24"><path fill="currentColor" d="M12 4a1 1 0 0 1 1 1v6h6a1 1 0 0 1 0 2h-6v6a1 1 0 0 1-2 0v-6H5a1 1 0 0 1 0-2h6V5a1 1 0 0 1 1-1"></path></svg>
+                </span>
+            </button>
+        </div>
+        </div>
+
+        <!-- ================= STATS CARDS ================= -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 fade-slide">
+            <div class="lg:col-span-2 glass-card-glow rounded-2xl p-6 stat-card">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <span class="text-slate-300 text-sm font-medium tracking-wide">💎 TOTAL BALANCE</span>
+                        <div class="text-5xl font-black mt-1 tracking-tight" x-text="formatMoney(totalBalance())"></div>
+                        <div class="text-emerald-400/70 text-xs mt-1 flex items-center gap-1"><span>●</span> net worth snapshot</div>
+                    </div>
+                    <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-xl">💰</div>
+                </div>
+                <div class="grid grid-cols-3 gap-3 mt-6 pt-4 border-t border-white/10">
+                    <div class="text-center">
+                        <div class="text-xs text-slate-400 uppercase tracking-wide">Monthly Income</div>
+                        <div class="text-xl font-bold text-emerald-400 mt-1" x-text="formatMoney(monthlyIncome())"></div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-xs text-slate-400 uppercase tracking-wide">Expenses</div>
+                        <div class="text-xl font-bold text-rose-400 mt-1" x-text="formatMoney(monthlyExpenses())"></div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-xs text-slate-400 uppercase tracking-wide">Remaining</div>
+                        <div class="text-xl font-bold text-amber-300 mt-1" x-text="formatMoney(monthlyRemaining())"></div>
+                    </div>
+                </div>
+                <div class="mt-3 h-1.5 w-full bg-slate-700/50 rounded-full overflow-hidden">
+                    <div class="h-full bg-gradient-to-r from-emerald-500 to-rose-500 rounded-full" :style="`width: ${Math.min(100, (monthlyExpenses() / (monthlyIncome() || 1)) * 100)}%`"></div>
+                </div>
+                <div class="text-[11px] text-slate-400 mt-2 flex justify-between"><span>expense / income ratio</span><span x-text="Math.round((monthlyExpenses() / (monthlyIncome() || 1)) * 100) + '%'"></span></div>
+            </div>
+            <div class="glass-card rounded-2xl p-5 stat-card">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <div class="text-slate-300 text-xs uppercase tracking-wide">📆 Weekly paycheck</div>
+                        <div class="text-2xl font-bold" x-text="formatMoney(weeklyIncomeAvg())"></div>
+                        <div class="text-[11px] text-slate-400 mt-1">next expected in <span class="text-blue-300 font-semibold" x-text="paycheckCountdown()"></span> days</div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-slate-300 text-xs uppercase tracking-wide">⚡ Daily pace</div>
+                        <div class="text-2xl font-bold" x-text="formatMoney(dailySpendingPace())"></div>
+                        <div class="text-[11px] text-slate-400 mt-1">avg spent / day</div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- main grid : refined spacing -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-7">
-            <!-- LEFT COLUMN (expense management) -->
-            <div class="lg:col-span-2 space-y-7">
-                <!-- Add / Edit expense card - sleek design -->
-                <div class="rounded-2xl bg-gray-800/70 backdrop-blur-sm border border-gray-700/60 shadow-xl overflow-hidden">
-                    <div class="px-6 pt-5 pb-2 border-b border-gray-700/60">
-                        <h2 class="text-lg font-semibold flex items-center gap-2">
-                            <span class="text-indigo-400 text-xl">✏️</span>
-                            <span x-show="!editingId" class="bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent">Create new expense</span>
-                            <span x-show="editingId" class="bg-gradient-to-r from-emerald-200 to-teal-200 bg-clip-text text-transparent">Edit expense</span>
-                        </h2>
-                    </div>
-                    <div class="p-6">
-                        <div class="flex flex-col sm:flex-row gap-4">
-                            <div class="flex-1">
-                                <label class="text-xs text-gray-400 uppercase tracking-wider block mb-1.5">Expense name</label>
-                                <input type="text" x-model="formName" placeholder="e.g., Internet, Netflix, Rent" class="w-full bg-gray-900/70 border border-gray-600 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-white placeholder:text-gray-500 transition">
-                            </div>
-                            <div class="w-full sm:w-48">
-                                <label class="text-xs text-gray-400 uppercase tracking-wider block mb-1.5">Monthly amount ($)</label>
-                                <div class="relative">
-                                    <span class="absolute left-4 top-3.5 text-gray-400">$</span>
-                                    <input type="number" x-model="formAmount" step="0.01" placeholder="0.00" class="w-full pl-8 pr-4 py-3 bg-gray-900/70 border border-gray-600 rounded-xl focus:ring-2 focus:ring-indigo-500 text-white">
-                                </div>
-                            </div>
-                            <div class="flex items-end">
-                                <button x-show="!editingId" @click="addExpense" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-indigo-600/20 transition-all hover:shadow-indigo-500/30 flex items-center justify-center gap-2">
-                                    ✨ Add Expense
-                                </button>
-                                <div x-show="editingId" class="flex gap-3 w-full">
-                                    <button @click="updateExpense" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-3 rounded-xl font-semibold shadow-lg transition">💾 Save</button>
-                                    <button @click="cancelEdit" class="flex-1 bg-gray-700 hover:bg-gray-600 text-gray-200 px-4 py-3 rounded-xl font-medium transition">Cancel</button>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-[11px] text-gray-400 mt-3 flex items-center gap-1">📌 Add any recurring monthly expense. Editable anytime.</p>
-                    </div>
-                </div>
-
-                <!-- Expenses table - modern list style -->
-                <div class="rounded-2xl bg-gray-800/70 backdrop-blur-sm border border-gray-700/60 shadow-xl overflow-hidden">
-                    <div class="px-6 pt-5 pb-3 border-b border-gray-700/60 flex justify-between items-center">
-                        <div class="flex items-center gap-2">
-                            <span class="text-indigo-400 text-lg">📋</span>
-                            <h2 class="font-semibold text-gray-100 text-lg">Monthly expenses</h2>
-                        </div>
-                        <span class="text-xs font-mono bg-gray-900/70 px-3 py-1 rounded-full text-indigo-300 border border-indigo-500/30" x-text="expenses.length + ' items'"></span>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full">
-                            <thead>
-                                <tr class="border-b border-gray-700/70 bg-gray-900/40">
-                                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">Expense</th>
-                                    <th class="px-6 py-4 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">Monthly amount</th>
-                                    <th class="px-6 py-4 text-right text-xs font-semibold text-gray-400 uppercase tracking-wider">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-700/40">
-                                <template x-for="expense in expenses" :key="expense.id">
-                                    <tr class="table-row-hover transition-colors duration-150">
-                                        <td class="px-6 py-4 font-medium text-gray-200">
-                                            <div class="flex items-center gap-2">
-                                                <span class="w-2 h-2 rounded-full bg-indigo-400 inline-block"></span>
-                                                <span x-text="expense.name"></span>
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-4 text-gray-300 font-semibold">$<span x-text="expense.amount.toFixed(2)"></span></td>
-                                        <td class="px-6 py-4 text-right space-x-3 whitespace-nowrap">
-                                            <button @click="startEdit(expense)" class="text-indigo-400 hover:text-indigo-200 text-sm font-medium transition px-2 py-1 rounded-lg hover:bg-indigo-500/10">✏️ Edit</button>
-                                            <button @click="deleteExpense(expense.id)" class="text-rose-400 hover:text-rose-300 text-sm font-medium transition px-2 py-1 rounded-lg hover:bg-rose-500/10">🗑️ Delete</button>
-                                        </td>
-                                    </tr>
-                                </template>
-                                <tr x-show="expenses.length === 0">
-                                    <td colspan="3" class="px-6 py-12 text-center text-gray-400 italic">✨ No expenses yet — add an expense or import a CSV to start budgeting.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+        <!-- ================= CHART + FINANCIAL HEALTH ================= -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8 fade-slide">
+            <!-- left: pie chart -->
+            <div class="glass-card rounded-2xl p-4 transition-all hover:border-blue-500/30">
+                <h3 class="font-semibold text-white/90 mb-2 flex items-center gap-2 text-sm tracking-wide"><span class="w-2 h-2 rounded-full bg-blue-500"></span> Category breakdown (monthly expenses)</h3>
+                <canvas id="pieChart" width="400" height="220" class="w-full h-auto max-h-56"></canvas>
             </div>
 
-            <!-- RIGHT COLUMN (Income + CSV Tools) modern glow -->
-            <div class="space-y-7">
-                <!-- Income card with premium stats -->
-                <div class="rounded-2xl bg-gradient-to-br from-gray-800/90 to-gray-900/90 border border-indigo-500/20 shadow-xl overflow-hidden backdrop-blur-sm">
-                    <div class="px-6 pt-5 pb-1">
-                        <div class="flex items-center justify-between">
-                            <h2 class="text-lg font-semibold flex items-center gap-2"><span>💰</span> Income overview</h2>
-                            <div class="budget-chip rounded-full px-2.5 py-0.5 text-[11px] text-indigo-300">monthly view</div>
-                        </div>
+            <!-- right: financial health + monthly goal -->
+            <div class="glass-card rounded-2xl p-5 transition-all hover:border-emerald-500/30 overflow-y-auto max-h-[320px]">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="font-bold text-lg flex items-center gap-2"><span class="text-2xl">🧠</span> Financial health &amp; habits</h3>
+                    <span class="text-[10px] bg-blue-500/20 px-2 py-0.5 rounded-full text-blue-300">real-time · no extra data</span>
+                </div>
+
+                <!-- Health Score Circle -->
+                <div class="flex items-center gap-4 mb-4 flex-wrap">
+                    <div class="relative w-20 h-20">
+                        <svg class="w-20 h-20 transform -rotate-90">
+                            <circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="5" fill="none" class="text-slate-700"></circle>
+                            <circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="5" fill="none" stroke-dasharray="213.628" :stroke-dashoffset="213.628 * (1 - healthScore()/100)" class="transition-all duration-500" :class="healthScore() &gt;= 70 ? 'text-emerald-400' : (healthScore() &gt;= 40 ? 'text-amber-400' : 'text-rose-400')"></circle>
+                        </svg>
+                        <div class="absolute inset-0 flex items-center justify-center text-lg font-black" x-text="Math.round(healthScore())"></div>
                     </div>
-                    <div class="p-6 pt-2 space-y-5">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-300 mb-1.5">📆 Weekly take‑home pay</label>
-                            <div class="relative">
-                                <span class="absolute left-4 top-3.5 text-gray-400">$</span>
-                                <input type="number" x-model.number="weeklyPay" @input="updateFromWeeklyPay" step="10" class="w-full pl-8 pr-4 py-3 bg-gray-900/60 border border-gray-600 rounded-xl focus:ring-2 focus:ring-indigo-500 text-white font-medium">
-                            </div>
-                            <p class="text-[11px] text-gray-400 mt-1">✨ Based on 52 weeks → estimated monthly</p>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-300 mb-1.5">📆 Monthly income (estimate)</label>
-                            <div class="relative">
-                                <span class="absolute left-4 top-3.5 text-gray-400">$</span>
-                                <input type="number" x-model.number="monthlyIncome" @input="updateFromMonthlyIncome" step="50" class="w-full pl-8 pr-4 py-3 bg-gray-900/60 border border-indigo-500/40 rounded-xl focus:ring-2 focus:ring-indigo-500 text-white font-semibold">
-                            </div>
-                        </div>
-                        
-                        <!-- stats chip group -->
-                        <div class="grid grid-cols-2 gap-3 pt-2">
-                            <div class="bg-gray-900/60 rounded-xl p-3 border border-gray-700">
-                                <div class="text-gray-400 text-xs uppercase">Total expenses</div>
-                                <div class="text-2xl font-bold text-white" x-text="'$' + totalExpenses.toFixed(2)"></div>
-                            </div>
-                            <div class="bg-gray-900/60 rounded-xl p-3 border border-gray-700">
-                                <div class="text-gray-400 text-xs uppercase">Remaining</div>
-                                <div class="text-2xl font-bold" :class="remaining >= 0 ? 'text-emerald-400' : 'text-rose-400'" x-text="(remaining >= 0 ? '$' + remaining.toFixed(2) : '-$' + Math.abs(remaining).toFixed(2))"></div>
-                            </div>
-                        </div>
-                        
-                        <!-- progress bar + health message -->
-                        <div class="space-y-2">
-                            <div class="flex justify-between text-xs text-gray-300">
-                                <span>Spent / Income</span>
-                                <span x-text="Math.min(100, (totalExpenses/monthlyIncome)*100).toFixed(1) + '%'" x-show="monthlyIncome > 0"></span>
-                            </div>
-                            <div class="h-2.5 w-full bg-gray-700 rounded-full overflow-hidden shadow-inner">
-                                <div class="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full progress-bar-animated" :style="'width: ' + Math.min(100, (totalExpenses/monthlyIncome)*100) + '%'" x-show="monthlyIncome > 0"></div>
-                            </div>
-                            <p class="text-xs text-center font-medium mt-2" x-show="monthlyIncome > 0 && totalExpenses > monthlyIncome">
-                                <span class="bg-rose-500/20 text-rose-300 px-2 py-0.5 rounded-full">⚠️ Overspending alert — expenses exceed income</span>
-                            </p>
-                            <p class="text-xs text-center text-indigo-300/80 mt-1" x-show="weeklyPay > 0 && monthCalculationNote" x-text="monthCalculationNote"></p>
-                        </div>
+                    <div>
+                        <div class="text-sm font-medium" x-text="healthLabel()"></div>
+                        <p class="text-xs text-slate-400 mt-1">based on savings rate + essential vs. fun spending</p>
                     </div>
                 </div>
-                
-                <!-- Import/Export card - refined with clear actions -->
-                <div class="rounded-2xl bg-gray-800/70 backdrop-blur-sm border border-gray-700/60 shadow-xl overflow-hidden">
-                    <div class="px-6 pt-5 pb-2 border-b border-gray-700/60">
-                        <h2 class="text-lg font-semibold flex items-center gap-2"><span>📁</span> Data import / export</h2>
+
+                <!-- Monthly savings goal progress bar -->
+                <div class="bg-slate-800/40 rounded-xl p-3 mb-4 border-l-4 border-blue-500">
+                    <div class="flex justify-between text-sm">
+                        <span>🎯 Monthly savings goal</span>
+                        <span class="font-mono font-bold" x-text="formatMoney(monthlyRemaining()) + ' / ' + formatMoney(settings.monthlyGoal || 0)"></span>
                     </div>
-                    <div class="p-6 space-y-5">
-                        <button @click="exportToCSV" class="w-full bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 rounded-xl py-3 font-semibold transition flex items-center justify-center gap-2 shadow-sm">
-                            📎 Export expenses as CSV
-                        </button>
-                        <div class="pt-1">
-                            <label class="block text-sm font-medium text-gray-300 mb-2">📂 Import CSV file (overwrites current)</label>
-                            <input type="file" accept=".csv" @change="handleFileSelect" class="block w-full text-sm text-gray-300 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:bg-indigo-600/40 file:text-indigo-200 hover:file:bg-indigo-600/60 file:font-medium file:cursor-pointer cursor-pointer">
-                            <div class="flex items-center gap-2 mt-3">
-                                <input type="checkbox" id="csvHeader" x-model="csvHasHeader" class="rounded border-gray-600 bg-gray-700 text-indigo-500 focus:ring-indigo-500 w-4 h-4">
-                                <label for="csvHeader" class="text-xs text-gray-400">CSV includes header row (Name, Amount)</label>
-                            </div>
-                            <div class="mt-3 bg-gray-900/50 rounded-lg p-3 border border-gray-700/50">
-                                <p class="text-[11px] text-gray-400 flex gap-2"><span class="font-mono text-indigo-300">📌 Format:</span> <span class="font-mono">Name, Amount</span><br>Example: <span class="font-mono text-gray-300">Rent, 850</span></p>
-                            </div>
-                            <div x-show="importMessage" x-text="importMessage" class="text-xs mt-3 p-2 rounded-lg text-center font-medium" :class="importMessageType === 'success' ? 'bg-green-900/40 text-green-300' : 'bg-red-900/40 text-red-300'"></div>
-                        </div>
-                        <button @click="downloadExampleCSV" class="w-full text-indigo-300 text-sm border border-dashed border-indigo-500/50 rounded-xl py-2.5 hover:bg-indigo-500/10 transition flex items-center justify-center gap-1.5">
-                            📄 Download example CSV template
-                        </button>
+                    <div class="h-1.5 bg-slate-700 rounded-full mt-1 overflow-hidden">
+                        <div class="h-full rounded-full bg-gradient-to-r from-emerald-400 to-blue-500" :style="`width: ${Math.min(100, ((monthlyRemaining()) / (settings.monthlyGoal || 1)) * 100)}%`"></div>
                     </div>
+                    <p class="text-[11px] text-slate-300 mt-2" x-show="settings.monthlyGoal &amp;&amp; settings.monthlyGoal &gt; 0" x-text="monthlyRemaining() &gt;= settings.monthlyGoal ? '✅ Goal achieved! Great discipline.' : (monthlyRemaining() &gt; 0 ? `📊 Need ${formatMoney(settings.monthlyGoal - monthlyRemaining())} more to reach goal.` : '⚠️ Expenses exceed income – adjust goal or spending.')"></p>
+                    <p class="text-[11px] text-slate-400 mt-2" x-show="!settings.monthlyGoal || settings.monthlyGoal === 0">✨ Set a monthly savings goal in Studio controls to track progress.</p>
                 </div>
-                
-                <!-- Motivational tip card -->
-                <div class="rounded-xl bg-indigo-500/5 border border-indigo-500/20 p-4 flex items-start gap-3 backdrop-blur-sm">
-                    <span class="text-indigo-400 text-xl">💡</span>
-                    <div class="text-sm text-gray-300 leading-relaxed">
-                        <span class="font-semibold text-indigo-300">Smart saving insight</span><br>
-                        Your data auto-saves locally. Weekly income mapping gives accurate monthly forecast.
-                        <span class="text-[11px] block mt-1 text-gray-400">✓ Download backup · stay in control</span>
+
+                <!-- Good vs Bad habits -->
+                <div class="bg-slate-800/40 rounded-xl p-3 mb-4 border-l-4" :class="savingsRate() &gt;= 20 ? 'border-emerald-400' : (savingsRate() &gt;= 10 ? 'border-amber-400' : 'border-rose-400')">
+                    <div class="flex justify-between text-sm">
+                        <span>💰 Monthly savings rate</span>
+                        <span class="font-mono font-bold" x-text="Math.round(savingsRate()) + '%'"></span>
                     </div>
+                    <div class="h-1.5 bg-slate-700 rounded-full mt-1 overflow-hidden">
+                        <div class="h-full rounded-full bg-gradient-to-r from-emerald-400 to-blue-500" :style="`width: ${Math.min(100, savingsRate())}%`"></div>
+                    </div>
+                    <p class="text-[11px] text-slate-300 mt-2" x-text="savingsAdvice()"></p>
+                </div>
+
+                <!-- Actionable tips list -->
+                <div class="space-y-2 mt-2">
+                    <template x-for="(tip, idx) in smartTips()" :key="idx">
+                        <div class="tip-bubble bg-white/5 rounded-lg p-2.5 text-sm flex items-start gap-2">
+                            <span x-text="tip.icon" class="text-base"></span>
+                            <span class="text-slate-200 leading-tight" x-text="tip.message"></span>
+                        </div>
+                    </template>
+                    <div x-show="smartTips().length === 0 &amp;&amp; transactions.length === 0" class="text-slate-400 text-xs text-center py-4">✨ Add your first transactions to get personalized financial advice.</div>
+                </div>
+
+                <div class="text-[10px] text-slate-500 text-center mt-4 pt-2 border-t border-white/10 flex justify-between">
+                    <span>⚡ zero bloat · no 6‑month storage overhead</span>
+                    <span>🎯 focus on habits, not noise</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TRANSACTION LEDGER ================= -->
+        <div class="mt-10 glass-card rounded-2xl p-5 fade-slide">
+            <div class="flex flex-wrap justify-between items-center gap-3 mb-4">
+                <div class="flex items-center gap-2">
+                    <h2 class="font-bold text-xl tracking-tight">📋 Transaction ledger</h2>
+                    <span class="text-xs bg-blue-500/20 text-blue-300 px-2.5 py-1 rounded-full border border-blue-500/30" x-text="transactions.length"></span>
+                </div>
+                <div class="flex gap-2 flex-wrap">
+                    <div class="relative">
+                        <svg class="absolute left-3 top-2.5 w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        <input type="text" x-model="txSearch" placeholder="Search category/note" class="input-modern rounded-xl pl-9 pr-3 py-1.5 text-sm w-36 focus:w-44 transition-all text-white">
+                    </div>
+                    <select x-model="txFilterType" class="input-modern rounded-xl px-3 py-1.5 text-sm cursor-pointer">
+                        <option value="all">All types</option>
+                        <option value="income">Income only</option>
+                        <option value="expense">Expense only</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Category filter chips (quick search) -->
+            <div class="flex flex-wrap gap-2 mb-4">
+                <template x-for="cat in uniqueCategories()" :key="cat">
+                    <button @click="txSearch = cat" class="text-xs bg-slate-800/70 hover:bg-blue-500/30 rounded-full px-3 py-1 transition" x-text="cat"></button>
+                </template>
+                <button @click="txSearch = ''" x-show="txSearch !== ''" class="text-xs bg-rose-500/20 hover:bg-rose-500/30 rounded-full px-3 py-1 transition">✖ Clear</button>
+            </div>
+            <div class="space-y-2 max-h-[440px] overflow-y-auto pr-1">
+                <template x-for="tx in filteredTransactions()" :key="tx.id">
+                    <div class="transaction-row rounded-xl p-3 flex justify-between items-center border border-white/10" :style="`border-left-color: ${tx.type === 'income' ? '#10b981' : '#f43f5e'}`">
+                        <div class="flex-1 flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-slate-800/80 flex items-center justify-center text-base" x-text="tx.type === 'income' ? '📈' : '📉'"></div>
+                            <div>
+                                <div class="font-semibold flex flex-wrap gap-x-2 items-baseline">
+                                    <span class="text-white/90" x-text="tx.category"></span>
+                                    <span x-show="tx.note" class="text-xs text-slate-400 font-normal" x-text="'• ' + tx.note"></span>
+                                </div>
+                                <div class="text-[11px] text-slate-500" x-text="formatDate(tx.date)"></div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span :class="tx.type === 'income' ? 'text-emerald-400' : 'text-rose-400'" class="font-bold text-sm md:text-base" x-text="(tx.type === 'income' ? '+' : '-') + formatMoney(tx.amount)"></span>
+                            <button @click="editTransaction(tx.id)" class="edit-tx-btn text-slate-400 hover:text-blue-400 text-lg leading-4 transition px-1">✏️</button>
+                            <button @click="deleteTransaction(tx.id)" class="delete-tx-btn text-slate-400 hover:text-red-400 text-lg leading-4 transition px-1">🗑️</button>
+                        </div>
+                    </div>
+                </template>
+                <div x-show="filteredTransactions().length === 0" class="text-center py-12 text-slate-400 text-sm bg-slate-800/30 rounded-xl border border-dashed border-slate-700">✨ No transactions — click the blue button to start your journey</div>
+            </div>
+        </div>
+
+        <!-- ================= STUDIO CONTROLS (Settings) ================= -->
+        <div class="mt-8 glass-card rounded-2xl p-5 space-y-5 fade-slide">
+            <div class="flex items-center justify-between flex-wrap gap-2">
+                <h2 class="font-bold text-xl flex items-center gap-2">⚙️ Studio controls</h2>
+                <span class="text-[11px] bg-slate-800/60 px-2 py-1 rounded-full text-slate-300">local storage · auto‑sync</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Currency selector (multi-currency) -->
+                <div class="flex flex-col sm:flex-row sm:items-center gap-3 justify-between bg-slate-800/30 p-3 rounded-xl">
+                    <label class="text-sm font-medium flex items-center gap-1">💱 Currency</label>
+                    <select x-model="settings.currencyCode" @change="saveSettings()" class="input-modern rounded-xl px-4 py-2 text-sm font-mono">
+                        <option value="USD">USD ($)</option>
+                        <option value="EUR">EUR (€)</option>
+                        <option value="GBP">GBP (£)</option>
+                        <option value="JPY">JPY (¥)</option>
+                        <option value="CAD">CAD ($)</option>
+                        <option value="AUD">AUD ($)</option>
+                    </select>
+                </div>
+                <!-- Monthly savings goal -->
+                <div class="flex flex-col sm:flex-row sm:items-center gap-3 justify-between bg-slate-800/30 p-3 rounded-xl">
+                    <label class="text-sm font-medium flex items-center gap-1">🎯 Monthly savings goal</label>
+                    <input type="number" x-model="settings.monthlyGoal" @change="saveSettings()" placeholder="0" class="input-modern rounded-xl px-4 py-2 w-32 text-sm text-center font-mono">
+                </div>
+            </div>
+            <div class="border-t border-white/10 my-1"></div>
+            <div>
+                <h3 class="text-sm font-semibold text-slate-200 mb-3 flex items-center gap-1">📦 Data toolkit</h3>
+                <div class="grid grid-cols-2 gap-2.5">
+                    <button @click="exportCSV()" class="bg-slate-800/70 hover:bg-slate-700/90 backdrop-blur-sm border border-white/10 rounded-xl p-2.5 text-xs transition-all flex items-center justify-center gap-1.5 font-medium">📎 Export CSV</button>
+                    <button @click="importCSVFile()" class="bg-slate-800/70 hover:bg-slate-700/90 backdrop-blur-sm border border-white/10 rounded-xl p-2.5 text-xs transition-all flex items-center justify-center gap-1.5 font-medium">📂 Import CSV</button>
+                    <button @click="backupJSON()" class="bg-slate-800/70 hover:bg-slate-700/90 backdrop-blur-sm border border-white/10 rounded-xl p-2.5 text-xs transition-all flex items-center justify-center gap-1.5 font-medium">💾 JSON Backup</button>
+                    <button @click="restoreJSON()" class="bg-slate-800/70 hover:bg-slate-700/90 backdrop-blur-sm border border-white/10 rounded-xl p-2.5 text-xs transition-all flex items-center justify-center gap-1.5 font-medium">📀 Restore</button>
+                </div>
+                <div class="grid grid-cols-1 mt-3">
+                    <button @click="resetAllData()" class="col-span-2 sm:col-span-1 bg-rose-900/30 hover:bg-rose-800/50 border border-rose-500/30 rounded-xl p-2.5 text-xs transition-all flex items-center justify-center gap-1 font-medium">⚠️ Factory reset</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= DONATE / SOURCE / SHARE ROW ================= -->
+        <div class="mt-8 glass-card rounded-2xl p-5 fade-slide flex flex-wrap items-center justify-between gap-4">
+            <div class="flex gap-3">
+                <a href="https://michaelsboost.com/donate" target="_blank" rel="noopener noreferrer" class="bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 rounded-xl px-4 py-2 text-sm font-medium transition flex items-center gap-2">
+                    ❤️ Donate
+                </a>
+                <a href="https://github.com/michaelsboost/Budjut" target="_blank" rel="noopener noreferrer" class="bg-slate-800/70 hover:bg-slate-700/80 rounded-xl px-4 py-2 text-sm font-medium transition flex items-center gap-2">
+                    📄 Source code
+                </a>
+            </div>
+            <button @click="shareBudget()" x-show="typeof navigator.share !== 'undefined'" class="bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 rounded-xl px-4 py-2 text-sm font-medium transition flex items-center gap-2">
+                📤 Share
+            </button>
+            <p class="text-xs text-slate-500" x-show="typeof navigator.share === 'undefined'">🔒 Share not supported in this browser</p>
+        </div>
+
+        <!-- Floating Action Button -->
+        <div class="fixed bottom-7 right-7 z-50">
+            <button @click="openQuickAdd()" class="w-14 h-14 rounded-full btn-gradient shadow-2xl flex items-center justify-center text-2xl font-bold transition-all quick-btn hover:scale-105 active:scale-95">✦</button>
+        </div>
+
+        <!-- Transaction Modal (Add / Edit) -->
+        <div x-show="showTxModal" class="fixed inset-0 modal-backdrop flex items-center justify-center z-50 p-4 transition-all" x-cloak="" @click.away="closeModal()">
+            <div class="glass-card-glow rounded-2xl w-full max-w-md p-6 shadow-2xl border-blue-500/40 transform transition-all fade-slide">
+                <div class="flex justify-between items-center mb-3">
+                    <h3 class="text-xl font-bold bg-gradient-to-r from-white to-blue-300 bg-clip-text text-transparent" x-text="editingId ? '✏️ Edit transaction' : '✨ New transaction'"></h3>
+                    <button @click="closeModal()" class="text-slate-400 hover:text-white text-xl">×</button>
+                </div>
+                <select x-model="txForm.type" class="input-modern rounded-xl p-2.5 w-full mt-2 text-sm">
+                    <option value="expense">💸 Expense</option>
+                    <option value="income">💰 Income</option>
+                </select>
+                <input type="number" x-model="txForm.amount" placeholder="Amount (positive number)" class="input-modern rounded-xl p-2.5 w-full mt-3 text-sm">
+                <select x-model="txForm.category" class="input-modern rounded-xl p-2.5 w-full mt-3 text-sm">
+                    <template x-for="cat in (txForm.type === 'income' ? incomeCategories : expenseCategories)" :key="cat">
+                        <option x-text="cat"></option>
+                    </template>
+                </select>
+                <input type="date" x-model="txForm.date" class="input-modern rounded-xl p-2.5 w-full mt-3 text-sm">
+                <input type="text" x-model="txForm.note" placeholder="Note (optional)" class="input-modern rounded-xl p-2.5 w-full mt-3 text-sm">
+                <div class="flex gap-3 mt-6">
+                    <button @click="saveTransaction()" class="btn-gradient flex-1 py-2.5 rounded-xl font-semibold text-white transition">Save</button>
+                    <button @click="closeModal()" class="bg-slate-700/70 flex-1 py-2.5 rounded-xl hover:bg-slate-600 transition">Cancel</button>
                 </div>
             </div>
         </div>

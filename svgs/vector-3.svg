@@ -1,0 +1,4 @@
+<svg class="w-20 h-20 transform -rotate-90">
+                        <circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="5" fill="none" class="text-slate-700"></circle>
+                        <circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="5" fill="none" stroke-dasharray="213.628" :stroke-dashoffset="213.628 * (1 - healthScore()/100)" class="transition-all duration-500" :class="healthScore() &gt;= 70 ? 'text-emerald-400' : (healthScore() &gt;= 40 ? 'text-amber-400' : 'text-rose-400')"></circle>
+                    </svg>
