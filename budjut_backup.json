@@ -1,0 +1,88 @@
+{
+  "categories": [
+    {
+      "id": "cat_1781565106426",
+      "name": "Rent",
+      "emoji": "🏠",
+      "type": "need"
+    },
+    {
+      "id": "cat_1781565136386",
+      "name": "Utilities",
+      "emoji": "🏠",
+      "type": "need"
+    },
+    {
+      "id": "cat_1781565194966",
+      "name": "Savings",
+      "emoji": "💰",
+      "type": "savings"
+    },
+    {
+      "id": "cat_1781565222154",
+      "name": "Fun",
+      "emoji": "🎮",
+      "type": "want"
+    },
+    {
+      "id": "cat_1781565261590",
+      "name": "Grocery",
+      "emoji": "🛒",
+      "type": "need"
+    }
+  ],
+  "monthsData": {
+    "2026-06": {
+      "incomePlanned": 1570,
+      "incomeEntries": [
+        {
+          "id": 1781565362974,
+          "name": "Wife",
+          "amount": 370,
+          "date": "2026-06-15",
+          "note": ""
+        },
+        {
+          "id": 1781565378357,
+          "name": "Ups",
+          "amount": 1200,
+          "date": "2026-06-15",
+          "note": ""
+        }
+      ],
+      "categoryPlans": {
+        "cat_1781565106426": 850,
+        "cat_1781565136386": 200,
+        "cat_1781565194966": 200,
+        "cat_1781565222154": 100,
+        "cat_1781565261590": 200
+      },
+      "transactions": [
+        {
+          "id": 1781565151265,
+          "name": "Landlord",
+          "amount": 850,
+          "categoryId": "cat_1781565106426",
+          "date": "2026-06-01",
+          "note": ""
+        },
+        {
+          "id": 1781565171435,
+          "name": "Gas & electric",
+          "amount": 200,
+          "categoryId": "cat_1781565136386",
+          "date": "2026-06-15",
+          "note": ""
+        },
+        {
+          "id": 1781565332227,
+          "name": "Spare",
+          "amount": 200,
+          "categoryId": "cat_1781565194966",
+          "date": "2026-06-15",
+          "note": ""
+        }
+      ]
+    }
+  }
+}

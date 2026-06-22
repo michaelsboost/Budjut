@@ -1,347 +1,170 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
-    <title>Budjut - Free Budget Planner, Expense Tracker & Monthly Finance App</title>
+    <title>Budjut — Simple Budgeting, Spending Tracking & Financial Health</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, interactive-widget=resizes-content">
-    <meta name="description" content="Free personal finance and budgeting app for tracking monthly expenses, weekly income, bills, and CSV budgeting data. Smart, fast, private, and easy to use.">
+    <meta name="description" content="Budjut is a free, open-source budgeting app that helps you track income, expenses, savings, and financial health in one simple dashboard. Built for everyday people, freelancers, and entrepreneurs.">
     <meta name="author" content="Michael Schwartz">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Budjut - Free Budget Planner, Expense Tracker & Monthly Finance App">
+    <meta name="application-name" content="Budjut — Simple Budgeting, Spending Tracking & Financial Health">
     <meta name="theme-color" content="#13171f">
-    <meta name="apple-mobile-web-app-title" content="Budjut - Free Budget Planner, Expense Tracker & Monthly Finance App">
+    <meta name="apple-mobile-web-app-title" content="Budjut — Simple Budgeting, Spending Tracking & Financial Health">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="msapplication-starturl" content="./index.html">
     <meta name="msapplication-navbutton-color" content="#13171f">
     <meta property="og:url" content="https://michaelsboost.com/Budjut" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Budjut - Free Budget Planner, Expense Tracker & Monthly Finance App" />
-    <meta property="og:description" content="Free personal finance and budgeting app for tracking monthly expenses, weekly income, bills, and CSV budgeting data. Smart, fast, private, and easy to use." />
+    <meta property="og:title" content="Budjut — Simple Budgeting, Spending Tracking & Financial Health" />
+    <meta property="og:description" content="Budjut is a free, open-source budgeting app that helps you track income, expenses, savings, and financial health in one simple dashboard. Built for everyday people, freelancers, and entrepreneurs." />
     <link rel="manifest" href="manifest.json">
     <link rel="shortcut icon" type="image/x-icon" href="imgs/logo.svg">
     <link rel="icon" type="image/svg+xml" href="imgs/logo.svg" />
     <link rel="apple-touch-icon" href="imgs/logo.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="dist/bundle.css">
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js" defer></script>
+    
+    <!-- Font Awesome + Inter + Chart.js -->
+    <!-- Alpine.js with Collapse plugin -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
   </head>
   <body>
-    <div class="max-w-6xl mx-auto px-4 pb-28 pt-6 relative antialiased" x-data="budjutUnified()" x-cloak>
-
-        <!-- ================= HEADER ================= -->
-        <div class="flex justify-between items-center mb-6 flex-wrap gap-3 fade-slide">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 flex items-center justify-center">
-                    <svg class="w-10 h-10" viewBox="0 0 212.96373 264.01696" xmlns="http://www.w3.org/2000/svg">
-                        <defs><linearGradient id="linearGradient15"><stop offset="0" stop-color="#3b46e5"></stop><stop offset="1" stop-color="#a453f6"></stop></linearGradient>
-                        <linearGradient id="linearGradient10"><stop offset="0" stop-color="#2443e1"></stop><stop offset="1" stop-color="#9a51f9"></stop></linearGradient>
-                        <linearGradient id="linearGradient8"><stop offset="0" stop-color="#f7f7f8"></stop><stop offset="1" stop-color="#efebfe"></stop></linearGradient>
-                        <linearGradient xlink:href="#linearGradient8" id="linearGradient9" x1="121.32593" y1="212.27826" x2="318.97382" y2="212.27826" gradientUnits="userSpaceOnUse"></linearGradient>
-                        <linearGradient xlink:href="#linearGradient10" id="linearGradient11" x1="122.26644" y1="291.64163" x2="334.28967" y2="291.64163" gradientUnits="userSpaceOnUse"></linearGradient>
-                        <linearGradient xlink:href="#linearGradient15" id="linearGradient14" gradientUnits="userSpaceOnUse" x1="135.91861" y1="334.59927" x2="245.15201" y2="198.11478"></linearGradient></defs>
-                        <g transform="translate(-121.32593,-88.506226)">
-                            <path d="m 135.18348,88.506226 c -7.67691,0 -13.85755,6.180646 -13.85755,13.857554 v 178.32038 57.98147 c 0,7.67691 6.18064,13.85756 13.85755,13.85756 h 57.98147 68.19222 1.09399 c 39.79868,0 71.83851,-32.04034 71.83851,-71.83903 0,-35.44061 -25.40723,-64.72885 -59.07546,-70.71816 v -3.36776 c 25.30805,-7.10923 43.7596,-30.28194 43.7596,-57.92256 0,-31.68953 -24.25306,-57.505672 -55.28603,-59.975668 -0.75739,-0.127247 -1.53595,-0.193786 -2.33061,-0.193786 z" fill="#ffffff"></path>
-                            <path d="m 314.19839,230.76007 c -19.33267,4.0373 -39.57064,18.07595 -74.16343,61.19317 -32.80112,40.88405 -78.08577,51.29448 -117.76852,51.7586 2.00964,5.16739 7.02235,8.81135 12.91704,8.81135 h 57.98147 68.19222 1.09399 c 39.79868,0 71.83851,-32.04034 71.83851,-71.83903 0,-19.43361 -7.63938,-37.01732 -20.09128,-49.92409 z" fill="url(#linearGradient11)"></path>
-                            <path d="m 135.18348,88.506226 c -7.67691,0 -13.85755,6.180644 -13.85755,13.857554 v 178.32038 55.36613 c 38.30485,-0.27073 81.50804,-10.03302 112.7032,-48.91536 32.19461,-40.1281 53.22992,-56.66034 73.34539,-62.59411 -9.14177,-7.31413 -20.123,-12.43348 -32.16031,-14.57482 v -1.68388 -1.68388 c 25.30805,-7.10923 43.7596,-30.28194 43.7596,-57.92256 0,-31.68953 -24.25306,-57.505672 -55.28603,-59.975668 -0.75739,-0.127247 -1.53595,-0.193786 -2.33061,-0.193786 z" fill="url(#linearGradient9)"></path>
-                            <path d="m 225.09892,193.56751 c -5.46882,0 -9.87175,4.40293 -9.87175,9.87175 v 102.70639 c 6.61833,-5.39036 12.92335,-11.6835 18.80196,-19.01072 5.16498,-6.43776 10.04275,-12.26837 14.67559,-17.54518 v -66.15049 c 0,-5.46882 -4.40292,-9.87175 -9.87175,-9.87175 z m -40.01513,28.45666 c -5.46882,0 -9.87175,4.40241 -9.87175,9.87124 v 95.99155 c 11.54618,-3.8292 22.84876,-9.25408 33.47755,-16.77468 v -79.21687 c 0,-5.46883 -4.40293,-9.87124 -9.87175,-9.87124 z m -40.01513,29.87312 c -5.46883,0 -9.87174,4.40241 -9.87174,9.87123 v 73.74743 c 11.05625,-0.79218 22.34157,-2.52365 33.47754,-5.63428 v -68.11315 c 0,-5.46882 -4.40293,-9.87123 -9.87175,-9.87123 z" fill="url(#linearGradient14)"></path>
-                        </g>
-                    </svg>
-                </div>
-                <div>
-                    <h1 class="text-3xl font-extrabold tracking-tight bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">Budjut</h1>
-                    <p class="text-slate-400 text-xs mt-0.5">smart habits · better decisions</p>
-                </div>
-            </div>
-            
-        <!-- Action buttons (right side) -->
+    
+<div x-data="budgetApp()" x-init="initApp()" class="relative container mx-auto px-4 py-6 md:px-6 text-slate-200 antialiased">
+    
+    <!-- Header (unchanged) -->
+    <div class="flex justify-between items-center flex-wrap gap-4 mb-8">
+        <div class="flex items-center gap-3">
+            <svg class="w-10 h-10 md:w-12 md:h-12" viewBox="0 0 212.96373 264.01696" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="lg1"><stop offset="0" stop-color="#3b46e5"></stop><stop offset="1" stop-color="#a453f6"></stop></linearGradient>
+                <linearGradient id="lg2"><stop offset="0" stop-color="#2443e1"></stop><stop offset="1" stop-color="#9a51f9"></stop></linearGradient>
+                <linearGradient id="lg3"><stop offset="0" stop-color="#f7f7f8"></stop><stop offset="1" stop-color="#efebfe"></stop></linearGradient>
+                <linearGradient xlink:href="#lg3" id="lg4" x1="121.32593" y1="212.27826" x2="318.97382" y2="212.27826" gradientUnits="userSpaceOnUse"></linearGradient>
+                <linearGradient xlink:href="#lg2" id="lg5" x1="122.26644" y1="291.64163" x2="334.28967" y2="291.64163" gradientUnits="userSpaceOnUse"></linearGradient>
+                <linearGradient xlink:href="#lg1" id="lg6" gradientUnits="userSpaceOnUse" x1="135.91861" y1="334.59927" x2="245.15201" y2="198.11478"></linearGradient></defs>
+                <g transform="translate(-121.32593,-88.506226)"><path d="m 135.18348,88.506226 c -7.67691,0 -13.85755,6.180646 -13.85755,13.857554 v 178.32038 57.98147 c 0,7.67691 6.18064,13.85756 13.85755,13.85756 h 57.98147 68.19222 1.09399 c 39.79868,0 71.83851,-32.04034 71.83851,-71.83903 0,-35.44061 -25.40723,-64.72885 -59.07546,-70.71816 v -3.36776 c 25.30805,-7.10923 43.7596,-30.28194 43.7596,-57.92256 0,-31.68953 -24.25306,-57.505672 -55.28603,-59.975668 -0.75739,-0.127247 -1.53595,-0.193786 -2.33061,-0.193786 z" fill="#ffffff"></path><path d="m 314.19839,230.76007 c -19.33267,4.0373 -39.57064,18.07595 -74.16343,61.19317 -32.80112,40.88405 -78.08577,51.29448 -117.76852,51.7586 2.00964,5.16739 7.02235,8.81135 12.91704,8.81135 h 57.98147 68.19222 1.09399 c 39.79868,0 71.83851,-32.04034 71.83851,-71.83903 0,-19.43361 -7.63938,-37.01732 -20.09128,-49.92409 z" fill="url(#lg5)"></path><path d="m 135.18348,88.506226 c -7.67691,0 -13.85755,6.180644 -13.85755,13.857554 v 178.32038 55.36613 c 38.30485,-0.27073 81.50804,-10.03302 112.7032,-48.91536 32.19461,-40.1281 53.22992,-56.66034 73.34539,-62.59411 -9.14177,-7.31413 -20.123,-12.43348 -32.16031,-14.57482 v -1.68388 -1.68388 c 25.30805,-7.10923 43.7596,-30.28194 43.7596,-57.92256 0,-31.68953 -24.25306,-57.505672 -55.28603,-59.975668 -0.75739,-0.127247 -1.53595,-0.193786 -2.33061,-0.193786 z" fill="url(#lg4)"></path><path d="m 225.09892,193.56751 c -5.46882,0 -9.87175,4.40293 -9.87175,9.87175 v 102.70639 c 6.61833,-5.39036 12.92335,-11.6835 18.80196,-19.01072 5.16498,-6.43776 10.04275,-12.26837 14.67559,-17.54518 v -66.15049 c 0,-5.46882 -4.40292,-9.87175 -9.87175,-9.87175 z m -40.01513,28.45666 c -5.46882,0 -9.87175,4.40241 -9.87175,9.87124 v 95.99155 c 11.54618,-3.8292 22.84876,-9.25408 33.47755,-16.77468 v -79.21687 c 0,-5.46883 -4.40293,-9.87124 -9.87175,-9.87124 z m -40.01513,29.87312 c -5.46883,0 -9.87174,4.40241 -9.87174,9.87123 v 73.74743 c 11.05625,-0.79218 22.34157,-2.52365 33.47754,-5.63428 v -68.11315 c 0,-5.46882 -4.40293,-9.87123 -9.87175,-9.87123 z" fill="url(#lg6)"></path></g>
+            </svg>
+            <div><span class="text-xl md:text-2xl font-black tracking-tight bg-gradient-to-r from-blue-400 via-purple-400 to-white bg-clip-text text-transparent">Budjut</span><p class="text-[10px] md:text-xs text-slate-400 leading-tight">smart habits · better decisions</p></div>
+        </div>
         <div class="flex items-center gap-2 flex-wrap">
-            <!-- Donate button -->
-            <a href="https://michaelsboost.com/donate" target="_blank" rel="noopener noreferrer" class="bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 rounded-xl px-3 py-2 text-sm font-medium transition flex items-center gap-1">
-                <span>❤️</span>
-                <span class="hidden sm:inline">Donate</span>
-            </a>
-
-            <!-- Source code button -->
-            <a href="https://github.com/michaelsboost/Budjut" target="_blank" rel="noopener noreferrer" class="bg-slate-800/70 hover:bg-slate-700/80 rounded-xl px-3 py-2 text-sm font-medium transition flex items-center gap-1">
-                <span>📄</span>
-                <span class="hidden sm:inline">Source</span>
-            </a>
-
-            <!-- Share button (only if Web Share API supported) -->
-            <button @click="shareBudget()" x-show="typeof navigator.share !== 'undefined'" class="bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 rounded-xl px-3 py-2 text-sm font-medium transition flex items-center gap-1">
-                <span>📤</span>
-                <span class="hidden sm:inline">Share</span>
-            </button>
-
-            <!-- New entry button (primary action) -->
-            <button @click="openQuickAdd()" class="btn-gradient text-white font-medium px-4 py-2 rounded-xl shadow-md flex items-center gap-2 transition-all hover:shadow-xl text-sm">
-                <span class="hidden sm:inline">New entry</span>
-                <span class="sm:hidden">
-                <svg class="w-3 py-1" viewBox="0 0 24 24"><path fill="currentColor" d="M12 4a1 1 0 0 1 1 1v6h6a1 1 0 0 1 0 2h-6v6a1 1 0 0 1-2 0v-6H5a1 1 0 0 1 0-2h6V5a1 1 0 0 1 1-1"></path></svg>
-                </span>
-            </button>
-        </div>
-        </div>
-
-        <!-- ================= STATS CARDS ================= -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 fade-slide">
-            <div class="lg:col-span-2 glass-card-glow rounded-2xl p-6 stat-card">
-                <div class="flex justify-between items-start">
-                    <div>
-                        <span class="text-slate-300 text-sm font-medium tracking-wide">💎 TOTAL BALANCE</span>
-                        <div class="text-5xl font-black mt-1 tracking-tight" x-text="formatMoney(totalBalance())"></div>
-                        <div class="text-emerald-400/70 text-xs mt-1 flex items-center gap-1"><span>●</span> net worth snapshot</div>
-                    </div>
-                    <div class="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-xl">💰</div>
-                </div>
-                <div class="grid grid-cols-3 gap-3 mt-6 pt-4 border-t border-white/10">
-                    <div class="text-center">
-                        <div class="text-xs text-slate-400 uppercase tracking-wide">Monthly Income</div>
-                        <div class="text-xl font-bold text-emerald-400 mt-1" x-text="formatMoney(monthlyIncome())"></div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-xs text-slate-400 uppercase tracking-wide">Expenses</div>
-                        <div class="text-xl font-bold text-rose-400 mt-1" x-text="formatMoney(monthlyExpenses())"></div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-xs text-slate-400 uppercase tracking-wide">Remaining</div>
-                        <div class="text-xl font-bold text-amber-300 mt-1" x-text="formatMoney(monthlyRemaining())"></div>
-                    </div>
-                </div>
-                <div class="mt-3 h-1.5 w-full bg-slate-700/50 rounded-full overflow-hidden">
-                    <div class="h-full bg-gradient-to-r from-emerald-500 to-rose-500 rounded-full" :style="`width: ${Math.min(100, (monthlyExpenses() / (monthlyIncome() || 1)) * 100)}%`"></div>
-                </div>
-                <div class="text-[11px] text-slate-400 mt-2 flex justify-between"><span>expense / income ratio</span><span x-text="Math.round((monthlyExpenses() / (monthlyIncome() || 1)) * 100) + '%'"></span></div>
-            </div>
-            <div class="glass-card rounded-2xl p-5 stat-card">
-                <div class="flex justify-between items-center">
-                    <div>
-                        <div class="text-slate-300 text-xs uppercase tracking-wide">📆 Weekly paycheck</div>
-                        <div class="text-2xl font-bold" x-text="formatMoney(weeklyIncomeAvg())"></div>
-                        <div class="text-[11px] text-slate-400 mt-1">next expected in <span class="text-blue-300 font-semibold" x-text="paycheckCountdown()"></span> days</div>
-                    </div>
-                    <div class="text-right">
-                        <div class="text-slate-300 text-xs uppercase tracking-wide">⚡ Daily pace</div>
-                        <div class="text-2xl font-bold" x-text="formatMoney(dailySpendingPace())"></div>
-                        <div class="text-[11px] text-slate-400 mt-1">avg spent / day</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= CHART + FINANCIAL HEALTH ================= -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8 fade-slide">
-            <!-- left: pie chart -->
-            <div class="glass-card rounded-2xl p-4 transition-all hover:border-blue-500/30">
-                <h3 class="font-semibold text-white/90 mb-2 flex items-center gap-2 text-sm tracking-wide"><span class="w-2 h-2 rounded-full bg-blue-500"></span> Category breakdown (monthly expenses)</h3>
-                <canvas id="pieChart" width="400" height="220" class="w-full h-auto max-h-56"></canvas>
-            </div>
-
-            <!-- right: financial health + monthly goal -->
-            <div class="glass-card rounded-2xl p-5 transition-all hover:border-emerald-500/30 overflow-y-auto max-h-[320px]">
-                <div class="flex items-center justify-between mb-3">
-                    <h3 class="font-bold text-lg flex items-center gap-2"><span class="text-2xl">🧠</span> Financial health &amp; habits</h3>
-                    <span class="text-[10px] bg-blue-500/20 px-2 py-0.5 rounded-full text-blue-300">real-time · no extra data</span>
-                </div>
-
-                <!-- Health Score Circle -->
-                <div class="flex items-center gap-4 mb-4 flex-wrap">
-                    <div class="relative w-20 h-20">
-                        <svg class="w-20 h-20 transform -rotate-90">
-                            <circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="5" fill="none" class="text-slate-700"></circle>
-                            <circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="5" fill="none" stroke-dasharray="213.628" :stroke-dashoffset="213.628 * (1 - healthScore()/100)" class="transition-all duration-500" :class="healthScore() &gt;= 70 ? 'text-emerald-400' : (healthScore() &gt;= 40 ? 'text-amber-400' : 'text-rose-400')"></circle>
-                        </svg>
-                        <div class="absolute inset-0 flex items-center justify-center text-lg font-black" x-text="Math.round(healthScore())"></div>
-                    </div>
-                    <div>
-                        <div class="text-sm font-medium" x-text="healthLabel()"></div>
-                        <p class="text-xs text-slate-400 mt-1">based on savings rate + essential vs. fun spending</p>
-                    </div>
-                </div>
-
-                <!-- Monthly savings goal progress bar -->
-                <div class="bg-slate-800/40 rounded-xl p-3 mb-4 border-l-4 border-blue-500">
-                    <div class="flex justify-between text-sm">
-                        <span>🎯 Monthly savings goal</span>
-                        <span class="font-mono font-bold" x-text="formatMoney(monthlyRemaining()) + ' / ' + formatMoney(settings.monthlyGoal || 0)"></span>
-                    </div>
-                    <div class="h-1.5 bg-slate-700 rounded-full mt-1 overflow-hidden">
-                        <div class="h-full rounded-full bg-gradient-to-r from-emerald-400 to-blue-500" :style="`width: ${Math.min(100, ((monthlyRemaining()) / (settings.monthlyGoal || 1)) * 100)}%`"></div>
-                    </div>
-                    <p class="text-[11px] text-slate-300 mt-2" x-show="settings.monthlyGoal &amp;&amp; settings.monthlyGoal &gt; 0" x-text="monthlyRemaining() &gt;= settings.monthlyGoal ? '✅ Goal achieved! Great discipline.' : (monthlyRemaining() &gt; 0 ? `📊 Need ${formatMoney(settings.monthlyGoal - monthlyRemaining())} more to reach goal.` : '⚠️ Expenses exceed income – adjust goal or spending.')"></p>
-                    <p class="text-[11px] text-slate-400 mt-2" x-show="!settings.monthlyGoal || settings.monthlyGoal === 0">✨ Set a monthly savings goal in Studio controls to track progress.</p>
-                </div>
-
-                <!-- Good vs Bad habits -->
-                <div class="bg-slate-800/40 rounded-xl p-3 mb-4 border-l-4" :class="savingsRate() &gt;= 20 ? 'border-emerald-400' : (savingsRate() &gt;= 10 ? 'border-amber-400' : 'border-rose-400')">
-                    <div class="flex justify-between text-sm">
-                        <span>💰 Monthly savings rate</span>
-                        <span class="font-mono font-bold" x-text="Math.round(savingsRate()) + '%'"></span>
-                    </div>
-                    <div class="h-1.5 bg-slate-700 rounded-full mt-1 overflow-hidden">
-                        <div class="h-full rounded-full bg-gradient-to-r from-emerald-400 to-blue-500" :style="`width: ${Math.min(100, savingsRate())}%`"></div>
-                    </div>
-                    <p class="text-[11px] text-slate-300 mt-2" x-text="savingsAdvice()"></p>
-                </div>
-
-                <!-- Actionable tips list -->
-                <div class="space-y-2 mt-2">
-                    <template x-for="(tip, idx) in smartTips()" :key="idx">
-                        <div class="tip-bubble bg-white/5 rounded-lg p-2.5 text-sm flex items-start gap-2">
-                            <span x-text="tip.icon" class="text-base"></span>
-                            <span class="text-slate-200 leading-tight" x-text="tip.message"></span>
-                        </div>
-                    </template>
-                    <div x-show="smartTips().length === 0 &amp;&amp; transactions.length === 0" class="text-slate-400 text-xs text-center py-4">✨ Add your first transactions to get personalized financial advice.</div>
-                </div>
-
-                <div class="text-[10px] text-slate-500 text-center mt-4 pt-2 border-t border-white/10 flex justify-between">
-                    <span>⚡ zero bloat · no 6‑month storage overhead</span>
-                    <span>🎯 focus on habits, not noise</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= TRANSACTION LEDGER ================= -->
-        <div class="mt-10 glass-card rounded-2xl p-5 fade-slide">
-            <div class="flex flex-wrap justify-between items-center gap-3 mb-4">
-                <div class="flex items-center gap-2">
-                    <h2 class="font-bold text-xl tracking-tight">📋 Transaction ledger</h2>
-                    <span class="text-xs bg-blue-500/20 text-blue-300 px-2.5 py-1 rounded-full border border-blue-500/30" x-text="transactions.length"></span>
-                </div>
-                <div class="flex gap-2 flex-wrap">
-                    <div class="relative">
-                        <svg class="absolute left-3 top-2.5 w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-                        <input type="text" x-model="txSearch" placeholder="Search category/note" class="input-modern rounded-xl pl-9 pr-3 py-1.5 text-sm w-36 focus:w-44 transition-all text-white">
-                    </div>
-                    <select x-model="txFilterType" class="input-modern rounded-xl px-3 py-1.5 text-sm cursor-pointer">
-                        <option value="all">All types</option>
-                        <option value="income">Income only</option>
-                        <option value="expense">Expense only</option>
-                    </select>
-                </div>
-            </div>
-            <!-- Category filter chips (quick search) -->
-            <div class="flex flex-wrap gap-2 mb-4">
-                <template x-for="cat in uniqueCategories()" :key="cat">
-                    <button @click="txSearch = cat" class="text-xs bg-slate-800/70 hover:bg-blue-500/30 rounded-full px-3 py-1 transition" x-text="cat"></button>
-                </template>
-                <button @click="txSearch = ''" x-show="txSearch !== ''" class="text-xs bg-rose-500/20 hover:bg-rose-500/30 rounded-full px-3 py-1 transition">✖ Clear</button>
-            </div>
-            <div class="space-y-2 max-h-[440px] overflow-y-auto pr-1">
-                <template x-for="tx in filteredTransactions()" :key="tx.id">
-                    <div class="transaction-row rounded-xl p-3 flex justify-between items-center border border-white/10" :style="`border-left-color: ${tx.type === 'income' ? '#10b981' : '#f43f5e'}`">
-                        <div class="flex-1 flex items-center gap-3">
-                            <div class="w-8 h-8 rounded-full bg-slate-800/80 flex items-center justify-center text-base" x-text="tx.type === 'income' ? '📈' : '📉'"></div>
-                            <div>
-                                <div class="font-semibold flex flex-wrap gap-x-2 items-baseline">
-                                    <span class="text-white/90" x-text="tx.category"></span>
-                                    <span x-show="tx.note" class="text-xs text-slate-400 font-normal" x-text="'• ' + tx.note"></span>
-                                </div>
-                                <div class="text-[11px] text-slate-500" x-text="formatDate(tx.date)"></div>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <span :class="tx.type === 'income' ? 'text-emerald-400' : 'text-rose-400'" class="font-bold text-sm md:text-base" x-text="(tx.type === 'income' ? '+' : '-') + formatMoney(tx.amount)"></span>
-                            <button @click="editTransaction(tx.id)" class="edit-tx-btn text-slate-400 hover:text-blue-400 text-lg leading-4 transition px-1">✏️</button>
-                            <button @click="deleteTransaction(tx.id)" class="delete-tx-btn text-slate-400 hover:text-red-400 text-lg leading-4 transition px-1">🗑️</button>
-                        </div>
-                    </div>
-                </template>
-                <div x-show="filteredTransactions().length === 0" class="text-center py-12 text-slate-400 text-sm bg-slate-800/30 rounded-xl border border-dashed border-slate-700">✨ No transactions — click the blue button to start your journey</div>
-            </div>
-        </div>
-
-        <!-- ================= STUDIO CONTROLS (Settings) ================= -->
-        <div class="mt-8 glass-card rounded-2xl p-5 space-y-5 fade-slide">
-            <div class="flex items-center justify-between flex-wrap gap-2">
-                <h2 class="font-bold text-xl flex items-center gap-2">⚙️ Studio controls</h2>
-                <span class="text-[11px] bg-slate-800/60 px-2 py-1 rounded-full text-slate-300">local storage · auto‑sync</span>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <!-- Currency selector (multi-currency) -->
-                <div class="flex flex-col sm:flex-row sm:items-center gap-3 justify-between bg-slate-800/30 p-3 rounded-xl">
-                    <label class="text-sm font-medium flex items-center gap-1">💱 Currency</label>
-                    <select x-model="settings.currencyCode" @change="saveSettings()" class="input-modern rounded-xl px-4 py-2 text-sm font-mono">
-                        <option value="USD">USD ($)</option>
-                        <option value="EUR">EUR (€)</option>
-                        <option value="GBP">GBP (£)</option>
-                        <option value="JPY">JPY (¥)</option>
-                        <option value="CAD">CAD ($)</option>
-                        <option value="AUD">AUD ($)</option>
-                    </select>
-                </div>
-                <!-- Monthly savings goal -->
-                <div class="flex flex-col sm:flex-row sm:items-center gap-3 justify-between bg-slate-800/30 p-3 rounded-xl">
-                    <label class="text-sm font-medium flex items-center gap-1">🎯 Monthly savings goal</label>
-                    <input type="number" x-model="settings.monthlyGoal" @change="saveSettings()" placeholder="0" class="input-modern rounded-xl px-4 py-2 w-32 text-sm text-center font-mono">
-                </div>
-            </div>
-            <div class="border-t border-white/10 my-1"></div>
-            <div>
-                <h3 class="text-sm font-semibold text-slate-200 mb-3 flex items-center gap-1">📦 Data toolkit</h3>
-                <div class="grid grid-cols-2 gap-2.5">
-                    <button @click="exportCSV()" class="bg-slate-800/70 hover:bg-slate-700/90 backdrop-blur-sm border border-white/10 rounded-xl p-2.5 text-xs transition-all flex items-center justify-center gap-1.5 font-medium">📎 Export CSV</button>
-                    <button @click="importCSVFile()" class="bg-slate-800/70 hover:bg-slate-700/90 backdrop-blur-sm border border-white/10 rounded-xl p-2.5 text-xs transition-all flex items-center justify-center gap-1.5 font-medium">📂 Import CSV</button>
-                    <button @click="backupJSON()" class="bg-slate-800/70 hover:bg-slate-700/90 backdrop-blur-sm border border-white/10 rounded-xl p-2.5 text-xs transition-all flex items-center justify-center gap-1.5 font-medium">💾 JSON Backup</button>
-                    <button @click="restoreJSON()" class="bg-slate-800/70 hover:bg-slate-700/90 backdrop-blur-sm border border-white/10 rounded-xl p-2.5 text-xs transition-all flex items-center justify-center gap-1.5 font-medium">📀 Restore</button>
-                </div>
-                <div class="grid grid-cols-1 mt-3">
-                    <button @click="resetAllData()" class="col-span-2 sm:col-span-1 bg-rose-900/30 hover:bg-rose-800/50 border border-rose-500/30 rounded-xl p-2.5 text-xs transition-all flex items-center justify-center gap-1 font-medium">⚠️ Factory reset</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- ================= DONATE / SOURCE / SHARE ROW ================= -->
-        <div class="mt-8 glass-card rounded-2xl p-5 fade-slide flex flex-wrap items-center justify-between gap-4">
-            <div class="flex gap-3">
-                <a href="https://michaelsboost.com/donate" target="_blank" rel="noopener noreferrer" class="bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 rounded-xl px-4 py-2 text-sm font-medium transition flex items-center gap-2">
-                    ❤️ Donate
-                </a>
-                <a href="https://github.com/michaelsboost/Budjut" target="_blank" rel="noopener noreferrer" class="bg-slate-800/70 hover:bg-slate-700/80 rounded-xl px-4 py-2 text-sm font-medium transition flex items-center gap-2">
-                    📄 Source code
-                </a>
-            </div>
-            <button @click="shareBudget()" x-show="typeof navigator.share !== 'undefined'" class="bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 rounded-xl px-4 py-2 text-sm font-medium transition flex items-center gap-2">
-                📤 Share
-            </button>
-            <p class="text-xs text-slate-500" x-show="typeof navigator.share === 'undefined'">🔒 Share not supported in this browser</p>
-        </div>
-
-        <!-- Floating Action Button -->
-        <div class="fixed bottom-7 right-7 z-50">
-            <button @click="openQuickAdd()" class="w-14 h-14 rounded-full btn-gradient shadow-2xl flex items-center justify-center text-2xl font-bold transition-all quick-btn hover:scale-105 active:scale-95">✦</button>
-        </div>
-
-        <!-- Transaction Modal (Add / Edit) -->
-        <div x-show="showTxModal" class="fixed inset-0 modal-backdrop flex items-center justify-center z-50 p-4 transition-all" x-cloak="" @click.away="closeModal()">
-            <div class="glass-card-glow rounded-2xl w-full max-w-md p-6 shadow-2xl border-blue-500/40 transform transition-all fade-slide">
-                <div class="flex justify-between items-center mb-3">
-                    <h3 class="text-xl font-bold bg-gradient-to-r from-white to-blue-300 bg-clip-text text-transparent" x-text="editingId ? '✏️ Edit transaction' : '✨ New transaction'"></h3>
-                    <button @click="closeModal()" class="text-slate-400 hover:text-white text-xl">×</button>
-                </div>
-                <select x-model="txForm.type" class="input-modern rounded-xl p-2.5 w-full mt-2 text-sm">
-                    <option value="expense">💸 Expense</option>
-                    <option value="income">💰 Income</option>
-                </select>
-                <input type="number" x-model="txForm.amount" placeholder="Amount (positive number)" class="input-modern rounded-xl p-2.5 w-full mt-3 text-sm">
-                <select x-model="txForm.category" class="input-modern rounded-xl p-2.5 w-full mt-3 text-sm">
-                    <template x-for="cat in (txForm.type === 'income' ? incomeCategories : expenseCategories)" :key="cat">
-                        <option x-text="cat"></option>
-                    </template>
-                </select>
-                <input type="date" x-model="txForm.date" class="input-modern rounded-xl p-2.5 w-full mt-3 text-sm">
-                <input type="text" x-model="txForm.note" placeholder="Note (optional)" class="input-modern rounded-xl p-2.5 w-full mt-3 text-sm">
-                <div class="flex gap-3 mt-6">
-                    <button @click="saveTransaction()" class="btn-gradient flex-1 py-2.5 rounded-xl font-semibold text-white transition">Save</button>
-                    <button @click="closeModal()" class="bg-slate-700/70 flex-1 py-2.5 rounded-xl hover:bg-slate-600 transition">Cancel</button>
-                </div>
-            </div>
+            <a href="https://michaelsboost.com/donate" target="_blank" class="bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 border border-amber-500/40"><i class="fas fa-heart text-amber-400"></i> Donate</a>
+            <a href="https://github.com/michaelsboost/Budjut" target="_blank" class="bg-slate-700/50 hover:bg-slate-700/70 text-slate-200 px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 border border-slate-600"><i class="fab fa-github"></i> Source</a>
+            <button type="button" @click="shareApp()" class="bg-blue-600/30 hover:bg-blue-600/50 text-blue-300 px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 border border-blue-500/40"><i class="fas fa-share-alt"></i> Share</button>
+            <div class="glass-card px-4 py-2 flex items-center gap-2"><i class="far fa-calendar-alt text-blue-400 text-sm"></i><input type="month" x-model="currentMonth" @change="switchMonth" class="bg-transparent border-none text-sm font-medium w-36 p-0 focus:ring-0 text-slate-200"></div>
         </div>
     </div>
+
+    <!-- Money Overview Card (unchanged) -->
+    <div class="glass-card p-5 md:p-6 mb-8 relative overflow-hidden">
+        <div class="card-orb glow-blue w-56 h-56 -top-24 -left-20"></div><div class="card-orb glow-green w-48 h-48 -bottom-20 -right-20"></div>
+        <div class="relative z-10">
+            <div class="flex justify-between items-start gap-4 mb-4"><div><h2 class="text-2xl md:text-3xl font-black tracking-tight">Money Overview</h2><p class="text-xs text-slate-400">Track income, spending, savings, and what’s left</p></div><div class="flex gap-2"><button @click.stop="openIncomeModal()" class="status-pill hover:border-blue-400 transition"><i class="fas fa-pen"></i> Edit goal</button><span class="status-pill"><i class="fas fa-wallet"></i> <span x-text="currentMonth"></span></span></div></div>
+            <div class="mb-4"><div class="money-flow-bar"><div class="money-flow-segment bg-blue-500" :style="{ width: incomeSegment + '%' }"></div><div class="money-flow-segment bg-rose-500" :style="{ width: actualSegment + '%' }"></div><div class="money-flow-segment bg-emerald-500" :style="{ width: cashLeftSegment + '%' }"></div></div><div class="flex justify-between text-[11px] text-slate-400 mt-2"><span><i class="fas fa-circle text-blue-400"></i> Income</span><span><i class="fas fa-circle text-rose-400"></i> Spent</span><span><i class="fas fa-circle text-emerald-400"></i> Cash left</span></div></div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div class="money-stat cursor-pointer hover:border-blue-400/60 transition" @click="openIncomeModal()"><div class="flex justify-between items-center"><div class="text-xs text-slate-400">Expected income</div><i class="fas fa-pen text-blue-300 text-xs"></i></div><div class="text-xl md:text-2xl font-black text-blue-300" x-text="formatMoney(plannedIncome)"></div><div class="text-[10px] text-blue-300 mt-1">Monthly goal</div></div>
+                <div class="money-stat"><div class="text-xs text-slate-400">Actual income in</div><div class="text-xl md:text-2xl font-black text-white" x-text="formatMoney(actualIncome)"></div></div>
+                <div class="money-stat"><div class="text-xs text-slate-400">Planned</div><div class="text-xl md:text-2xl font-black text-blue-300" x-text="formatMoney(totalPlanned)"></div></div>
+                <div class="money-stat"><div class="text-xs text-slate-400">Spent</div><div class="text-xl md:text-2xl font-black" :class="totalActual &lt;= totalPlanned ? 'text-emerald-400' : 'text-rose-400'" x-text="formatMoney(totalActual)"></div></div>
+            </div>
+            <div class="mt-4 grid grid-cols-2 gap-3">
+                <div class="money-stat bg-blue-500/10 border-blue-500/30"><div class="text-xs text-slate-300">💰 Budget left</div><div class="text-2xl font-black text-white" x-text="formatMoney(remainingBudget)"></div></div>
+                <div class="money-stat bg-emerald-500/10 border-emerald-500/30"><div class="text-xs text-slate-300">💵 Cash left after expenses</div><div class="text-2xl font-black" :class="cashLeft &gt;= 0 ? 'text-emerald-400' : 'text-rose-400'" x-text="formatMoney(cashLeft)"></div></div>
+            </div>
+            <div class="mt-4 text-xs text-slate-400"><span x-show="totalPlanned &gt; actualIncome" class="text-amber-300"><i class="fas fa-triangle-exclamation mr-1"></i> Your planned budget is higher than your actual income.</span><span x-show="totalActual &gt; totalPlanned" class="text-rose-300"><i class="fas fa-circle-exclamation mr-1"></i> You’ve spent more than planned.</span><span x-show="totalPlanned &lt;= actualIncome &amp;&amp; totalActual &lt;= totalPlanned" class="text-emerald-300"><i class="fas fa-check-circle mr-1"></i> Your budget is on track.</span></div>
+        </div>
+    </div>
+
+    <!-- Dashboard Cards (card names updated) -->
+    <div class="dashboard-grid">
+        <div class="glass-card dashboard-card card-large relative group" @click="openPanel('health')"><div class="card-orb glow-blue w-48 h-48 -top-20 -left-20"></div><div class="card-shine"></div><div class="relative z-10 p-5 flex flex-col h-full"><div class="flex items-center gap-2 mb-1"><div class="card-icon">🎯</div><h3 class="text-2xl md:text-3xl font-black tracking-tight">Money Pattern Score</h3></div><div class="flex justify-between items-end mt-1"><div class="text-5xl md:text-6xl font-black text-white pulse-ring" x-text="healthScore"></div><div class="text-right"><span class="status-pill" :class="healthScore&gt;=90?'border-emerald-400':healthScore&gt;=75?'border-emerald-400/70':healthScore&gt;=60?'border-amber-400':'border-rose-400'"><i class="fas fa-chart-line"></i> <span x-text="healthLabel"></span></span></div></div><div class="grid grid-cols-2 gap-2 mt-4 text-sm"><span>💾 Savings rate: <span class="text-emerald-400 font-mono" x-text="savingsRatePercent + '%'"></span></span><span>💰 Budget left: <span :class="remainingBudget&gt;=0?'text-emerald-400':'text-rose-400'" x-text="formatMoney(remainingBudget)"></span></span><span>⚠️ Over budget: <span class="text-rose-400" x-text="overBudgetCount"></span></span><span>⚖️ Planned vs inc: <span x-text="totalPlanned &gt; actualIncome ? '⚠️ excess' : '✅ balanced'"></span></span></div><div class="text-xs text-slate-400 mt-2 leading-relaxed" x-text="scoreMotivationMessage"></div><div class="mt-3 rounded-2xl bg-white/5 border border-white/10 p-3 text-xs space-y-2"><div class="font-semibold text-white">50 / 30 / 20 Snapshot</div><div class="flex justify-between"><span>Needs</span><span><span x-text="formatMoney(needsSpent)"></span> · <span x-text="needsPercent + '%'"></span> / target 50%</span></div><div class="flex justify-between"><span>Wants</span><span><span x-text="formatMoney(wantsSpent)"></span> · <span x-text="wantsPercent + '%'"></span> / target 30%</span></div><div class="flex justify-between"><span>Savings / Debt</span><span><span x-text="formatMoney(savingsSpent)"></span> · <span x-text="savingsPercentReal + '%'"></span> / target 20%</span></div></div></div></div>
+        <div class="glass-card dashboard-card card-xlarge relative group" @click="openPanel('envelopes')"><div class="card-orb glow-green w-56 h-56 -bottom-24 -right-20"></div><div class="card-shine"></div><div class="relative p-5 flex flex-col h-full"><div class="flex items-center gap-2"><div class="card-icon">📁</div><h3 class="text-2xl md:text-3xl font-black tracking-tight">Buckets</h3></div><div class="text-4xl md:text-5xl font-black mt-2 text-white" x-text="formatMoney(totalRemainingAll)"></div><div class="text-xs uppercase tracking-wider text-emerald-300">Money left across all buckets</div><div class="grid grid-cols-2 gap-x-4 gap-y-1 mt-4 text-sm"><span>📁 <span x-text="categories.length"></span> categories</span><span>📊 planned: <span x-text="formatMoney(totalPlanned)"></span></span><span>💰 spent: <span x-text="formatMoney(totalActual)"></span></span><span class="text-amber-400" x-show="overBudgetCount&gt;0">⚠️ <span x-text="overBudgetCount"></span> over</span></div><div class="mt-3 space-y-2"><div class="text-xs font-semibold text-slate-300">🔝 Top categories</div><template x-for="cat in topCategories" :key="cat.id"><div><div class="flex justify-between text-xs"><span><span x-text="cat.emoji"></span> <span x-text="cat.name"></span></span><span x-text="formatMoney(cat.spent) + ' / ' + formatMoney(cat.planned)"></span><span :class="cat.remaining&gt;=0?'text-emerald-400':'text-rose-400'" x-text="formatMoney(cat.remaining)"></span></div><div class="mini-progress mt-1"><div class="progress-fill h-full rounded-full" :style="{width: (cat.spent/cat.planned*100)+'%', backgroundColor: cat.remaining&gt;=0?'#10b981':'#f43f5e'}"></div></div></div></template></div></div></div>
+        <div class="glass-card dashboard-card card-medium relative group" @click="openPanel('ledger')"><div class="card-orb glow-purple w-40 h-40 -top-16 -right-16"></div><div class="card-shine"></div><div class="relative p-5 flex flex-col h-full"><div class="flex items-center gap-2"><div class="card-icon">📒</div><h3 class="text-2xl md:text-3xl font-black tracking-tight">Ledger</h3></div><div class="text-5xl md:text-6xl font-black mt-2 text-white" x-text="allLedgerEntries.length"></div><div class="text-xs uppercase tracking-wider text-purple-300">Total income + expenses</div><div class="grid grid-cols-2 gap-1 mt-4 text-sm"><span>📊 Avg expense: <span class="font-mono" x-text="formatMoney(avgTransactionAmount)"></span></span><span>🔥 Largest: <span class="font-mono" x-text="formatMoney(largestTransaction?.amount || 0)"></span></span><span class="col-span-2">📆 All time entries: <span x-text="totalTransactionsAllTime"></span></span></div><div class="mt-3 text-xs text-slate-400 truncate" x-show="allLedgerEntries.length">Latest: <span x-text="allLedgerEntries[0]?.name"></span> <span x-text="allLedgerEntries[0] ? formatMoney(allLedgerEntries[0].amount) : ''"></span></div></div></div>
+        <div class="glass-card dashboard-card card-wide relative group" @click="openPanel('reports')"><div class="card-orb glow-amber w-48 h-48 -bottom-12 -left-12"></div><div class="card-shine"></div><div class="relative p-5 flex flex-col"><div class="flex items-center gap-2"><div class="card-icon">📊</div><h3 class="text-2xl md:text-3xl font-black tracking-tight">Reports</h3></div><div class="text-5xl md:text-6xl font-black mt-2 text-white" x-text="formatMoney(totalActual)"></div><div class="text-xs uppercase tracking-wider text-amber-300">Spent this month</div><div class="grid grid-cols-2 gap-1 mt-4 text-sm"><span>📈 vs last month: <span :class="monthOverMonthDifference &gt;=0 ? 'text-emerald-400' : 'text-rose-400'" x-text="formatMoney(monthOverMonthDifference) + ' (' + (monthOverMonthPercent&gt;=0?'+':'') + Math.round(monthOverMonthPercent)+'%'"></span></span><span>🎯 planned/actual: <span x-text="plannedVsActualPercent + '%'"></span></span><span class="col-span-2">🏆 top category: <span x-text="topSpendingCategory.name || '—'"></span> <span x-text="topSpendingCategory.amount ? formatMoney(topSpendingCategory.amount) : ''"></span></span></div><div class="w-full h-12 mt-3"><canvas id="miniTrendReports" style="height: 48px; width: 100%"></canvas></div></div></div>
+        <div class="glass-card dashboard-card card-small relative group" @click="openPanel('settings')"><div class="card-orb glow-rose w-40 h-40 -top-12 -right-12"></div><div class="card-shine"></div><div class="relative p-5 flex flex-col"><div class="flex items-center gap-2"><div class="card-icon">💾</div><h3 class="text-2xl md:text-3xl font-black tracking-tight">Data</h3></div><div class="text-5xl md:text-6xl font-black mt-2 text-white" x-text="totalTransactionsAllTime"></div><div class="text-xs uppercase tracking-wider text-rose-300">Total money entries</div><div class="grid grid-cols-2 gap-1 mt-4 text-sm"><span>📀 months: <span x-text="savedMonthCount"></span></span><span>📂 categories: <span x-text="categories.length"></span></span><span>💾 storage: <span x-text="localStorageSize"></span></span><span><i class="fas fa-lock text-xs"></i> local-first</span></div></div></div>
+    </div>
+
+    <!-- Panels (envelopes, ledger, reports, settings - unchanged) -->
+    <div x-show="activePanel === 'envelopes'" x-cloak="" class="fixed inset-0 modal-glass flex items-center justify-center z-50 p-4" @click.away="activePanel = null">
+        <div class="glass-card panel-container p-5 space-y-4"><div class="flex justify-between"><h2 class="text-xl font-bold">Budget Buckets</h2><button @click="activePanel = null" class="text-2xl text-slate-400">×</button></div><div class="flex justify-between"><button @click="openAddCategoryModal()" class="bg-blue-600/80 text-sm px-4 py-2 rounded-full"><i class="fas fa-plus mr-1"></i>Add category</button></div><div class="categories-grid max-h-[60vh] overflow-y-auto pr-2"><template x-for="category in categories" :key="category.id"><div class="category-card p-4"><div class="flex justify-between items-start cursor-pointer" @click="toggleCategoryExpand(category.id)"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-blue-500/20 flex items-center justify-center text-2xl"><span x-text="category.emoji"></span></div><div><h3 class="font-semibold" x-text="category.name"></h3><span class="text-xs text-slate-400">planned: <span x-text="formatMoney(getPlanned(category.id))"></span></span></div></div><div><div class="text-sm font-medium" :class="getRemaining(category.id)&gt;=0?'text-emerald-400':'text-rose-400'" x-text="formatMoney(getRemaining(category.id))"></div><div class="text-[11px] text-slate-400">left</div></div></div><div class="mt-2 progress-bar-bg h-2"><div class="progress-fill h-full rounded-full" :style="{width: getProgressWidth(category.id), backgroundColor: getProgressColor(category.id)}"></div></div><div x-show="expandedCategories.includes(category.id)" x-collapse="" class="mt-4 space-y-3"><div class="flex justify-between border-t border-slate-700/50 pt-3"><span class="text-xs">Transactions</span><button @click.stop="openAddExpense(category.id)" class="text-xs bg-blue-600/30 px-3 py-1 rounded-full"><i class="fas fa-plus-circle mr-1"></i>Add</button></div><template x-for="tx in getCategoryTransactions(category.id)" :key="tx.id"><div class="flex justify-between items-center p-2 rounded-xl bg-white/5"><div><span x-text="tx.name"></span><div class="text-[10px] text-slate-400" x-text="tx.date"></div></div><div class="flex gap-2"><span class="text-rose-300 text-sm" x-text="formatMoney(tx.amount)"></span><button @click.stop="deleteTransaction(tx.id)" class="text-slate-500 hover:text-rose-400"><i class="fas fa-trash-alt text-xs"></i></button></div></div></template><div class="flex justify-end gap-2"><button @click.stop="editCategoryDetails(category)" class="text-xs text-slate-400 hover:text-blue-400">edit</button><button @click.stop="deleteCategoryAction(category.id)" class="text-xs text-slate-400 hover:text-rose-400">delete</button></div></div></div></template></div></div></div>
+    <div x-show="activePanel === 'ledger'" x-cloak="" class="fixed inset-0 modal-glass flex items-center justify-center z-50 p-4" @click.away="activePanel = null"><div class="glass-card panel-container p-5 space-y-4"><div class="flex justify-between"><h2 class="text-xl font-bold">All Entries</h2><button @click="activePanel = null" class="text-2xl text-slate-400">×</button></div><div class="flex flex-wrap gap-2"><input type="text" placeholder="Search" x-model="ledgerSearch" class="text-sm flex-1"><select x-model="ledgerCategoryFilter" class="text-sm"><option value="">All categories</option><template x-for="cat in categories"><option :value="cat.id" x-text="cat.name"></option></template></select><button @click="openAddExpense(null)" class="bg-blue-600 text-sm px-3 py-2 rounded-full"><i class="fas fa-plus"></i> Add</button></div><div class="space-y-3 max-h-[60vh] overflow-y-auto"><template x-for="tx in filteredLedgerTransactions" :key="tx.id"><div class="transaction-row p-3 rounded-xl bg-white/5 flex justify-between items-start"><div><div class="font-semibold" x-text="tx.name"></div><div class="text-xs text-slate-400"><span x-text="tx.type === 'income' ? 'Income received' : getCategoryName(tx.categoryId)"></span> · <span x-text="tx.date"></span><span x-show="tx.note"> · 📝 <span x-text="tx.note"></span></span> · <span class="text-[10px]" x-text="tx.monthKey"></span></div></div><div class="flex gap-2 items-center"><span class="font-mono" :class="tx.type === 'income' ? 'text-emerald-300' : 'text-rose-300'"><span x-text="tx.type === 'income' ? '+' : '-'"></span><span x-text="formatMoney(tx.amount)"></span></span><button @click="deleteTransaction(tx.id)" class="text-slate-400 hover:text-rose-400"><i class="fas fa-trash-alt"></i></button></div></div></template><div x-show="filteredLedgerTransactions.length===0" class="text-center text-slate-500 py-8">No entries</div></div></div></div>
+    <div x-show="activePanel === 'reports'" x-cloak="" class="fixed inset-0 modal-glass flex items-center justify-center z-50 p-4" @click.away="activePanel = null"><div class="glass-card panel-container p-5 space-y-5"><div class="flex justify-between"><h2 class="text-xl font-bold">Reports &amp; Analytics</h2><button @click="activePanel = null" class="text-2xl text-slate-400">×</button></div><div class="grid grid-cols-1 md:grid-cols-2 gap-4"><div><div class="text-sm font-medium mb-2">Monthly spending</div><div class="h-48"><canvas id="trendChart"></canvas></div></div><div><div class="text-sm font-medium mb-2">Category breakdown</div><div class="h-48"><canvas id="categoryChart"></canvas></div></div><div class="md:col-span-2"><div class="text-sm font-medium mb-2">Planned vs Actual</div><div class="h-56"><canvas id="comparisonChart"></canvas></div></div></div></div></div>
+    <div x-show="activePanel === 'settings'" x-cloak="" class="fixed inset-0 modal-glass flex items-center justify-center z-50 p-4" @click.away="activePanel = null"><div class="glass-card panel-container p-5 space-y-4"><div class="flex justify-between"><h2 class="text-xl font-bold">Settings &amp; Data</h2><button @click="activePanel = null" class="text-2xl text-slate-400">×</button></div><div class="space-y-3"><div class="flex justify-between py-2"><span>Currency</span><span class="text-blue-300">USD ($)</span></div><button @click="exportCSV" class="w-full text-left py-2 flex justify-between hover:text-blue-400"><span>📄 Export CSV</span><i class="fas fa-download"></i></button><input type="file" id="csvImport" accept=".csv" class="hidden" @change="importCSV($event)"><button @click="document.getElementById('csvImport').click()" class="w-full text-left py-2 flex justify-between"><span>📂 Import CSV</span><i class="fas fa-upload"></i></button><button @click="exportJSON" class="w-full text-left py-2 flex justify-between"><span>💾 JSON Backup</span><i class="fas fa-database"></i></button><input type="file" id="restoreJSON" accept=".json" class="hidden" @change="restoreJSON($event)"><button @click="document.getElementById('restoreJSON').click()" class="w-full text-left py-2 flex justify-between"><span>🔄 Restore from JSON</span><i class="fas fa-upload"></i></button><button type="button" @click="shareApp()" class="w-full text-left py-2 flex justify-between hover:text-blue-400"><span>📤 Share Budjut</span><i class="fas fa-share-alt"></i></button><button @click="loadDummyData" class="w-full text-left py-2 flex justify-between hover:text-blue-400"><span>🧪 Load demo data</span><i class="fas fa-flask"></i></button><button @click="factoryReset" class="w-full text-left py-2 text-rose-400 flex justify-between hover:bg-rose-500/10"><span>⚠️ Factory reset (clear all)</span><i class="fas fa-radiation"></i></button><div class="pt-3 text-sm text-slate-400"><a href="#" @click.prevent="window.open('https://github.com/budjut/app', '_blank')" class="text-blue-400 block"><i class="fab fa-github"></i> GitHub</a><a href="#" @click.prevent="window.open('https://ko-fi.com/budjut', '_blank')" class="text-blue-400 block mt-1"><i class="fas fa-heart"></i> Donate</a><p class="mt-2">All data stored locally. No tracking.</p></div></div></div></div>
+
+    <!-- REDESIGNED MONEY PATTERN SCORE PANEL with rounded factors, Next Best Move coach -->
+    <div x-show="activePanel === 'health'" x-cloak="" class="fixed inset-0 modal-glass flex items-center justify-center z-50 p-4" @click.away="activePanel = null">
+        <div class="glass-card panel-container p-5 space-y-5 relative overflow-auto max-h-[90vh]">
+            <div class="flex justify-between sticky top-0 bg-transparent z-10"><h2 class="text-2xl font-black tracking-tight">Money Pattern Score</h2><button @click="activePanel = null" class="text-2xl text-slate-400 hover:text-white">×</button></div>
+            
+            <!-- Large glowing ring + score + label -->
+            <div class="flex flex-col items-center">
+                <div class="relative w-40 h-40">
+                    <svg class="w-40 h-40 progress-ring" viewBox="0 0 120 120">
+                        <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(59,130,246,0.2)" stroke-width="8"></circle>
+                        <circle class="progress-ring-circle" cx="60" cy="60" r="52" fill="none" stroke="url(#healthGrad)" stroke-width="8" stroke-linecap="round" :stroke-dasharray="circumferenceBigHealth" :stroke-dashoffset="circumferenceBigHealth * (1 - healthScore/100)"></circle>
+                    </svg>
+                    <div class="absolute inset-0 flex items-center justify-center text-5xl font-black" x-text="healthScore"></div>
+                </div>
+                <div class="text-2xl font-semibold mt-3" :class="healthScore&gt;=90?'text-emerald-400':healthScore&gt;=75?'text-emerald-400/80':healthScore&gt;=60?'text-amber-400':'text-rose-400'" x-text="healthLabel"></div>
+                <div class="text-sm text-slate-400 mt-1 text-center max-w-md" x-text="scoreMotivationMessage"></div>
+                <!-- NEW: Next Best Move coach -->
+                <div class="mt-3 w-full bg-white/5 border border-white/10 rounded-2xl p-3 text-center">
+                    <div class="text-[10px] uppercase tracking-wider text-slate-400">Next best move</div>
+                    <div class="text-sm font-semibold text-blue-200 mt-1" x-text="nextBestMove"></div>
+                </div>
+            </div>
+
+            <!-- Score breakdown: 5 factors with rounded points -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
+                <div class="score-factor-card"><div class="flex justify-between items-center"><div class="flex items-center gap-2"><i class="fas fa-charging-station text-blue-400"></i><span class="text-sm font-medium">Cash Flow Momentum</span></div><span class="text-sm font-bold" x-text="factorCashFlowPoints + '/30'"></span></div><div class="text-xs text-slate-400 mt-1" x-text="factorCashFlowMsg"></div><div class="w-full bg-slate-700/30 rounded-full h-1 mt-2"><div class="bg-blue-400 h-1 rounded-full" :style="{width: (factorCashFlowPoints/30)*100+'%'}"></div></div></div>
+                <div class="score-factor-card"><div class="flex justify-between items-center"><div class="flex items-center gap-2"><i class="fas fa-sliders-h text-amber-400"></i><span class="text-sm font-medium">Spending Control</span></div><span class="text-sm font-bold" x-text="factorControlPoints + '/25'"></span></div><div class="text-xs text-slate-400 mt-1" x-text="factorControlMsg"></div><div class="w-full bg-slate-700/30 rounded-full h-1 mt-2"><div class="bg-amber-400 h-1 rounded-full" :style="{width: (factorControlPoints/25)*100+'%'}"></div></div></div>
+                <div class="score-factor-card"><div class="flex justify-between items-center"><div class="flex items-center gap-2"><i class="fas fa-piggy-bank text-emerald-400"></i><span class="text-sm font-medium">Savings Power</span></div><span class="text-sm font-bold" x-text="factorSavingsPoints + '/20'"></span></div><div class="text-xs text-slate-400 mt-1" x-text="factorSavingsMsg"></div><div class="w-full bg-slate-700/30 rounded-full h-1 mt-2"><div class="bg-emerald-400 h-1 rounded-full" :style="{width: (factorSavingsPoints/20)*100+'%'}"></div></div></div>
+                <div class="score-factor-card"><div class="flex justify-between items-center"><div class="flex items-center gap-2"><i class="fas fa-scale-balanced text-purple-400"></i><span class="text-sm font-medium">Budget Balance</span></div><span class="text-sm font-bold" x-text="factorBalancePoints + '/15'"></span></div><div class="text-xs text-slate-400 mt-1" x-text="factorBalanceMsg"></div><div class="w-full bg-slate-700/30 rounded-full h-1 mt-2"><div class="bg-purple-400 h-1 rounded-full" :style="{width: (factorBalancePoints/15)*100+'%'}"></div></div></div>
+                <div class="score-factor-card md:col-span-2"><div class="flex justify-between items-center"><div class="flex items-center gap-2"><i class="fas fa-tasks text-rose-400"></i><span class="text-sm font-medium">Category Discipline</span></div><span class="text-sm font-bold" x-text="factorDisciplinePoints + '/10'"></span></div><div class="text-xs text-slate-400 mt-1" x-text="factorDisciplineMsg"></div><div class="w-full bg-slate-700/30 rounded-full h-1 mt-2"><div class="bg-rose-400 h-1 rounded-full" :style="{width: (factorDisciplinePoints/10)*100+'%'}"></div></div></div>
+            </div>
+
+            <!-- Future projection message -->
+            <div class="bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 rounded-xl p-3">
+                <div class="flex items-center gap-2"><i class="fas fa-chart-simple text-blue-300"></i><span class="font-semibold">Your money pattern today → tomorrow</span></div>
+                <div class="text-sm mt-1" x-text="projectionMessage"></div>
+                <div class="text-xs text-slate-400 mt-2"><i class="fas fa-lightbulb"></i> Small adjustments now create big shifts later.</div>
+            </div>
+
+            <!-- Smart moves section -->
+            <div><div class="flex items-center gap-2 mb-2"><i class="fas fa-brain text-purple-400"></i><h3 class="font-semibold">Smart moves · personalized for you</h3></div>
+            <div class="space-y-2">
+                <div class="smart-move p-3 rounded-xl text-sm" x-show="cashLeft &gt; 0"><i class="fas fa-coins text-emerald-400 mr-2"></i> You have <span x-text="formatMoney(cashLeft)"></span> left. Consider saving, paying down debt, or building a cushion.</div>
+                <div class="smart-move p-3 rounded-xl text-sm" x-show="parseFloat(savingsRatePercent) &lt; 10 &amp;&amp; actualIncome &gt; 0"><i class="fas fa-seedling text-amber-400 mr-2"></i> Your savings rate is low. Try moving even 5% into savings before spending more.</div>
+                <div class="smart-move p-3 rounded-xl text-sm" x-show="overBudgetCount &gt; 0"><i class="fas fa-exclamation-triangle text-rose-400 mr-2"></i> You have <span x-text="overBudgetCount"></span> category(s) over budget. Start there to regain control.</div>
+                <div class="smart-move p-3 rounded-xl text-sm" x-show="totalPlanned &gt; actualIncome &amp;&amp; actualIncome &gt; 0"><i class="fas fa-scale-balanced text-amber-400 mr-2"></i> Your planned spending is higher than income. Reduce planned amounts or increase income.</div>
+                <div class="smart-move p-3 rounded-xl text-sm" x-show="healthScore &gt;= 90 &amp;&amp; cashLeft &gt; 0 &amp;&amp; overBudgetCount === 0"><i class="fas fa-check-circle text-emerald-400 mr-2"></i> Your pattern is elite. Keep protecting the momentum.</div>
+                <div class="smart-move p-3 rounded-xl text-sm" x-show="totalActual &gt; totalPlanned &amp;&amp; totalPlanned &gt; 0"><i class="fas fa-trend-up text-rose-400 mr-2"></i> Your spending is drifting above plan. Review recent transactions.</div>
+            </div></div>
+        </div>
+    </div>
+
+    <!-- Modals (Income, Transaction, Category) unchanged -->
+    <div x-show="editIncomeModal" x-cloak="" class="fixed inset-0 modal-glass flex items-center justify-center z-50 p-4" @click.away="editIncomeModal=false">
+        <div class="glass-card w-80 p-5 space-y-4">
+            <h3 class="text-lg font-bold">Expected monthly income</h3>
+            <input type="number" step="0.01" placeholder="Expected monthly income goal" x-model="tempIncomePlanned" class="w-full">
+            <div class="flex gap-3"><button @click="editIncomeModal=false" class="flex-1 py-2 border border-slate-600 rounded-lg">Cancel</button><button @click="saveMonthlyIncome" class="flex-1 bg-blue-600 py-2 rounded-lg">Save</button></div>
+        </div>
+    </div>
+    <div x-show="expenseModalOpen" x-cloak="" class="fixed inset-0 modal-glass flex items-center justify-center z-50 p-4" @click.away="expenseModalOpen=false">
+        <div class="glass-card w-full max-w-md p-6 space-y-4"><h3 class="text-xl font-bold" x-text="editExpenseMode ? 'Edit transaction' : 'Add transaction'"></h3><select x-model="expenseForm.type" class="w-full"><option value="expense">Expense</option><option value="income">Income received</option></select><input type="text" placeholder="Name" x-model="expenseForm.name" class="w-full"><select x-show="expenseForm.type === 'expense'" x-model="expenseForm.categoryId" class="w-full"><template x-for="cat in categories"><option :value="cat.id" x-text="cat.name + ' ' + cat.emoji"></option></template></select><input type="number" step="0.01" placeholder="Amount" x-model="expenseForm.amount" class="w-full"><input type="date" x-model="expenseForm.date" class="w-full"><input type="text" placeholder="Note (optional)" x-model="expenseForm.note" class="w-full"><div class="flex gap-3"><button @click="expenseModalOpen=false" class="flex-1 py-2 border border-slate-600 rounded-xl">Cancel</button><button @click="saveExpense" class="flex-1 bg-blue-600 rounded-xl py-2">Save</button></div></div>
+    </div>
+    <div x-show="categoryModalOpen" x-cloak="" class="fixed inset-0 modal-glass flex items-center justify-center z-50 p-4" @click.away="categoryModalOpen=false">
+        <div class="glass-card w-full max-w-md p-6 space-y-4"><h3 x-text="editCategoryMode ? 'Edit category' : 'New category'"></h3><input type="text" placeholder="Category name" x-model="categoryForm.name" class="w-full"><select x-model="categoryForm.emoji" class="w-full"><option value="🏠">🏠 Housing</option><option value="🛒">🛒 Groceries</option><option value="🚗">🚗 Transport</option><option value="💡">💡 Bills</option><option value="🍔">🍔 Food</option><option value="🛍️">🛍️ Shopping</option><option value="🎮">🎮 Entertainment</option><option value="💰">💰 Savings</option><option value="💳">💳 Debt</option><option value="📦">📦 Other</option></select><select x-model="categoryForm.type" class="w-full"><option value="need">Need (essential)</option><option value="want">Want (discretionary)</option><option value="savings">Savings / Debt</option></select><input type="number" step="0.01" placeholder="Planned amount" x-model="categoryForm.planned" class="w-full"><div class="flex gap-3"><button @click="categoryModalOpen=false" class="flex-1 py-2 border border-slate-600 rounded-xl">Cancel</button><button @click="saveCategory" class="flex-1 bg-blue-600 rounded-xl">Save</button></div></div>
+    </div>
+
+    <button class="fab-btn" @click="openAddExpense(null)" aria-label="Add transaction">✦</button>
+    <svg width="0" height="0"><defs><linearGradient id="healthGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#3b82f6"></stop><stop offset="100%" stop-color="#8b5cf6"></stop></linearGradient></defs></svg>
+</div>
 
     <script src="dist/script.js"></script>
     <script src="https://storage.googleapis.com/workbox-cdn/releases/6.4.1/workbox-sw.js"></script>

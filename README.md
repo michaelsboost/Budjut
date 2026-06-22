@@ -1,120 +1,188 @@
-# 💸 Budjut – Smart Budgeting Without the Noise
+# 💸 Budjut – From Budgeting to Financial Progress
 
-===================
+![Budjut Banner](imgs/header.png)
 
-![](https://raw.githubusercontent.com/michaelsboost/Budjut/gh-pages/imgs/screenshot.jpeg)
+Budjut is a privacy-first personal finance and budgeting app that helps you track expenses, manage cash flow, build savings, eliminate debt, and measure financial progress. All without subscriptions, accounts, or tracking.
 
-## 🌟 Overview
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://michaelsboost.com/Budjut/)   [![MIT License](https://img.shields.io/github/license/michaelsboost/Budjut)](LICENSE)  [![GitHub Stars](https://img.shields.io/github/stars/michaelsboost/Budjut)](https://github.com/michaelsboost/Budjut)  [![GitHub Issues](https://img.shields.io/github/issues/michaelsboost/Budjut)](https://github.com/michaelsboost/Budjut/issues)
 
-Budjut is a lightweight, browser-based budgeting app built for everyday people who want simple financial control without subscriptions, ads, or invasive tracking. Designed to be fast, private, and easy to use, Budjut helps users track both income and expenses, monitor financial health in real-time, and manage budgeting data with CSV import/export support.
-
-[![MIT License](https://img.shields.io/github/license/michaelsboost/Budjut)](LICENSE) [![GitHub Stars](https://img.shields.io/github/stars/michaelsboost/Budjut)](https://github.com/michaelsboost/Budjut/stargazers) [![GitHub Issues](https://img.shields.io/github/issues/michaelsboost/Budjut)](https://github.com/michaelsboost/Budjut/issues)
-
-> 🛠️ Built using [kodeWeave](https://michaelsboost.github.io/kodeWeave/)
-> Browser-based. Lightweight. Offline-friendly. No install required.
-
-## 🚀 **Launch the App**
-
-Live version: **[Budjut App](https://michaelsboost.com/Budjut/)**
-
-> 📲 **Progressive Web App (PWA) Friendly**
-> Install it to your home screen and manage your finances offline, anytime.
+> Browser-based • Offline-friendly • Privacy-first • No accounts • No subscriptions
 
 ---
 
-### **🧠 Philosophy**
+# 🌟 Overview
 
-Budjut avoids unnecessary complexity, social feeds, and bloated finance tools. It focuses on clarity, speed, ownership, and privacy.
+Budjut is a lightweight financial progress app that combines budgeting, expense tracking, savings goals, debt payoff planning, and wealth building tools into a single experience.
 
-> “A budget is telling your money where to go instead of wondering where it went.” – Dave Ramsey
+Unlike traditional budgeting software that focuses primarily on spending, Budjut emphasizes progress. Whether you're building an emergency fund, paying off debt, saving for a major purchase, or pursuing long-term financial independence, Budjut helps you understand not only where your money goes, but what it's helping you build.
 
-⚡ Fast enough to feel native. Small enough to stay out of your way.
+### Core Components
 
-## 🛠️ Key Features
+* 💰 Income and expense tracking
+* 📊 Cash-flow and spending analysis
+* 🏦 Goal-based Vaults
+* 🏛 Financial Foundation framework
+* 🎯 Money Pattern Score
+* 💡 Smart insights and coaching
+* 📈 Reports and analytics
+* 🔒 Local-first privacy
 
-**💰 Complete Transaction Management**
-- Add, edit, and delete both income and expense transactions
-- Categorized entries with optional notes
-- Real-time balance calculation
+Everything stays on your device.
 
-**📊 Financial Health Dashboard**
-- Total balance overview with net worth snapshot
-- Monthly income vs. expense breakdown
-- Spending percentage progress bar
-- Daily spending pace tracker
-- Weekly paycheck estimator with countdown
-
-**🧠 Smart Financial Insights**
-- Real-time health score (0-100) based on savings rate
-- Personalized savings advice and tips
-- Essential vs. discretionary spending analysis
-- Actionable recommendations based on your habits
-
-**📈 Visual Analytics**
-- Interactive pie chart for monthly expense category breakdown
-- Visual progress bars for savings goals and expense ratios
-
-**🎯 Goal Setting**
-- Monthly savings goal tracker
-- Visual progress monitoring toward your target
-
-**💱 Multi-Currency Support**
-- USD, EUR, GBP, JPY, CAD, AUD
-- Automatic formatting using Intl.NumberFormat
-
-**📁 CSV Import & Export**
-- Export all transaction data to CSV
-- Import CSV files with automatic validation
-- Seamless data migration
-
-**💾 Persistent Local Storage**
-- Automatic saving of all transactions and settings
-- JSON backup and restore functionality
-- No account creation required
-- No cloud dependency or server storage
-
-**⚡ Quick Actions**
-- Floating action button for rapid entry
-- Keyboard shortcut: press 'N' to add new transaction
-- Search and filter transactions by category or note
-- One-click category filter chips
-
-**🎨 Modern Minimal UI**
-- Responsive dark-mode interface
-- Glassmorphism design with subtle animations
-- Mobile-friendly and touch-optimized
-- Smooth hover and transition effects
-
-**🔒 Privacy Focused**
-- Entirely client-side
-- No tracking
-- No analytics
-- Your data stays on your device
+No cloud dependency. No accounts. No tracking.
 
 ---
 
-## **⚡ Getting Started**
+# 🚀 Launch the App
 
-### **1️⃣ Install & Run Locally**
+### 🌐 Live Version
 
-```sh
-# Clone the repository
-git clone https://github.com/michaelsboost/Budjut.git
-cd Budjut
+**https://michaelsboost.com/Budjut/**
 
-# Open index.html in a browser
-```
+### 📲 Progressive Web App (PWA)
 
-### **2️⃣ Dependencies**
+Install Budjut to your home screen and use it offline anytime.
 
-- Alpine.js 3.14.1 (reactive functionality)
-- Chart.js 4.4.0 (data visualization)
-- PapaParse 5.4.1 (CSV parsing)
-- TailwindCSS (styling)
-- Vanilla JavaScript
-- HTML5 LocalStorage API
+---
 
-### **📁 CSV Format Example**
+# 🧠 Philosophy
+
+Most financial apps focus on transactions.
+
+Budjut focuses on progress.
+
+Tracking expenses is important, but financial health is built through intentional habits, purposeful saving, debt reduction, and long-term thinking.
+
+Budjut is built around four principles:
+
+* **Clarity** — understand your finances at a glance.
+* **Ownership** — your data belongs to you.
+* **Simplicity** — powerful tools without unnecessary complexity.
+* **Progress** — measure what you're building, not merely what you're spending.
+
+> “A budget is telling your money where to go instead of wondering where it went.”
+>
+> — Dave Ramsey
+
+Budjut extends that idea:
+
+> "Financial progress isn't measured by what you spend, but by what you're building."
+
+---
+
+# 🛠 Features
+
+## 💰 Transaction Management
+
+* Add, edit, and delete income and expense transactions
+* Categorized entries with optional notes
+* Real-time balance and cash-flow calculations
+
+## 📊 Money Overview Dashboard
+
+* Planned vs actual spending
+* Budget left
+* Cash left after expenses
+* Spending flow visualization
+* 50 / 30 / 20 snapshot
+
+## 🏦 Vaults — Goal-Based Saving
+
+Create dedicated vaults for:
+
+| Examples             |
+| -------------------- |
+| 🚨 Emergency Fund    |
+| 💳 Debt Snowball     |
+| ✈️ Vacation          |
+| 🚗 New Car           |
+| 🏠 Home Down Payment |
+| 🚀 Business Startup  |
+| 🎄 Holiday Gifts     |
+| 📦 Major Purchases   |
+
+Vaults track:
+
+* Goal amount
+* Current balance
+* Monthly contributions
+* Progress percentage
+* Estimated completion date
+* Optional emoji/icon
+
+> Vaults represent what you're building, not where your money went.
+
+## 🏛 Financial Foundation
+
+| Stage   | Objective                     |
+| ------- | ----------------------------- |
+| Stage 1 | Starter Emergency Fund        |
+| Stage 2 | Eliminate High-Interest Debt  |
+| Stage 3 | Build 3–12 Months of Expenses |
+| Stage 4 | Long-Term Wealth Building     |
+
+Each stage can be completed manually or automatically based on your financial data.
+
+## 🎯 Money Pattern Score
+
+Budjut evaluates nine dimensions of financial progress:
+
+| Factor                        | Max Points |
+| ----------------------------- | ---------: |
+| Cash Flow Momentum            |         30 |
+| Spending Control              |         25 |
+| Savings Power                 |         20 |
+| Budget Balance                |         15 |
+| Category Discipline           |         10 |
+| Emergency Fund Progress       |         15 |
+| Debt Reduction Progress       |         15 |
+| Goal Contributions            |         15 |
+| Financial Foundation Progress |         15 |
+
+Total: **160 points**, scaled to a score between **0–100**.
+
+---
+
+# 🧮 Money Pattern Score Ratings
+
+|  Score | Rating         |
+| -----: | -------------- |
+| 90–100 | 🔥 Elite       |
+|  75–89 | 💪 Strong      |
+|  60–74 | 👍 Stable      |
+|  40–59 | ⚠️ Needs Focus |
+|   0–39 | 🚨 At Risk     |
+
+Budjut also provides:
+
+* Next Best Move recommendations
+* Personalized insights
+* Progress projections
+* Smart coaching based on your habits
+
+---
+
+# 📈 Analytics & Reports
+
+* Monthly spending trends
+* Category breakdown charts
+* Planned vs actual comparisons
+* Visual progress indicators
+* Trend analysis
+
+---
+
+# 💱 Multi-Currency Support
+
+USD • EUR • GBP • JPY • CAD • AUD
+
+---
+
+# 📁 CSV Import & Export
+
+Export transactions and import them again with validation.
+
+### Example
 
 ```csv
 amount,type,category,date,note
@@ -123,51 +191,77 @@ amount,type,category,date,note
 3000,income,Salary,2025-01-01,Monthly paycheck
 ```
 
-**CSV Columns:**
-| Column | Type | Description |
-|--------|------|-------------|
-| amount | number | Transaction amount (positive) |
-| type | string | `income` or `expense` |
-| category | string | Category name |
-| date | string | YYYY-MM-DD format |
-| note | string | Optional description |
-
-### **3️⃣ Expense Categories**
-
-**Default expense categories:**
-Food, Bills, Transportation, Rent, Utilities, Health, Debt, Entertainment, Shopping, Miscellaneous
-
-**Default income categories:**
-Salary, Freelance, Gift, Refund, Other Income
+| Column   | Type   | Description        |
+| -------- | ------ | ------------------ |
+| amount   | number | Transaction amount |
+| type     | string | income or expense  |
+| category | string | Category name      |
+| date     | string | YYYY-MM-DD         |
+| note     | string | Optional note      |
 
 ---
 
-## **🎮 Tips & Shortcuts**
+# 💾 Local Storage
 
-| Action | Method |
-|--------|--------|
-| New transaction | Click blue ✦ button or press `N` key |
-| Search transactions | Type in search box or click category chip |
-| Filter by type | Use dropdown (All / Income / Expense) |
-| Edit transaction | Click ✏️ icon on any transaction row |
-| Delete transaction | Click 🗑️ icon (appears on hover) |
-| Share budget summary | Click Share button (supported browsers) |
+* Automatic saving
+* JSON backup and restore
+* No accounts
+* No servers
+* No cloud dependency
 
 ---
 
-## **🧮 Financial Health Scoring**
+# 🎮 Tips & Shortcuts
 
-Budjut calculates a health score (0-100) based on:
-- Monthly savings rate (income - expenses / income)
-- Essential vs. discretionary spending ratio
-- Spending patterns relative to income
+| Action                  | Method           |
+| ----------------------- | ---------------- |
+| New transaction         | Press `N`        |
+| Search                  | Search field     |
+| Filter type             | Dropdown         |
+| Edit transaction        | ✏️ button        |
+| Delete transaction      | 🗑️ button       |
+| Create Vault            | Vault panel      |
+| Toggle Foundation stage | Foundation panel |
+| Share summary           | Share button     |
 
-| Score Range | Rating |
-|-------------|--------|
-| 80-100 | 🔥 Excellent financial shape |
-| 60-79 | 👍 Healthy habits — keep going! |
-| 40-59 | ⚠️ Room for improvement |
-| 0-39 | 🚨 Needs attention — small steps help |
+---
+
+# 🎨 Modern Interface
+
+* Responsive design
+* Glassmorphism cards
+* Dark mode
+* Mobile friendly
+* Smooth animations
+* Coach-like experience
+
+---
+
+# 🔒 Privacy First
+
+* Entirely client-side
+* No analytics
+* No tracking
+* No external requests
+
+**Your data stays on your device. Always.**
+
+---
+
+# ⚡ Getting Started
+
+```sh
+git clone https://github.com/michaelsboost/Budjut.git
+cd Budjut
+npm install
+npm run serve
+```
+
+Open:
+
+```sh
+index.html
+```
 
 ---
 
